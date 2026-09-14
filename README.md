@@ -42,8 +42,10 @@ uv run --with selenium python scripts/e2e_smoke.py
 
 1. L’utilisateur choisit une image locale.
 2. Le navigateur la valide, la recadre et la redimensionne à 224 × 224.
-3. L'EfficientNet-Lite0 fine-tuné retourne directement huit familles ; toutes celles
-   dépassant le seuil d'affichage choisi (10 % par défaut) sont présentées.
+3. L'EfficientNet-Lite0 fine-tuné retourne directement huit familles ; le mode
+   automatique conserve les trois premiers résultats en abaissant si nécessaire
+   le seuil de base de 10 %, puis affiche aussi tous les résultats supplémentaires
+   au-dessus de ce seuil. Le sélecteur permet de remplacer ce seuil manuellement.
 4. Le modèle ImageNet original et son mapping versionné restent disponibles comme baseline.
 5. Une description facultative est normalisée avec un dictionnaire et des règles locales.
 6. L’utilisateur valide, retire, remplace ou ajoute une famille et peut saisir des grammes.

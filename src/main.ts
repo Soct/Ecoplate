@@ -132,12 +132,13 @@ app.innerHTML = `
           <div class="prediction-display-control">
             <label for="display-threshold">Afficher les suggestions à partir de</label>
             <select id="display-threshold">
+              <option value="auto" selected>Automatique · top 3</option>
               <option value="0.05">5 %</option>
-              <option value="0.10" selected>10 %</option>
+              <option value="0.10">10 %</option>
               <option value="0.20">20 %</option>
               <option value="0.35">35 %</option>
             </select>
-            <small>Au moins 3 suggestions si disponibles · les égalités sont conservées · rejet à 35 %</small>
+            <small id="display-threshold-help">Seuil automatique à 10 % minimum, abaissé au score du troisième résultat si nécessaire · les égalités sont conservées</small>
             <p class="prediction-policy-note">Choix de modélisation : une seule protéine animale est conservée. Le bœuf, le porc, la volaille et le poisson ont des apparences visuelles proches ; leurs prédictions concurrentes ne signifient donc pas que le plat contient plusieurs viandes.</p>
           </div>
           <div id="raw-predictions" class="raw-predictions">
@@ -291,6 +292,7 @@ let lastVisionPredictions: VisionPrediction[] = [];
 let textCandidates: IngredientCandidate[] = [];
 let workingCandidates: IngredientCandidate[] = [];
 let unknownTerms: UnknownTerm[] = [];
+let displayThresholdOverride: number | null = null;
 
 const fileInput = required<HTMLInputElement>('#image-file');
 const dropZone = required<HTMLElement>('#drop-zone');
@@ -306,6 +308,7 @@ const runtimeMetrics = required<HTMLElement>('#runtime-metrics');
 const segmentationHelp = required<HTMLElement>('#segmentation-help');
 const modelSelect = required<HTMLSelectElement>('#vision-model');
 const displayThresholdSelect = required<HTMLSelectElement>('#display-threshold');
+const displayThresholdHelp = required<HTMLElement>('#display-threshold-help');
 const demoImageSelect = required<HTMLSelectElement>('#demo-image-select');
 const loadDemoImageButton = required<HTMLButtonElement>('#load-demo-image');
 const candidateList = new CandidateList(required<HTMLElement>('#candidate-list'));
@@ -336,18 +339,31 @@ function selectedModelId(): ModelId {
 }
 
 function selectedDisplayThreshold(): number {
+  if (displayThresholdSelect.value === 'auto') return DEFAULT_DISPLAY_THRESHOLD;
   const value = Number(displayThresholdSelect.value);
   return Number.isFinite(value) ? value : DEFAULT_DISPLAY_THRESHOLD;
 }
 
 function selectedEffectiveDisplayThreshold(): number {
-  return effectiveDisplayThresholdForSuggestions(lastVisionPredictions);
+  return displayThresholdOverride ?? effectiveDisplayThresholdForSuggestions(lastVisionPredictions);
 }
 
 function effectiveDisplayThresholdForSuggestions(predictions: VisionPrediction[]): number {
   const mappedPredictions = filterCompetingPredictions(predictions)
     .filter((prediction) => prediction.family);
   return effectiveDisplayThreshold(mappedPredictions, selectedDisplayThreshold());
+}
+
+function renderDisplayThresholdHelp(): void {
+  if (displayThresholdOverride !== null) {
+    displayThresholdHelp.textContent = `Seuil manuel de ${Math.round(displayThresholdOverride * 100)} % · il remplace la règle automatique des trois premiers résultats · les égalités sont conservées`;
+    return;
+  }
+
+  const automaticThreshold = effectiveDisplayThresholdForSuggestions(lastVisionPredictions);
+  displayThresholdHelp.textContent = lastVisionPredictions.length === 0
+    ? `Seuil automatique à ${Math.round(DEFAULT_DISPLAY_THRESHOLD * 100)} % minimum, abaissé au score du troisième résultat si nécessaire · les égalités sont conservées`
+    : `Seuil automatique établi à ${Math.round(automaticThreshold * 100)} % pour englober les trois premiers résultats si disponibles · les égalités sont conservées`;
 }
 
 document.querySelectorAll<HTMLInputElement>('input[name="segmentation-mode"]').forEach((input) => {
@@ -398,6 +414,10 @@ modelSelect.addEventListener('change', () => {
 });
 
 displayThresholdSelect.addEventListener('change', () => {
+  displayThresholdOverride = displayThresholdSelect.value === 'auto'
+    ? null
+    : selectedDisplayThreshold();
+  renderDisplayThresholdHelp();
   if (lastVisionPredictions.length === 0) return;
   visionCandidates = toVisionCandidates(lastVisionPredictions);
   renderRawPredictions(lastVisionPredictions);
@@ -467,7 +487,7 @@ function renderCandidatesAndScore(): void {
 
 function toVisionCandidates(predictions: VisionPrediction[]): IngredientCandidate[] {
   const mapped = filterCompetingPredictions(predictions).filter((prediction) => prediction.family);
-  const displayThreshold = effectiveDisplayThresholdForSuggestions(predictions);
+  const displayThreshold = selectedEffectiveDisplayThreshold();
   const firstVisible = mapped
     .filter((prediction) => prediction.confidence >= displayThreshold)
     .find((prediction) => prediction.family);
@@ -485,7 +505,7 @@ function toVisionCandidates(predictions: VisionPrediction[]): IngredientCandidat
 
 function renderRawPredictions(predictions: VisionPrediction[]): void {
   rawPredictions.replaceChildren();
-  const displayThreshold = effectiveDisplayThresholdForSuggestions(predictions);
+  const displayThreshold = selectedEffectiveDisplayThreshold();
   const relevantPredictions = filterCompetingPredictions(predictions).filter(
     (prediction) => prediction.confidence >= displayThreshold,
   );
@@ -550,6 +570,7 @@ async function analyze(): Promise<void> {
       lastVisionPredictions = inference.predictions;
       visionCandidates = toVisionCandidates(inference.predictions);
       renderRawPredictions(inference.predictions);
+      renderDisplayThresholdHelp();
       runtimeMetrics.hidden = false;
       runtimeMetrics.textContent = `Dernière inférence : ${Math.round(inference.latencyMs + segmentationLatency)} ms · prétraitement : ${segmentationLabel} · modèle : ${inference.model.shortLabel} · ${inference.modelSizeMb.toFixed(2)} Mio (${inference.model.outputLabels} sorties) · suggestions ≥ ${Math.round(selectedEffectiveDisplayThreshold() * 100)} % · ${canvases.length} vue(s) · entrée : 224 × 224 px`;
       setStatus(

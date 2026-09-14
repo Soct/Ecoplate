@@ -26,11 +26,17 @@ export function effectiveDisplayThreshold(
   _threshold = DEFAULT_DISPLAY_THRESHOLD,
   minimumResults = MINIMUM_DISPLAY_RESULTS,
 ): number {
-  if (minimumResults <= 0) return DEFAULT_DISPLAY_THRESHOLD;
+  const boundedThreshold = Math.min(1, Math.max(0, _threshold));
+  if (minimumResults <= 0) return boundedThreshold;
   if (predictions.length < minimumResults) return 0;
 
+  const resultsAtRequestedThreshold = predictions.filter(
+    (prediction) => prediction.confidence >= boundedThreshold,
+  );
+  if (resultsAtRequestedThreshold.length >= minimumResults) return boundedThreshold;
+
   const sortedPredictions = [...predictions].sort((a, b) => b.confidence - a.confidence);
-  return sortedPredictions[minimumResults - 1]?.confidence ?? 0;
+  return Math.min(boundedThreshold, sortedPredictions[minimumResults - 1]?.confidence ?? 0);
 }
 
 export function predictionsAboveThreshold(

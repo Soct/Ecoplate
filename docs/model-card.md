@@ -41,7 +41,9 @@ il ne faut pas prétendre pouvoir reproduire bit à bit le fichier actuel.
 L'application charge par défaut le modèle Food-101. Elle :
 
 1. recadre l'image entière à 224 × 224 ;
-2. affiche toutes les familles dépassant le seuil choisi, 10 % par défaut ;
+2. conserve automatiquement les trois premières familles en abaissant si nécessaire
+   le seuil de base de 10 %, puis affiche toutes les familles supplémentaires au-dessus
+   de ce seuil ; le sélecteur peut remplacer ce seuil par une valeur manuelle ;
 3. sélectionne la première proposition sans la présenter comme certaine ;
 4. permet validation, retrait, remplacement et ajout par l'utilisateur ;
 5. combine éventuellement une description locale ;
