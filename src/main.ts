@@ -33,10 +33,11 @@ app.innerHTML = `
       <a href="#demo">Démonstration</a>
       <a href="#study">Étude</a>
       <a href="#project">Projet</a>
+      <a href="#privacy">Confidentialité</a>
       <a href="#skills">Compétences</a>
       <a href="#deliverables">Livrables</a>
     </nav>
-    <span class="local-pill"><span aria-hidden="true">●</span> Sans serveur</span>
+    <span class="local-pill" aria-label="100 % local, aucune image envoyée"><span aria-hidden="true">●</span><span class="local-pill-label">100 % local · aucune image envoyée</span></span>
   </header>
 
   <main id="main-content">
@@ -50,6 +51,14 @@ app.innerHTML = `
           <a class="button button-primary" href="#demo">Tester l’analyse</a>
           <a class="text-link" href="#project">Voir le fonctionnement <span aria-hidden="true">↘</span></a>
         </div>
+        <aside class="privacy-highlight" aria-label="Confidentialité et RGPD">
+          <span class="privacy-highlight-mark" aria-hidden="true">✓</span>
+          <div>
+            <strong>Confidentialité · RGPD</strong>
+            <p>Vos images et descriptions restent dans votre navigateur. Aucune donnée n’est envoyée à un serveur et l’application ne nécessite aucun compte.</p>
+            <a class="privacy-highlight-link" href="#privacy">En savoir plus sur la confidentialité <span aria-hidden="true">→</span></a>
+          </div>
+        </aside>
         <dl class="hero-stats">
           <div><dt>54,27 %</dt><dd>top-1 · fine-tuning</dd></div>
           <div><dt>3,95 Mio</dt><dd>modèle int8</dd></div>
@@ -60,10 +69,10 @@ app.innerHTML = `
         <div class="process-board">
           <div class="process-board-header"><span>Flux de traitement</span><strong>dans le navigateur</strong></div>
           <div class="process-line" aria-hidden="true"></div>
-          <div class="process-node node-input"><span>01</span><strong>Image</strong><small>fichier local</small></div>
-          <div class="process-node node-model"><span>02</span><strong>Modèle</strong><small>Food-101 · int8</small></div>
-          <div class="process-node node-review"><span>03</span><strong>Correction</strong><small>vision + texte</small></div>
-          <div class="process-node node-output"><span>04</span><strong>Repère</strong><small>A–E ou ?</small></div>
+          <div class="process-node node-input"><strong>Image</strong><small>fichier local</small></div>
+          <div class="process-node node-model"><strong>Modèle</strong><small>Food-101 · int8</small></div>
+          <div class="process-node node-review"><strong>Correction</strong><small>vision + texte</small></div>
+          <div class="process-node node-output"><strong>Repère</strong><small>A–E ou ?</small></div>
           <div class="process-note"><span aria-hidden="true">●</span> aucune image envoyée</div>
         </div>
       </div>
@@ -87,6 +96,11 @@ app.innerHTML = `
             </span>
           </label>
           <input class="visually-hidden" id="image-file" type="file" accept="image/jpeg,image/png,image/webp" />
+          <div class="privacy-guarantees" aria-label="Garanties de confidentialité">
+            <div><strong>Local</strong><small>Analyse dans le navigateur</small></div>
+            <div><strong>Sans compte</strong><small>Aucune inscription requise</small></div>
+            <div><strong>Non transmis</strong><small>Aucune image envoyée</small></div>
+          </div>
           <div class="demo-examples" aria-label="Images d’exemple">
             <label class="field-label" for="demo-image-select">Ou choisir une image d’exemple</label>
             <div class="demo-image-picker">
@@ -157,14 +171,27 @@ app.innerHTML = `
       </div>
     </section>
 
+    <section class="privacy-section" id="privacy" aria-labelledby="privacy-title">
+      <div class="section-heading split-heading">
+        <div><p class="eyebrow">Confidentialité et traitement local</p><h2 id="privacy-title">Vos données restent<br>sur votre appareil.</h2></div>
+        <p>EcoPlate Edge est conçu pour analyser une image sans l’envoyer à un service distant. Cette page explique concrètement ce qui se passe lorsque vous lancez une analyse.</p>
+      </div>
+      <div class="privacy-grid">
+        <article><span class="privacy-card-label">Reste sur l’appareil</span><h3>Image, texte et résultat</h3><p>Votre image, votre description, les prédictions et le résultat climatique sont manipulés dans la mémoire de votre navigateur. Ils ne sont pas téléversés ni enregistrés par l’application sur un serveur.</p></article>
+        <article><span class="privacy-card-label">Téléchargé au démarrage</span><h3>Les fichiers de l’application</h3><p>Le navigateur peut télécharger le HTML, le JavaScript, le modèle de vision, le runtime et les images d’exemple. Ce sont des fichiers publics nécessaires au fonctionnement, pas vos données personnelles.</p></article>
+        <article><span class="privacy-card-label">Aucun service distant</span><h3>Pas de compte, pas d’API d’image</h3><p>Il n’y a pas de compte à créer, pas d’API d’inférence et pas de stockage distant des analyses. Le réseau sert à charger les ressources de la page, puis le modèle fonctionne localement.</p></article>
+      </div>
+      <div class="privacy-flow" aria-label="Flux local des données"><strong>Votre image</strong><span>→</span><strong>Navigateur</strong><span>→</span><strong>Modèle local</strong><span>→</span><strong>Résultat</strong><em>aucune image ne sort de ce parcours</em></div>
+    </section>
+
     <section class="capability-section" aria-labelledby="capability-title">
       <div class="section-heading split-heading">
         <div><p class="eyebrow">Périmètre du prototype</p><h2 id="capability-title">Ce qui est évalué<br>et ce qui ne l’est pas.</h2></div>
         <p>Les métriques du projet portent sur le split de validation Food-101 relabellisé. Elles ne mesurent pas la performance sur des photos prises par de vrais utilisateurs.</p>
       </div>
       <div class="capability-grid">
-        <article><span class="capability-sign" aria-hidden="true">01</span><h3>Mesuré ici</h3><p>Le classement d’une image Food-101 relabellisée dans huit familles, avec top-1, top-3, macro-F1, rejet par seuil et latence du modèle dans le navigateur.</p></article>
-        <article><span class="capability-sign" aria-hidden="true">02</span><h3>Hors mesure</h3><p>La reconnaissance de tous les ingrédients d’un plat, la masse, l’origine, la recette et la généralisation à des photos personnelles. Le protocole de 30 photos est prêt, mais la collecte n’est pas faite.</p></article>
+        <article><span class="capability-sign" aria-hidden="true">✓</span><h3>Mesuré ici</h3><p>Le classement d’une image Food-101 relabellisée dans huit familles, avec top-1, top-3, macro-F1, rejet par seuil et latence du modèle dans le navigateur.</p></article>
+        <article><span class="capability-sign" aria-hidden="true">—</span><h3>Hors mesure</h3><p>La reconnaissance de tous les ingrédients d’un plat, la masse, l’origine, la recette et la généralisation à des photos personnelles. Le protocole de 30 photos est prêt, mais la collecte n’est pas faite.</p></article>
       </div>
       <p class="validation-warning"><strong>À retenir :</strong> validation Food-101 ≠ validation en conditions d’usage. Le rejet <code>?</code>, le texte et la correction humaine restent des fonctions centrales.</p>
     </section>
@@ -220,10 +247,10 @@ app.innerHTML = `
       </ol>
 
       <div class="principles-grid">
-        <article><span class="principle-number">01</span><h3>Exécution locale</h3><p>Site statique, sans backend ni API d’image. Le réseau sert uniquement à charger les fichiers publics de l’application.</p></article>
-        <article><span class="principle-number">02</span><h3>Correction explicite</h3><p>Une suggestion peut être validée, retirée, remplacée ou complétée avec une description textuelle.</p></article>
-        <article><span class="principle-number">03</span><h3>Rejet documenté</h3><p>Une confiance faible, des classes proches ou l’absence de mapping produisent « ? » plutôt qu’une classe présentée comme certaine.</p></article>
-        <article><span class="principle-number">04</span><h3>Calcul séparé</h3><p>Le modèle classe l’image. Une couche déterministe et testée transforme ensuite les familles retenues en niveau qualitatif.</p></article>
+        <article><span class="principle-label">Confidentialité</span><h3>Exécution locale</h3><p>Site statique, sans backend ni API d’image. Le réseau sert uniquement à charger les fichiers publics de l’application.</p></article>
+        <article><span class="principle-label">Contrôle humain</span><h3>Correction explicite</h3><p>Une suggestion peut être validée, retirée, remplacée ou complétée avec une description textuelle.</p></article>
+        <article><span class="principle-label">En cas de doute</span><h3>Afficher « ? » plutôt qu’inventer</h3><p>C’est la carte « Indicateur climatique qualitatif » qui affiche « ? » et le statut « À confirmer ». Cela arrive si la confiance est trop faible, si deux familles sont trop proches ou si aucune famille n’est reconnue ; ce n’est pas une statistique d’entraînement.</p></article>
+        <article><span class="principle-label">Traitement séparé</span><h3>Calcul explicable</h3><p>Le modèle classe l’image. Une couche déterministe et testée transforme ensuite les familles retenues en niveau qualitatif.</p></article>
       </div>
     </section>
 
