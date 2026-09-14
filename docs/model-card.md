@@ -48,6 +48,12 @@ L'application charge par défaut le modèle Food-101. Elle :
 6. renvoie `?` sous 35 % de confiance ou lorsque deux familles sont séparées de
    moins de huit points sans information humaine pour trancher.
 
+Pour limiter les faux signaux liés à la similarité visuelle entre les protéines
+animales, une seule famille parmi bœuf, porc, volaille et poisson est conservée
+pour les prédictions issues de la vision : celle qui a la confiance la plus
+élevée. Ce choix ne s'applique ni aux ingrédients saisis dans le texte, ni aux
+corrections manuelles de l'utilisateur.
+
 Le baseline ImageNet est sélectionnable dans la démonstration. Ses classes sont
 converties par le mapping explicite de `src/vision/classMapping.ts`.
 

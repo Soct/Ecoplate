@@ -16,7 +16,8 @@ import {
 import { preprocessImage } from './vision/preprocess';
 import {
   DEFAULT_DISPLAY_THRESHOLD,
-  predictionsAboveThreshold,
+  effectiveDisplayThreshold,
+  filterCompetingPredictions,
 } from './vision/displayPolicy';
 
 const app = document.querySelector<HTMLDivElement>('#app');
@@ -35,40 +36,43 @@ app.innerHTML = `
       <a href="#skills">Compétences</a>
       <a href="#deliverables">Livrables</a>
     </nav>
-    <span class="local-pill"><span aria-hidden="true">●</span> 100 % navigateur</span>
+    <span class="local-pill"><span aria-hidden="true">●</span> Sans serveur</span>
   </header>
 
   <main id="main-content">
     <section class="hero" id="top">
       <div class="hero-copy">
-        <p class="eyebrow">Projet personnel · Edge AI · Computer Vision</p>
-        <h1>Voir l’aliment.<br><span>Nuancer l’impact.</span></h1>
-        <p class="hero-lead">Un EfficientNet compact spécialisé sur Food-101 transforme une photo en indication climatique explicable et corrigeable — sans envoyer l’image.</p>
+        <p class="eyebrow">POC étudiant · classification d’images</p>
+        <h1>EcoPlate<br><span>Edge</span></h1>
+        <p class="hero-tagline">Un prototype de classification exécuté localement</p>
+        <p class="hero-lead">Une image est classée dans huit familles alimentaires, puis mise en relation avec des repères AGRIBALYSE. Le résultat reste modifiable et les performances sont présentées avec leur périmètre de mesure.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#demo">Tester l’analyse</a>
-          <a class="text-link" href="#project">Comprendre la démarche <span aria-hidden="true">↘</span></a>
+          <a class="text-link" href="#project">Voir le fonctionnement <span aria-hidden="true">↘</span></a>
         </div>
         <dl class="hero-stats">
-          <div><dt>8</dt><dd>familles alimentaires</dd></div>
-          <div><dt>A–E</dt><dd>indicateur qualitatif</dd></div>
-          <div><dt>0</dt><dd>image envoyée</dd></div>
+          <div><dt>54,27 %</dt><dd>top-1 · fine-tuning</dd></div>
+          <div><dt>3,95 Mio</dt><dd>modèle int8</dd></div>
+          <div><dt>0</dt><dd>image transmise</dd></div>
         </dl>
       </div>
-      <div class="hero-visual" aria-label="Illustration du parcours de l’image vers l’indicateur">
-        <div class="plate" aria-hidden="true">
-          <span class="food food-one"></span><span class="food food-two"></span><span class="food food-three"></span>
-          <span class="scan-line"></span>
+      <div class="hero-visual" aria-label="Schéma du parcours de l’image vers l’indicateur">
+        <div class="process-board">
+          <div class="process-board-header"><span>Flux de traitement</span><strong>dans le navigateur</strong></div>
+          <div class="process-line" aria-hidden="true"></div>
+          <div class="process-node node-input"><span>01</span><strong>Image</strong><small>fichier local</small></div>
+          <div class="process-node node-model"><span>02</span><strong>Modèle</strong><small>Food-101 · int8</small></div>
+          <div class="process-node node-review"><span>03</span><strong>Correction</strong><small>vision + texte</small></div>
+          <div class="process-node node-output"><span>04</span><strong>Repère</strong><small>A–E ou ?</small></div>
+          <div class="process-note"><span aria-hidden="true">●</span> aucune image envoyée</div>
         </div>
-        <div class="floating-card card-confidence"><span>Confiance</span><strong>visible</strong></div>
-        <div class="floating-card card-score"><span>Score indicatif</span><strong>A–E / ?</strong></div>
-        <div class="privacy-stamp"><span aria-hidden="true">⌁</span> Local-first</div>
       </div>
     </section>
 
     <section class="demo-section" id="demo" aria-labelledby="demo-title">
       <div class="section-heading">
         <div><p class="eyebrow">Démonstration interactive</p><h2 id="demo-title">Analysez un aliment simple</h2></div>
-        <p>Le modèle par défaut est le fine-tuning Food-101 int8 de 3,95 Mio. Le baseline ImageNet reste sélectionnable pour rendre la comparaison reproductible.</p>
+        <p>Le modèle par défaut est le fine-tuning Food-101 int8 de 3,95 Mio. Le baseline ImageNet reste disponible pour comparer les deux approches dans les mêmes conditions.</p>
       </div>
 
       <div class="demo-grid">
@@ -83,6 +87,19 @@ app.innerHTML = `
             </span>
           </label>
           <input class="visually-hidden" id="image-file" type="file" accept="image/jpeg,image/png,image/webp" />
+          <div class="demo-examples" aria-label="Images d’exemple">
+            <label class="field-label" for="demo-image-select">Ou choisir une image d’exemple</label>
+            <div class="demo-image-picker">
+              <select id="demo-image-select" class="model-select">
+                <option value="image1">Image 1</option>
+                <option value="image2">Image 2</option>
+                <option value="image3">Image 3</option>
+                <option value="image4">Image 4</option>
+              </select>
+              <button class="button button-secondary button-small" id="load-demo-image" type="button">Charger</button>
+            </div>
+            <small class="demo-examples-note">Les fichiers doivent être déposés dans <code>public/demo-images/</code>.</small>
+          </div>
 
           <label class="field-label model-label" for="vision-model">Modèle de classification</label>
           <select id="vision-model" class="model-select">
@@ -91,11 +108,10 @@ app.innerHTML = `
           </select>
 
           <fieldset class="segmentation-options">
-            <legend class="field-label">Prétraitement / ablation</legend>
+            <legend class="field-label">Prétraitement</legend>
             <label><input type="radio" name="segmentation-mode" value="full" checked /> Image entière (par défaut)</label>
             <label><input type="radio" name="segmentation-mode" value="grid" /> Recadrages par grille 3 × 3</label>
-            <label class="option-disabled"><input type="radio" name="segmentation-mode" value="sam-auto" disabled /> SlimSAM (désactivé : poids non locaux)</label>
-            <small id="segmentation-help">L’image entière est le prétraitement de référence. SlimSAM n’a produit aucune inférence lors du benchmark autonome.</small>
+            <small id="segmentation-help">L’image entière est le prétraitement de référence. La grille est conservée pour l’ablation et augmente nettement la latence.</small>
           </fieldset>
 
           <div class="step-label step-text"><span>02</span> Description facultative</div>
@@ -121,7 +137,8 @@ app.innerHTML = `
               <option value="0.20">20 %</option>
               <option value="0.35">35 %</option>
             </select>
-            <small>Les scores masqués restent pris en compte pour l’ambiguïté · rejet à 35 %</small>
+            <small>Au moins 3 suggestions si disponibles · les égalités sont conservées · rejet à 35 %</small>
+            <p class="prediction-policy-note">Choix de modélisation : une seule protéine animale est conservée. Le bœuf, le porc, la volaille et le poisson ont des apparences visuelles proches ; leurs prédictions concurrentes ne signifient donc pas que le plat contient plusieurs viandes.</p>
           </div>
           <div id="raw-predictions" class="raw-predictions">
             <p class="empty-state">Toutes les classes dépassant le seuil choisi apparaîtront ici avec leur confiance.</p>
@@ -141,20 +158,20 @@ app.innerHTML = `
 
     <section class="capability-section" aria-labelledby="capability-title">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">Périmètre mesuré</p><h2 id="capability-title">Ce que le modèle sait faire<br>— et ne sait pas faire.</h2></div>
+        <div><p class="eyebrow">Périmètre du prototype</p><h2 id="capability-title">Ce qui est évalué<br>et ce qui ne l’est pas.</h2></div>
         <p>Les métriques du projet portent sur le split de validation Food-101 relabellisé. Elles ne mesurent pas la performance sur des photos prises par de vrais utilisateurs.</p>
       </div>
       <div class="capability-grid">
-        <article><span class="capability-sign" aria-hidden="true">✓</span><h3>Sait faire</h3><p>Classer une image proche de Food-101 parmi huit familles, afficher les suggestions dépassant un seuil choisi, exposer leur confiance et laisser l’utilisateur corriger le résultat.</p></article>
-        <article><span class="capability-sign" aria-hidden="true">×</span><h3>Ne sait pas faire</h3><p>Identifier tous les ingrédients d’un plat composé, estimer une masse, une recette, une origine, ni garantir la généralisation à une photo réelle.</p></article>
+        <article><span class="capability-sign" aria-hidden="true">01</span><h3>Mesuré ici</h3><p>Le classement d’une image Food-101 relabellisée dans huit familles, avec top-1, top-3, macro-F1, rejet par seuil et latence du modèle dans le navigateur.</p></article>
+        <article><span class="capability-sign" aria-hidden="true">02</span><h3>Hors mesure</h3><p>La reconnaissance de tous les ingrédients d’un plat, la masse, l’origine, la recette et la généralisation à des photos personnelles. Le protocole de 30 photos est prêt, mais la collecte n’est pas faite.</p></article>
       </div>
       <p class="validation-warning"><strong>À retenir :</strong> validation Food-101 ≠ validation en conditions d’usage. Le rejet <code>?</code>, le texte et la correction humaine restent des fonctions centrales.</p>
     </section>
 
     <section class="benchmark-section" id="study" aria-labelledby="study-title">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">25 250 images de validation</p><h2 id="study-title">Le fine-tuning mesuré,<br>pas seulement annoncé.</h2></div>
-        <p>Mesures brutes sur Food-101 relabellisé. La macro-F1 complète l’accuracy pour rendre visible le déséquilibre entre familles.</p>
+        <div><p class="eyebrow">Résultats disponibles</p><h2 id="study-title">Ce que montrent<br>les évaluations.</h2></div>
+        <p>Les chiffres ci-dessous portent sur le split de validation Food-101 relabellisé. Ils documentent le comportement du prototype, pas une performance garantie sur des photos utilisateur.</p>
       </div>
       <div class="benchmark-table-wrap"><table class="benchmark-table"><thead><tr><th>Modèle</th><th>Top-1</th><th>Top-3</th><th>Macro-F1</th><th>Taille</th></tr></thead><tbody>
         <tr><th>ImageNet original</th><td>15,28 %</td><td>33,90 %</td><td>17,02 %</td><td>5,18 Mio</td></tr>
@@ -165,14 +182,33 @@ app.innerHTML = `
         <article><span>Ablation grille</span><strong>Top-3 inchangé</strong><p>+4,83 points de top-1, −0,12 point de top-3 et environ 8× plus lente dans Firefox : l’image entière reste le défaut.</p></article>
         <article><span>Mapping conservateur</span><strong>61 classes ambiguës</strong><p>Les plats composés et desserts deviennent <code>unknown</code> dans l’audit ; l’accuracy seule devient trompeuse.</p></article>
       </div>
-      <blockquote class="portfolio-message">« J’ai spécialisé un modèle ImageNet compact sur Food-101 avec une relabellisation vers huit familles métier, je l’ai exporté en int8 et exécuté dans le navigateur. J’ai comparé l’effet du fine-tuning et de la segmentation, tout en séparant les performances mesurées sur Food-101 des limites non mesurées sur des photos réelles. »</blockquote>
+      <div class="metric-strip" aria-label="Autres chiffres de l’évaluation">
+        <article><strong>25 250</strong><span>images dans le split complet</span></article>
+        <article><strong>+38,99 pts</strong><span>gain top-1 vs ImageNet</span></article>
+        <article><strong>31 ms</strong><span>médiane navigateur · image entière</span></article>
+        <article><strong>30</strong><span>cas utilisateur à collecter</span></article>
+      </div>
+      <div class="family-results">
+        <div class="family-results-heading"><h3>Résultats du fine-tuning par famille</h3><p>Support = nombre d’images dans la validation. Les rappels montrent notamment que la précision globale ne suffit pas.</p></div>
+        <div class="benchmark-table-wrap"><table class="benchmark-table compact-table"><thead><tr><th>Famille</th><th>Support</th><th>Précision</th><th>Rappel</th><th>F1</th></tr></thead><tbody>
+          <tr><th>Bœuf</th><td>2 500</td><td>51,9 %</td><td>54,5 %</td><td>53,2 %</td></tr>
+          <tr><th>Porc</th><td>1 500</td><td>37,1 %</td><td>60,3 %</td><td>45,9 %</td></tr>
+          <tr><th>Volaille</th><td>1 500</td><td>27,5 %</td><td>69,1 %</td><td>39,3 %</td></tr>
+          <tr><th>Poisson</th><td>4 750</td><td>65,3 %</td><td>45,2 %</td><td>53,4 %</td></tr>
+          <tr><th>Produits laitiers</th><td>5 750</td><td>69,4 %</td><td>55,8 %</td><td>61,8 %</td></tr>
+          <tr><th>Œufs</th><td>2 500</td><td>49,8 %</td><td>63,1 %</td><td>55,6 %</td></tr>
+          <tr><th>Légumineuses</th><td>1 250</td><td>60,1 %</td><td>70,8 %</td><td>65,0 %</td></tr>
+          <tr><th>Végétaux / féculents</th><td>5 500</td><td>66,8 %</td><td>47,0 %</td><td>55,2 %</td></tr>
+        </tbody></table></div>
+      </div>
+      <blockquote class="portfolio-message">Lecture du résultat : le fine-tuning améliore nettement le classement, mais certaines familles restent difficiles. Le seuil de rejet, le texte et la correction utilisateur compensent partiellement cette incertitude ; ils ne la suppriment pas.</blockquote>
       <p class="study-links"><a href="${import.meta.env.BASE_URL}livrables/evaluation.html">Voir les matrices, seuils et erreurs →</a> <a href="${import.meta.env.BASE_URL}livrables/audit-mapping-food101.html">Lire l’audit du mapping →</a> <a href="${import.meta.env.BASE_URL}livrables/benchmarks/food101-benchmark.json">Télécharger les résultats JSON →</a></p>
     </section>
 
     <section class="project-section" id="project">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">Du besoin à la décision</p><h2>Une IA volontairement limitée,<br>donc réellement utile.</h2></div>
-        <p>Une photographie ne révèle ni la masse, ni l’origine, ni la recette. Le produit transforme cette limite en interaction : le modèle suggère, l’utilisateur tranche, les règles expliquent.</p>
+        <div><p class="eyebrow">Fonctionnement</p><h2>Le pipeline du prototype,<br>de l’image au repère.</h2></div>
+        <p>Une photographie ne fournit ni masse, ni origine, ni recette. Le prototype sépare donc la classification, la saisie complémentaire et le calcul déterministe du repère climatique.</p>
       </div>
       <ol class="flow" aria-label="Architecture fonctionnelle">
         <li><span>01</span><strong>Photo locale</strong><small>Décodage et recadrage 224 × 224</small></li>
@@ -183,17 +219,23 @@ app.innerHTML = `
       </ol>
 
       <div class="principles-grid">
-        <article><span class="principle-number">01</span><h3>Confidentialité par architecture</h3><p>Site statique, sans backend ni API d’image. Le réseau sert uniquement à charger les fichiers publics de l’application.</p></article>
-        <article><span class="principle-number">02</span><h3>Humain dans la boucle</h3><p>Chaque suggestion peut être validée, retirée, remplacée ou complétée. Une correction explicite devient prioritaire.</p></article>
-        <article><span class="principle-number">03</span><h3>Incertitude assumée</h3><p>Une confiance faible, des classes proches ou l’absence de mapping donnent « ? », jamais une fausse certitude.</p></article>
-        <article><span class="principle-number">04</span><h3>Deux couches séparées</h3><p>Le modèle reconnaît une image. Une couche déterministe et testée produit ensuite l’indicateur métier.</p></article>
+        <article><span class="principle-number">01</span><h3>Exécution locale</h3><p>Site statique, sans backend ni API d’image. Le réseau sert uniquement à charger les fichiers publics de l’application.</p></article>
+        <article><span class="principle-number">02</span><h3>Correction explicite</h3><p>Une suggestion peut être validée, retirée, remplacée ou complétée avec une description textuelle.</p></article>
+        <article><span class="principle-number">03</span><h3>Rejet documenté</h3><p>Une confiance faible, des classes proches ou l’absence de mapping produisent « ? » plutôt qu’une classe présentée comme certaine.</p></article>
+        <article><span class="principle-number">04</span><h3>Calcul séparé</h3><p>Le modèle classe l’image. Une couche déterministe et testée transforme ensuite les familles retenues en niveau qualitatif.</p></article>
       </div>
     </section>
 
     <section class="data-section" aria-labelledby="profiles-title">
       <div class="section-heading">
-        <div><p class="eyebrow">Données environnementales</p><h2 id="profiles-title">Huit repères, pas huit vérités.</h2></div>
-        <p>Chaque famille pointe vers un produit précis d’AGRIBALYSE 3.2. Les valeurs servent à classer qualitativement ; les écarts à la réalité restent affichés.</p>
+        <div><p class="eyebrow">Données environnementales</p><h2 id="profiles-title">Les données utilisées<br>pour le calcul.</h2></div>
+        <p>Chaque famille pointe vers un produit précis d’AGRIBALYSE 3.2. Les valeurs servent uniquement à produire un niveau qualitatif à partir d’une famille retenue.</p>
+      </div>
+      <div class="data-overview" aria-label="Résumé des données environnementales">
+        <article><strong>8</strong><span>familles internes</span></article>
+        <article><strong>0,626–36,6</strong><span>kg CO₂e / kg de repère</span></article>
+        <article><strong>AGRIBALYSE 3.2</strong><span>source ADEME</span></article>
+        <article><strong>1,77–2,86</strong><span>DQR des références</span></article>
       </div>
       <div class="profile-table-wrap"><table class="profile-table"><thead><tr><th>Famille</th><th>Repère</th><th>Niveau</th><th>Référence</th></tr></thead><tbody id="profile-rows"></tbody></table></div>
       <p class="source-note">Source : ADEME, AGRIBALYSE® 3.2, indicateur « Changement climatique », Licence Ouverte 2.0. Les facteurs sont exprimés par kg de produit consommé et ne sont pas affichés comme résultat utilisateur.</p>
@@ -201,8 +243,8 @@ app.innerHTML = `
 
     <section class="skills-section" id="skills">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">Portfolio AI Engineer</p><h2>Compétences démontrées,<br>preuves à l’appui.</h2></div>
-        <p>Le projet est traité comme une mission : besoin, audit du mapping Food-101, comparaison ImageNet/fine-tuning, production, contrôle des performances et retour critique.</p>
+        <div><p class="eyebrow">Retour de projet</p><h2>Compétences mobilisées<br>et prochaines étapes.</h2></div>
+        <p>Le projet couvre l’intégration du modèle, la préparation des données, l’évaluation, l’interface et la documentation des limites.</p>
       </div>
       <div class="skills-layout">
         <div class="skill-list">
@@ -212,11 +254,11 @@ app.innerHTML = `
           <article><div><span>Industrialisation MLOps</span><strong>En progression</strong></div><p>Build reproductible et CI ; monitoring réel et réentraînement restent des axes futurs.</p><meter min="0" max="4" value="2">2 sur 4</meter></article>
         </div>
         <aside class="reflection-card">
-          <p class="eyebrow">Capacité réflexive</p>
-          <h3>Ce que le projet a changé</h3>
-          <p>Le rôle d’un AI Engineer ne consiste pas seulement à maximiser une métrique. Il faut choisir le bon niveau d’automatisation, créer un mécanisme de rejet et rendre l’incertitude actionnable.</p>
+          <p class="eyebrow">Retour critique</p>
+          <h3>Ce qui reste à faire</h3>
+          <p>La prochaine étape est de mesurer l’écart entre Food-101 et des photos réellement prises par des utilisateurs, avec une annotation préalable et une mesure de correction.</p>
           <h4>Avec plus de temps</h4>
-          <p>Je constituerais un jeu photographié et autorisé pour mesurer l’écart entre la validation Food-101 et l’usage réel, puis je réentraînerais avec des classes <code>mixed_dish</code> et <code>unknown</code>.</p>
+          <p>Je constituerais un jeu photographié et autorisé, puis je réentraînerais avec des classes <code>mixed_dish</code> et <code>unknown</code> au lieu de forcer les plats composés dans une famille.</p>
           <div class="soft-skills"><span>Analyse</span><span>Autonomie</span><span>Vulgarisation</span><span>Arbitrage</span></div>
         </aside>
       </div>
@@ -264,17 +306,28 @@ const runtimeMetrics = required<HTMLElement>('#runtime-metrics');
 const segmentationHelp = required<HTMLElement>('#segmentation-help');
 const modelSelect = required<HTMLSelectElement>('#vision-model');
 const displayThresholdSelect = required<HTMLSelectElement>('#display-threshold');
+const demoImageSelect = required<HTMLSelectElement>('#demo-image-select');
+const loadDemoImageButton = required<HTMLButtonElement>('#load-demo-image');
 const candidateList = new CandidateList(required<HTMLElement>('#candidate-list'));
 const resultCard = new ResultCard(required<HTMLElement>('#result'));
+
+const demoImages = [
+  { baseName: 'image1', label: 'Image 1' },
+  { baseName: 'image2', label: 'Image 2' },
+  { baseName: 'image3', label: 'Image 3' },
+  { baseName: 'image4', label: 'Image 4' },
+] as const;
+
+const demoImageExtensions = ['jpg', 'jpeg', 'png', 'webp'] as const;
 
 new ImageInput(fileInput, dropZone, imagePreview, (file) => {
   selectedFile = file;
   setStatus(`Photo prête : ${file.name}. Lancez l’analyse.`, 'ready');
 }, (message) => setStatus(message, 'error'));
 
-function selectedSegmentationMode(): 'full' | 'grid' | 'sam-auto' {
+function selectedSegmentationMode(): 'full' | 'grid' {
   const value = document.querySelector<HTMLInputElement>('input[name="segmentation-mode"]:checked')?.value;
-  if (value === 'grid' || value === 'sam-auto') return value;
+  if (value === 'grid') return value;
   return 'full';
 }
 
@@ -287,15 +340,56 @@ function selectedDisplayThreshold(): number {
   return Number.isFinite(value) ? value : DEFAULT_DISPLAY_THRESHOLD;
 }
 
+function selectedEffectiveDisplayThreshold(): number {
+  return effectiveDisplayThresholdForSuggestions(lastVisionPredictions);
+}
+
+function effectiveDisplayThresholdForSuggestions(predictions: VisionPrediction[]): number {
+  const mappedPredictions = filterCompetingPredictions(predictions)
+    .filter((prediction) => prediction.family);
+  return effectiveDisplayThreshold(mappedPredictions, selectedDisplayThreshold());
+}
+
 document.querySelectorAll<HTMLInputElement>('input[name="segmentation-mode"]').forEach((input) => {
   input.addEventListener('change', () => {
     if (!input.checked) return;
     segmentationHelp.textContent = input.value === 'grid'
       ? 'La grille analyse l’image entière puis neuf recadrages ; elle augmente nettement la latence.'
-      : input.value === 'sam-auto'
-        ? 'Ablation expérimentale : SlimSAM isole la zone centrale et télécharge ses poids au premier essai.'
-        : 'L’image entière est le prétraitement de référence et l’option activée par défaut.';
+      : 'L’image entière est le prétraitement de référence et l’option activée par défaut.';
   });
+});
+
+loadDemoImageButton.addEventListener('click', async () => {
+  const demoImage = demoImages.find((item) => item.baseName === demoImageSelect.value);
+  if (!demoImage) return;
+  try {
+    let response: Response | null = null;
+    let fileName = '';
+    for (const extension of demoImageExtensions) {
+      const candidate = `${demoImage.baseName}.${extension}`;
+      const candidateResponse = await fetch(`${import.meta.env.BASE_URL}demo-images/${candidate}`);
+      const contentType = candidateResponse.headers.get('content-type') ?? '';
+      if (candidateResponse.ok && contentType.startsWith('image/')) {
+        response = candidateResponse;
+        fileName = candidate;
+        break;
+      }
+    }
+    if (!response) throw new Error(`Ajoutez ${demoImage.baseName}.jpg, .png ou .webp dans public/demo-images/`);
+    const blob = await response.blob();
+    const file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
+    selectedFile = file;
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(file);
+    fileInput.files = dataTransfer.files;
+    imagePreview.src = URL.createObjectURL(file);
+    imagePreview.alt = `Aperçu local de ${demoImage.label}`;
+    imagePreview.hidden = false;
+    dropZone.classList.add('has-image');
+    setStatus(`${demoImage.label} chargée. Lancez l’analyse.`, 'ready');
+  } catch (error) {
+    setStatus(error instanceof Error ? error.message : 'Exemple indisponible.', 'error');
+  }
 });
 
 modelSelect.addEventListener('change', () => {
@@ -357,10 +451,11 @@ function renderContradictions(contradictions: string[]): void {
 }
 
 function renderCandidatesAndScore(): void {
+  const displayThreshold = selectedEffectiveDisplayThreshold();
   const isVisible = (candidate: IngredientCandidate) =>
     candidate.source !== 'vision'
     || candidate.selected
-    || (candidate.confidence ?? 0) >= selectedDisplayThreshold();
+    || (candidate.confidence ?? 0) >= displayThreshold;
   const visibleCandidates = workingCandidates.filter(isVisible);
   const hiddenCandidates = workingCandidates.filter((candidate) => !isVisible(candidate));
   candidateList.render(visibleCandidates, (next) => {
@@ -371,8 +466,10 @@ function renderCandidatesAndScore(): void {
 }
 
 function toVisionCandidates(predictions: VisionPrediction[]): IngredientCandidate[] {
-  const mapped = predictions.filter((prediction) => prediction.family);
-  const firstVisible = predictionsAboveThreshold(predictions, selectedDisplayThreshold())
+  const mapped = filterCompetingPredictions(predictions).filter((prediction) => prediction.family);
+  const displayThreshold = effectiveDisplayThresholdForSuggestions(predictions);
+  const firstVisible = mapped
+    .filter((prediction) => prediction.confidence >= displayThreshold)
     .find((prediction) => prediction.family);
   return mapped.map((prediction, index) => ({
     id: `vision-${index}-${prediction.family}`,
@@ -388,14 +485,14 @@ function toVisionCandidates(predictions: VisionPrediction[]): IngredientCandidat
 
 function renderRawPredictions(predictions: VisionPrediction[]): void {
   rawPredictions.replaceChildren();
-  const relevantPredictions = predictionsAboveThreshold(
-    predictions,
-    selectedDisplayThreshold(),
+  const displayThreshold = effectiveDisplayThresholdForSuggestions(predictions);
+  const relevantPredictions = filterCompetingPredictions(predictions).filter(
+    (prediction) => prediction.confidence >= displayThreshold,
   );
   if (relevantPredictions.length === 0) {
     const empty = document.createElement('p');
     empty.className = 'empty-state';
-    empty.textContent = `Aucune prédiction n’atteint le seuil de ${Math.round(selectedDisplayThreshold() * 100)} %.`;
+    empty.textContent = `Aucune prédiction n’atteint le seuil de ${Math.round(displayThreshold * 100)} %.`;
     rawPredictions.append(empty);
     return;
   }
@@ -445,28 +542,16 @@ async function analyze(): Promise<void> {
       let canvases: HTMLCanvasElement[];
       let segmentationLabel = 'Image entière';
       let segmentationLatency = 0;
-      if (mode === 'sam-auto') {
-        const bitmap = await createImageBitmap(selectedFile);
-        const point = { x: bitmap.width / 2, y: bitmap.height / 2 };
-        bitmap.close();
-        setStatus('Segmentation SlimSAM puis classification en cours…', 'loading');
-        const { segmentImage } = await import('./vision/segmentation');
-        const segmented = await segmentImage(selectedFile, point);
-        canvases = segmented.canvases;
-        segmentationLabel = segmented.modelLabel;
-        segmentationLatency = segmented.latencyMs;
-      } else {
-        const prepared = await preprocessImage(selectedFile);
-        canvases = mode === 'grid' ? prepared.canvases : [prepared.canvas];
-        if (mode === 'grid') segmentationLabel = 'Image entière + grille 3 × 3';
-      }
+      const prepared = await preprocessImage(selectedFile);
+      canvases = mode === 'grid' ? prepared.canvases : [prepared.canvas];
+      if (mode === 'grid') segmentationLabel = 'Image entière + grille 3 × 3';
       setStatus('Classification en cours sur votre appareil…', 'loading');
       const inference = await classifyImages(canvases, modelId);
       lastVisionPredictions = inference.predictions;
       visionCandidates = toVisionCandidates(inference.predictions);
       renderRawPredictions(inference.predictions);
       runtimeMetrics.hidden = false;
-      runtimeMetrics.textContent = `Dernière inférence : ${Math.round(inference.latencyMs + segmentationLatency)} ms · prétraitement : ${segmentationLabel} · modèle : ${inference.model.shortLabel} · ${inference.modelSizeMb.toFixed(2)} Mio (${inference.model.outputLabels} sorties) · suggestions ≥ ${Math.round(selectedDisplayThreshold() * 100)} % · ${canvases.length} vue(s) · entrée : 224 × 224 px`;
+      runtimeMetrics.textContent = `Dernière inférence : ${Math.round(inference.latencyMs + segmentationLatency)} ms · prétraitement : ${segmentationLabel} · modèle : ${inference.model.shortLabel} · ${inference.modelSizeMb.toFixed(2)} Mio (${inference.model.outputLabels} sorties) · suggestions ≥ ${Math.round(selectedEffectiveDisplayThreshold() * 100)} % · ${canvases.length} vue(s) · entrée : 224 × 224 px`;
       setStatus(
         visionCandidates.length
           ? 'Analyse terminée. Vérifiez la famille proposée avant de retenir le score.'
