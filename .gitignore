@@ -4,7 +4,7 @@ dist/
 coverage/
 dataset/
 training/artifacts/
-livrable/
+livrables/
 
 # Assets générés lors de l'installation et du build
 public/mediapipe/
@@ -25,6 +25,9 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.tox/
+.nox/
+.ipynb_checkpoints/
 *.egg-info/
 training/.dpr/
 
@@ -40,6 +43,9 @@ training/.dpr/
 *.tsbuildinfo
 .eslintcache
 *.log
+*.tmp
+*.temp
+*.orig
 .DS_Store
 Thumbs.db
 *~
