@@ -8,8 +8,8 @@ livrables/
 
 # Assets générés lors de l'installation et du build
 public/mediapipe/
-public/livrables/benchmarks/
-public/livrables/*.html
+public/annexes/benchmarks/
+public/annexes/*.html
 
 # Documents de travail et contexte non nécessaires au build
 idea/
