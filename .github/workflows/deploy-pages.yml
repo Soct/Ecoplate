@@ -2,7 +2,7 @@ name: Vérifier et déployer sur GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
