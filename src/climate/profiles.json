@@ -1,0 +1,170 @@
+[
+  {
+    "id": "beef",
+    "labelFr": "Viande bovine et viande rouge",
+    "shortLabel": "Bœuf / viande rouge",
+    "climateLevel": "E",
+    "impactFactor": 36.6,
+    "source": "AGRIBALYSE",
+    "sourceVersion": "3.2 — synthèse publiée en août 2025",
+    "sourceUrl": "https://www.data.gouv.fr/datasets/agribalyse-synthese",
+    "recordId": "6200",
+    "referenceProduct": "Bœuf, steak ou bifteck, grillé",
+    "indicator": "Changement climatique",
+    "unit": "kg CO2e / kg de produit consommé",
+    "dqr": 2.86,
+    "rationale": "Profil représentatif d'un morceau de bœuf cuit, utilisé uniquement pour ordonner qualitativement la famille.",
+    "alternative": "Des lentilles ou du tofu fournissent une option protéinée généralement moins émettrice.",
+    "limitations": [
+      "La famille inclut plusieurs viandes rouges alors que le profil de référence est un steak de bœuf.",
+      "L'origine, l'élevage et le morceau réel ne sont pas connus.",
+      "La quantité n'est jamais déduite de la photo."
+    ]
+  },
+  {
+    "id": "pork",
+    "labelFr": "Porc et charcuterie",
+    "shortLabel": "Porc / charcuterie",
+    "climateLevel": "D",
+    "impactFactor": 8.4,
+    "source": "AGRIBALYSE",
+    "sourceVersion": "3.2 — synthèse publiée en août 2025",
+    "sourceUrl": "https://www.data.gouv.fr/datasets/agribalyse-synthese",
+    "recordId": "28202",
+    "referenceProduct": "Porc, filet, maigre, en rôti, cuit",
+    "indicator": "Changement climatique",
+    "unit": "kg CO2e / kg de produit consommé",
+    "dqr": 2.86,
+    "rationale": "Le filet de porc cuit sert de repère cohérent ; la charcuterie réelle peut avoir un profil différent.",
+    "alternative": "Remplacer une partie de la viande par des légumineuses peut réduire l'indicateur.",
+    "limitations": [
+      "La transformation et l'emballage d'une charcuterie ne sont pas représentés par ce profil unique.",
+      "La portion réelle n'est pas visible de façon fiable."
+    ]
+  },
+  {
+    "id": "poultry",
+    "labelFr": "Volaille",
+    "shortLabel": "Volaille",
+    "climateLevel": "C",
+    "impactFactor": 6.13,
+    "source": "AGRIBALYSE",
+    "sourceVersion": "3.2 — synthèse publiée en août 2025",
+    "sourceUrl": "https://www.data.gouv.fr/datasets/agribalyse-synthese",
+    "recordId": "36005",
+    "referenceProduct": "Poulet, viande et peau, rôti/cuit au four",
+    "indicator": "Changement climatique",
+    "unit": "kg CO2e / kg de produit consommé",
+    "dqr": 2.31,
+    "rationale": "Profil de poulet cuit retenu comme repère qualitatif de la famille volaille.",
+    "alternative": "Une protéine végétale peut améliorer le niveau indicatif du repas.",
+    "limitations": [
+      "Le profil ne couvre pas toutes les espèces et tous les modes de cuisson.",
+      "La présence de peau ou de sauce peut modifier la comparaison."
+    ]
+  },
+  {
+    "id": "fish",
+    "labelFr": "Poisson et produits de la mer",
+    "shortLabel": "Poisson",
+    "climateLevel": "C",
+    "impactFactor": 6.87,
+    "source": "AGRIBALYSE",
+    "sourceVersion": "3.2 — synthèse publiée en août 2025",
+    "sourceUrl": "https://www.data.gouv.fr/datasets/agribalyse-synthese",
+    "recordId": "26038",
+    "referenceProduct": "Saumon, cuit à la vapeur",
+    "indicator": "Changement climatique",
+    "unit": "kg CO2e / kg de produit consommé",
+    "dqr": 2.59,
+    "rationale": "Le saumon cuit est un repère documenté, sans prétendre représenter toutes les espèces.",
+    "alternative": "Varier avec des légumineuses peut réduire l'impact climatique indicatif.",
+    "limitations": [
+      "Les impacts varient fortement selon l'espèce, la pêche ou l'élevage.",
+      "Ce niveau ne renseigne pas sur la pression sur les écosystèmes marins."
+    ]
+  },
+  {
+    "id": "dairy",
+    "labelFr": "Fromage et produits laitiers",
+    "shortLabel": "Fromage / laitier",
+    "climateLevel": "C",
+    "impactFactor": 6.28,
+    "source": "AGRIBALYSE",
+    "sourceVersion": "3.2 — synthèse publiée en août 2025",
+    "sourceUrl": "https://www.data.gouv.fr/datasets/agribalyse-synthese",
+    "recordId": "12115",
+    "referenceProduct": "Emmental ou emmenthal",
+    "indicator": "Changement climatique",
+    "unit": "kg CO2e / kg de produit consommé",
+    "dqr": 1.77,
+    "rationale": "Un fromage à pâte pressée sert de profil de référence prudent pour la famille.",
+    "alternative": "Réduire la quantité de fromage ou choisir une garniture végétale peut améliorer l'indicateur.",
+    "limitations": [
+      "Un lait, un yaourt et un fromage n'ont pas le même impact par kilogramme.",
+      "Le type exact et la quantité ne peuvent pas être établis par l'image seule."
+    ]
+  },
+  {
+    "id": "eggs",
+    "labelFr": "Œufs",
+    "shortLabel": "Œufs",
+    "climateLevel": "B",
+    "impactFactor": 2.74,
+    "source": "AGRIBALYSE",
+    "sourceVersion": "3.2 — synthèse publiée en août 2025",
+    "sourceUrl": "https://www.data.gouv.fr/datasets/agribalyse-synthese",
+    "recordId": "22010",
+    "referenceProduct": "Œuf, dur",
+    "indicator": "Changement climatique",
+    "unit": "kg CO2e / kg de produit consommé",
+    "dqr": 2.46,
+    "rationale": "L'œuf dur constitue un profil simple et identifiable de la famille.",
+    "alternative": "Associer l'œuf à davantage de légumes et de céréales maintient un profil plutôt modéré.",
+    "limitations": [
+      "Le mode d'élevage et la cuisson réelle ne sont pas connus.",
+      "Les œufs cachés dans une recette sont difficilement visibles."
+    ]
+  },
+  {
+    "id": "legumes",
+    "labelFr": "Légumineuses et tofu",
+    "shortLabel": "Légumineuses / tofu",
+    "climateLevel": "A",
+    "impactFactor": 1,
+    "source": "AGRIBALYSE",
+    "sourceVersion": "3.2 — synthèse publiée en août 2025",
+    "sourceUrl": "https://www.data.gouv.fr/datasets/agribalyse-synthese",
+    "recordId": "20904",
+    "referenceProduct": "Tofu, nature",
+    "indicator": "Changement climatique",
+    "unit": "kg CO2e / kg de produit consommé",
+    "dqr": 2.04,
+    "rationale": "Le tofu nature est utilisé comme repère commun de protéine végétale.",
+    "limitations": [
+      "Le tofu ne représente pas exactement les lentilles, haricots ou pois chiches.",
+      "La recette et la transformation peuvent modifier l'impact."
+    ]
+  },
+  {
+    "id": "plants",
+    "labelFr": "Fruits, légumes et féculents",
+    "shortLabel": "Végétaux / féculents",
+    "climateLevel": "A",
+    "impactFactor": 0.626,
+    "source": "AGRIBALYSE",
+    "sourceVersion": "3.2 — synthèse publiée en août 2025",
+    "sourceUrl": "https://www.data.gouv.fr/datasets/agribalyse-synthese",
+    "recordId": "20047_2",
+    "referenceProduct": "Tomate de saison, crue",
+    "indicator": "Changement climatique",
+    "unit": "kg CO2e / kg de produit consommé",
+    "dqr": 2.43,
+    "rationale": "La tomate de saison sert de repère bas ; la famille agrège volontairement des aliments variés.",
+    "limitations": [
+      "Les fruits, légumes, céréales et pommes de terre ont des profils différents.",
+      "La saison, la serre, l'origine et la cuisson peuvent changer fortement le résultat.",
+      "Ce profil ne doit pas servir à produire un chiffre précis pour toute la famille."
+    ]
+  }
+]
