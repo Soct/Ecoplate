@@ -91,7 +91,9 @@ public/            modèle, runtime et livrables consultables
 ## Données et modèle
 
 - Modèle produit : **EfficientNet-Lite0 int8 fine-tuné sur Food-101 relabellisé**,
-  intégré avec `@mediapipe/tasks-vision` ; baseline ImageNet conservé.
+  intégré avec `@mediapipe/tasks-vision` ; [télécharger l'artefact TFLite utilisé](https://soct.github.io/Ecoplate/models/efficientnet_lite0_food101_8_int8.tflite).
+- Dataset : [`ethz/food101` sur Hugging Face](https://huggingface.co/datasets/ethz/food101),
+  provenant de la [publication originale ETH Zurich](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/).
 - Modèle/runtime : licence Apache-2.0 selon les pages officielles Google AI Edge ;
   détails et réserves dans [la model card](docs/model-card.md).
 - Profils : **AGRIBALYSE® 3.2**, ADEME, Licence Ouverte 2.0, indicateur changement
@@ -131,7 +133,7 @@ Consulter [le protocole d’évaluation](docs/evaluation.md) pour le mode opéra
 les formules et les critères d’acceptation.
 
 Les résultats bruts reproductibles sont conservés dans `evaluation/*.json` et copiés
-dans `dist/livrables/benchmarks/` lors du build afin de rester consultables depuis le
+dans `dist/annexes/benchmarks/` lors du build afin de rester consultables depuis le
 portfolio déployé.
 
 ## Déploiement
@@ -153,11 +155,12 @@ les paramètres du dépôt.
 - [Évaluation](docs/evaluation.md)
 - [Journal de décisions](docs/journal-decisions.md)
 - [Inventaire des compétences](docs/competences.md)
+- [Projets réalisés pendant la formation](docs/projets-formation.md)
 - [Scénario de démonstration](docs/scenario-demonstration.md)
 - [Audit du mapping Food-101](docs/audit-mapping-food101.md)
 - [Carte mentale](public/livrables/carte-mentale.svg)
-- [Capture desktop](public/livrables/demo-desktop.png)
-- [Capture mobile](public/livrables/demo-mobile.png)
+- [Capture desktop](public/annexes/demo-desktop.png)
+- [Capture mobile](public/annexes/demo-mobile.png)
 
 ## Limites d’usage
 

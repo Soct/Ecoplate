@@ -1,0 +1,18 @@
+Carte mentale d’auto-évaluation — EcoPlate Edge.
+
+Le centre résume l’évolution de la perception du métier : au départ, intégrer un
+modèle ; aujourd’hui, cadrer un besoin, mesurer, déployer, surveiller et expliquer
+les limites. Six branches présentent :
+
+1. le POC étudiant, la contribution personnelle, ses résultats et sa limite actuelle ;
+2. les compétences techniques auto-évaluées de 2 à 3 sur 4 ;
+3. l’audit Food-101, les données AGRIBALYSE et les mesures de prudence ;
+4. le cadrage, les choix, la roadmap, les risques, les budgets et les indicateurs ;
+5. les compétences humaines illustrées par des actions menées dans le projet ;
+6. cinq axes de progression mesurables, dont l’évaluation de 30 photos réelles.
+
+Une section complémentaire présente huit projets de formation : Fashion-Insta,
+Home Credit, BrainScanAI, CheckIt.AI, OpenAgenda RAG, Eagle-1, Qwen3 médical et le
+Coach d’ouvertures FFE. Chaque bloc renvoie vers un inventaire factuel des objectifs,
+réalisations, résultats et limites. Aucun projet extérieur aux dossiers consultés
+n’est ajouté.

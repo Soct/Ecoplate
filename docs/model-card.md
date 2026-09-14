@@ -32,11 +32,17 @@ les résultats faute de traçabilité suffisante de leurs hyperparamètres.
 
 ## Provenance
 
-Le backbone et le baseline original proviennent de Google AI Edge / MediaPipe :
-<https://storage.googleapis.com/mediapipe-models/image_classifier/efficientnet_lite0/int8/latest/efficientnet_lite0.tflite>.
-La préparation et le pipeline de fine-tuning sont reproductibles avec les scripts de `training/`.
-Le dataset source est Food-101 (`ethz/food101`) ; ses 101 classes sont relabellisées
-vers huit familles selon `training/class_food101.md`.
+Liens directs vers les ressources utilisées :
+
+- [modèle EcoPlate fine-tuné, au format TFLite](https://soct.github.io/Ecoplate/models/efficientnet_lite0_food101_8_int8.tflite) ;
+- [baseline EfficientNet-Lite0 int8 de Google AI Edge](https://storage.googleapis.com/mediapipe-models/image_classifier/efficientnet_lite0/int8/latest/efficientnet_lite0.tflite) ;
+- [dataset `ethz/food101` chargé avec Hugging Face](https://huggingface.co/datasets/ethz/food101) ;
+- [page originale de Food-101 — ETH Zurich](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/).
+
+Le premier fichier est l'artefact créé pour EcoPlate à partir du baseline. La
+préparation et le pipeline de fine-tuning sont documentés dans `training/`. Les 101
+classes du dataset sont relabellisées vers huit familles selon
+`training/class_food101.md`.
 
 L'artefact produit actuel est identifiable par ses métadonnées et son empreinte, mais
 son ancien entraînement ne possède pas de manifeste complet (seed et hyperparamètres

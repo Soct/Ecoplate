@@ -27,7 +27,7 @@ def main() -> None:
             WebDriverWait(driver, 30).until(
                 lambda current: current.execute_script("return document.fonts.status") == "loaded"
             )
-            output = ROOT / "public/livrables" / filename
+            output = ROOT / "public/annexes" / filename
             driver.save_screenshot(str(output))
             print(f"Capture générée : {output}")
     finally:

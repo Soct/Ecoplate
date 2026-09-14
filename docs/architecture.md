@@ -7,6 +7,9 @@ l’inférence localement. L’image et le texte ne transitent jamais par un bac
 La vision, la fusion des signaux et le calcul climatique sont séparés afin de
 limiter les couplages et de rendre chaque décision testable.
 
+Le navigateur charge le [modèle EcoPlate au format TFLite](https://soct.github.io/Ecoplate/models/efficientnet_lite0_food101_8_int8.tflite).
+Il a été fine-tuné sur le [jeu Food-101 utilisé via Hugging Face](https://huggingface.co/datasets/ethz/food101).
+
 ## Vue fonctionnelle
 
 ```mermaid

@@ -8,6 +8,9 @@ une hypothèse de recette en vérité terrain pour 61 classes ambiguës. Les ré
 issus de ce mapping mesurent donc la capacité à reproduire cette relabellisation —
 pas à identifier objectivement l'ingrédient dominant d'une photo.
 
+Le jeu audité est [`ethz/food101` sur Hugging Face](https://huggingface.co/datasets/ethz/food101),
+issu du [dataset Food-101 publié par ETH Zurich](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/).
+
 Le fichier source exhaustif reste `training/class_food101.md`.
 La liste conservatrice est versionnée dans `training/evaluate_models.py` et incluse
 dans chaque artefact JSON de benchmark.

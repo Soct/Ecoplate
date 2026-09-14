@@ -4,7 +4,7 @@ Cette page relie les compétences mobilisées à des éléments vérifiables du 
 Les niveaux indiqués sont une auto-évaluation située : ils décrivent ce que ce
 projet permet de démontrer, pas une certification générale.
 
-## Compétences techniques
+## Compétences techniques démontrées par EcoPlate Edge
 
 | Compétence | Niveau sur ce projet | Preuve consultable | Suite logique |
 |---|:---:|---|---|
@@ -17,6 +17,23 @@ projet permet de démontrer, pas une certification générale.
 | Données environnementales | 2/4 | [data card AGRIBALYSE](data-card.md) | mieux formaliser l’incertitude des profils ACV |
 | Industrialisation / MLOps | 2/4 | artefact versionné, CI et déploiement statique | mettre en place registre, monitoring et réentraînement |
 | Accessibilité web | 2/4 | HTML natif, navigation clavier et interface responsive | réaliser un audit WCAG avec technologies d’assistance |
+
+## Compétences consolidées pendant la formation
+
+Cette seconde lecture s’appuie sur les autres projets inventoriés. Le niveau 3/4
+signifie ici « mis en œuvre de manière autonome dans au moins un POC documenté » ;
+il ne signifie pas une expertise générale en production.
+
+| Domaine | Niveau | Projets servant de preuves | Limite actuelle |
+|---|:---:|---|---|
+| Cadrage et aide à la décision | 3/4 | Fashion-Insta, EcoPlate Edge | peu d’entretiens avec de vraies parties prenantes |
+| Data engineering et orchestration | 3/4 | CheckIt.AI, OpenAgenda RAG | volumes et exploitation en production non éprouvés |
+| MLOps et monitoring | 3/4 | Home Credit, CheckIt.AI, EcoPlate Edge | registre et réentraînement automatisé à approfondir |
+| Vision par ordinateur | 3/4 | BrainScanAI, EcoPlate Edge | validation sur données externes encore limitée |
+| NLP, RAG et fine-tuning | 3/4 | OpenAgenda RAG, Qwen3 médical, Coach FFE | évaluation humaine et robustesse à renforcer |
+| Agents et orchestration d’outils | 3/4 | Coach FFE | un seul agent complet réalisé |
+| Apprentissage par renforcement | 2/4 | Eagle-1 | expérience limitée à un environnement simulé |
+| Cloud et architecture distribuée | 2/4 | Fashion-Insta, Home Credit | architecture davantage conçue que suivie en exploitation réelle |
 
 ## Soft skills illustrées
 
@@ -46,5 +63,6 @@ appareil.
 ## Documents associés
 
 - [Rapport complet](rapport-conduite-projet.md) — conduite, arbitrages et suivi ;
-- [Carte mentale](carte-mentale.svg) — synthèse visuelle du
+- [Projets de formation](projets-formation.md) — objectifs, réalisations, résultats et limites ;
+- [Carte mentale](../public/livrables/carte-mentale.svg) — synthèse visuelle du
   parcours et des compétences.

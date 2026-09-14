@@ -7,6 +7,10 @@ mais cette mesure ne vaut pas encore pour des photos prises par des utilisateurs
 Le rejet `?`, la correction humaine et la campagne de 30 photos sont donc aussi
 importants que l’accuracy.
 
+Ressources évaluées : [modèle EcoPlate TFLite](https://soct.github.io/Ecoplate/models/efficientnet_lite0_food101_8_int8.tflite),
+[dataset Food-101 utilisé sur Hugging Face](https://huggingface.co/datasets/ethz/food101)
+et [page originale du dataset](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/).
+
 ## Synthèse au 10 septembre 2026
 
 Le fine-tuning apporte un gain net sur le split de validation Food-101 relabellisé :
@@ -22,7 +26,7 @@ La performance réelle en conditions d'usage demeure non mesurée.
 | Identité modèle produit | vérifiée | Food-101, 8 sorties, 4 140 006 octets, SHA-256 testé |
 | Identité baseline | vérifiée | ImageNet, 1 000 sorties, 5 434 517 octets, SHA-256 testé |
 | Split de validation | évalué en entier | 25 250 images, 101 classes, 8 familles forcées |
-| Tests unitaires | exécutés | 73 tests |
+| Tests unitaires | exécutés | 78 tests |
 | Benchmark navigateur | exécuté | Firefox 155 headless, 10 passages par configuration |
 | Grille 3 × 3 | ablation exécutée | 808 images : 8 par classe Food-101 |
 | SlimSAM | échec mesuré | aucune inférence en 60 s, erreur réseau au chargement des poids ; option désactivée |
