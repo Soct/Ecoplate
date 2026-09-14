@@ -1,0 +1,51 @@
+node_modules/
+.venv/
+dist/
+coverage/
+dataset/
+training/artifacts/
+livrable/
+
+# Assets générés lors de l'installation et du build
+public/mediapipe/
+public/livrables/benchmarks/
+public/livrables/*.html
+
+# Documents de travail et contexte non nécessaires au build
+idea/
+enonce/
+TODO.md
+readme_note.md
+class_food101.md
+
+# Environnements et caches Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+training/.dpr/
+
+# Variables d'environnement et fichiers locaux
+.env
+.env.*
+!.env.example
+*.local
+
+# Caches, journaux et fichiers système
+.cache/
+.vite/
+*.tsbuildinfo
+.eslintcache
+*.log
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+
+# Métadonnées des éditeurs
+.idea/
+.vscode/
