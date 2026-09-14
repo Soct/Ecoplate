@@ -42,7 +42,7 @@ def main() -> None:
     try:
         driver.get(BASE_URL)
         ingredients = wait.until(EC.presence_of_element_located((By.ID, "ingredients")))
-        ingredients.send_keys("150 g de bœuf, tomates et lentilles")
+        ingredients.send_keys("Repas : 150 g de bœuf, tomates et lentilles.")
         driver.find_element(By.ID, "parse-text").click()
         result = driver.find_element(By.ID, "result")
         assert "Impact estimé élevé" in result.text

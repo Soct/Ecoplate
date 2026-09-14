@@ -33,6 +33,7 @@ app.innerHTML = `
       <a href="#demo">Démonstration</a>
       <a href="#study">Étude</a>
       <a href="#project">Projet</a>
+      <a href="#training-projects">Parcours</a>
       <a href="#privacy">Confidentialité</a>
       <a href="#skills">Compétences</a>
       <a href="#deliverables">Livrables</a>
@@ -230,7 +231,7 @@ app.innerHTML = `
         </tbody></table></div>
       </div>
       <blockquote class="portfolio-message">Lecture du résultat : le fine-tuning améliore nettement le classement, mais certaines familles restent difficiles. Le seuil de rejet, le texte et la correction utilisateur compensent partiellement cette incertitude ; ils ne la suppriment pas.</blockquote>
-      <p class="study-links"><a href="${import.meta.env.BASE_URL}livrables/evaluation.html">Voir les matrices, seuils et erreurs →</a> <a href="${import.meta.env.BASE_URL}livrables/audit-mapping-food101.html">Lire l’audit du mapping →</a> <a href="${import.meta.env.BASE_URL}livrables/benchmarks/food101-benchmark.json">Télécharger les résultats JSON →</a></p>
+      <p class="study-links"><a href="${import.meta.env.BASE_URL}annexes/evaluation.html">Voir les matrices, seuils et erreurs →</a> <a href="${import.meta.env.BASE_URL}annexes/audit-mapping-food101.html">Lire l’audit du mapping →</a> <a href="${import.meta.env.BASE_URL}annexes/benchmarks/food101-benchmark.json">Télécharger les résultats JSON →</a></p>
     </section>
 
     <section class="project-section" id="project">
@@ -269,10 +270,28 @@ app.innerHTML = `
       <p class="source-note">Source : ADEME, AGRIBALYSE® 3.2, indicateur « Changement climatique », Licence Ouverte 2.0. Les facteurs sont exprimés par kg de produit consommé et ne sont pas affichés comme résultat utilisateur.</p>
     </section>
 
+    <section class="training-section" id="training-projects" aria-labelledby="training-title">
+      <div class="section-heading split-heading">
+        <div><p class="eyebrow">Parcours de formation</p><h2 id="training-title">Huit projets,<br>huit situations d’IA.</h2></div>
+        <p>Chaque projet ci-dessous correspond à un dossier et à des livrables existants. Les résultats indiqués décrivent des expérimentations étudiantes, avec leurs limites.</p>
+      </div>
+      <div class="training-project-grid">
+        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Cadrage IA</span><h3>Fashion-Insta</h3><p>Recommandation vestimentaire : besoins, architecture Azure, coûts, RGPD et décision Go/No-Go.</p><small>Preuve : présentation COMEX</small></a>
+        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>MLOps</span><h3>Home Credit</h3><p>Scoring LightGBM, suivi MLflow, API FastAPI, dashboard Streamlit, Docker et CI.</p><small>ROC-AUC holdout : 0,7699</small></a>
+        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Vision</span><h3>BrainScanAI</h3><p>Audit d’IRM, embeddings ResNet18, clustering, pseudo-labels et comparaison de CNN.</p><small>Le semi-supervisé ne dépasse pas la baseline</small></a>
+        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Data engineering</span><h3>CheckIt.AI</h3><p>Pipeline texte-image avec RSS, JSONL, SQLite, Airflow et tableau de bord.</p><small>50 publications · 14 tests</small></a>
+        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>RAG</span><h3>OpenAgenda</h3><p>Collecte, embeddings Mistral, index FAISS, génération sourcée et API FastAPI.</p><small>Fidélité mesurée : 0,70 sur 10 cas</small></a>
+        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Apprentissage par renforcement</span><h3>Eagle-1</h3><p>Agent DQN LunarLander, évaluation, vidéo, API et interfaces Streamlit.</p><small>77 % des épisodes atteignent 200 points</small></a>
+        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Fine-tuning LLM</span><h3>Qwen3 médical</h3><p>Datasets bilingues, contrôles PII, LoRA 4-bit, SFT, DPO et évaluation.</p><small>QCM : 12/233 → 102/233</small></a>
+        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Agent IA</span><h3>Coach FFE</h3><p>Workflow LangGraph avec Lichess, Stockfish, Milvus, Angular et FastAPI.</p><small>Étude MCP séparée du POC implémenté</small></a>
+      </div>
+      <p class="training-project-link"><a href="${import.meta.env.BASE_URL}annexes/projets-formation.html">Consulter les objectifs, réalisations, résultats et limites →</a></p>
+    </section>
+
     <section class="skills-section" id="skills">
       <div class="section-heading split-heading">
         <div><p class="eyebrow">Retour de projet</p><h2>Compétences mobilisées<br>et prochaines étapes.</h2></div>
-        <p>Le projet couvre l’intégration du modèle, la préparation des données, l’évaluation, l’interface et la documentation des limites.</p>
+        <p>Les niveaux ci-dessous portent uniquement sur EcoPlate Edge. L’inventaire du parcours complète cette auto-évaluation avec les huit autres projets de formation.</p>
       </div>
       <div class="skills-layout">
         <div class="skill-list">
@@ -293,14 +312,12 @@ app.innerHTML = `
     </section>
 
     <section class="deliverables-section" id="deliverables">
-      <div class="section-heading"><div><p class="eyebrow">Dossier de preuve</p><h2>Livrables du projet</h2></div><p>Les documents reprennent le template de conduite de projet et relient chaque compétence à une décision, une mesure ou une limite.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Documents demandés</p><h2>Livrables principaux</h2></div><p>Le portfolio et la démonstration correspondent à cette page. Deux documents complémentaires sont à remettre avec elle.</p></div>
       <div class="deliverable-grid">
         <a href="${import.meta.env.BASE_URL}livrables/rapport-conduite-projet.pdf"><span>PDF · Rapport</span><strong>Conduite de projet AI Engineering</strong><small>Besoin, audit, solution, risques et pilotage →</small></a>
         <a href="${import.meta.env.BASE_URL}livrables/carte-mentale.svg"><span>SVG · Carte mentale</span><strong>Projets, compétences et progression</strong><small>Vue synthétique accessible →</small></a>
-        <a href="${import.meta.env.BASE_URL}livrables/model-card.html"><span>Documentation</span><strong>Model card EfficientNet‑Lite0</strong><small>Provenance, usage et limites →</small></a>
-        <a href="${import.meta.env.BASE_URL}livrables/evaluation.html"><span>Évaluation</span><strong>Protocole et résultats</strong><small>Métriques, erreurs et mode opératoire →</small></a>
-        <a href="${import.meta.env.BASE_URL}livrables/audit-mapping-food101.html"><span>Audit data</span><strong>Mapping Food‑101 vers EcoPlate</strong><small>Ambiguïtés, variante conservatrice et décisions →</small></a>
       </div>
+      <p class="deliverables-note">Les fiches modèle et données, l’évaluation et les audits sont des annexes techniques. Elles restent accessibles depuis les sections où elles servent de preuve.</p>
     </section>
   </main>
 
@@ -470,9 +487,15 @@ function parseText(): void {
   renderUnknownTerms();
   renderContradictions(merged.contradictions);
   renderCandidatesAndScore();
-  if (ingredientsInput.value.trim()) {
-    setStatus(`${textCandidates.length} famille(s) reconnue(s) dans la description.`, 'ready');
+  if (!ingredientsInput.value.trim()) {
+    setStatus('Saisissez au moins un ingrédient à interpréter.', 'error');
+    return;
   }
+  if (textCandidates.length === 0) {
+    setStatus('Aucune famille reconnue. Essayez avec des ingrédients simples, par exemple « poulet, riz, tomates ».', 'error');
+    return;
+  }
+  setStatus(`${textCandidates.length} famille(s) reconnue(s) dans la description.`, 'ready');
 }
 
 function renderUnknownTerms(): void {

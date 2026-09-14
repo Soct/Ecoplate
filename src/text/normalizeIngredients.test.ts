@@ -25,18 +25,31 @@ describe('normalizeIngredients', () => {
 
   it.each([
     ['jambon', 'pork'],
+    ['bœufs', 'beef'],
     ['dinde', 'poultry'],
     ['saumon', 'fish'],
     ['mozzarella', 'dairy'],
     ['omelette', 'eggs'],
     ['pois chiches', 'legumes'],
     ['pommes de terre', 'plants'],
+    ['navets', 'plants'],
+    ['nevets', 'plants'],
   ] as const)('mappe %s vers %s', (text, family) => {
     expect(normalizeIngredients(text).candidates[0]?.family).toBe(family);
   });
 
   it('tolère une faute simple documentée', () => {
     expect(normalizeIngredients('pouller').candidates[0]?.family).toBe('poultry');
+  });
+
+  it('reconnaît les ingrédients entourés de ponctuation', () => {
+    const result = normalizeIngredients('Repas : poulet rôti, riz et tomates.');
+    expect(result.candidates.map((item) => item.family)).toEqual([
+      'poultry',
+      'plants',
+      'plants',
+    ]);
+    expect(result.unknownTerms).toEqual([]);
   });
 
   it('affiche les ingrédients inconnus', () => {
