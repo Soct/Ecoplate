@@ -1,4 +1,11 @@
-# Évaluation des modèles
+# Résultats et protocole d’évaluation
+
+## À retenir
+
+Le modèle Food-101 améliore nettement le classement sur son dataset de validation,
+mais cette mesure ne vaut pas encore pour des photos prises par des utilisateurs.
+Le rejet `?`, la correction humaine et la campagne de 30 photos sont donc aussi
+importants que l’accuracy.
 
 ## Synthèse au 10 septembre 2026
 

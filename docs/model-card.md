@@ -1,4 +1,11 @@
-# Model card — EfficientNet-Lite0 Food-101 int8
+# Fiche modèle — EfficientNet-Lite0 Food-101 int8
+
+## À retenir
+
+Le modèle produit est un EfficientNet-Lite0 quantifié en int8, fine-tuné sur
+Food-101 et exécuté dans le navigateur avec MediaPipe Tasks Vision. Il est compact
+et adapté à une démonstration locale, mais ses scores ne mesurent pas la performance
+sur des photos utilisateur.
 
 ## Résumé et identité vérifiée
 

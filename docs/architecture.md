@@ -1,5 +1,12 @@
 # Architecture — EcoPlate Edge
 
+## À retenir
+
+EcoPlate Edge est un site statique : le navigateur charge le modèle et exécute
+l’inférence localement. L’image et le texte ne transitent jamais par un backend.
+La vision, la fusion des signaux et le calcul climatique sont séparés afin de
+limiter les couplages et de rendre chaque décision testable.
+
 ## Vue fonctionnelle
 
 ```mermaid
@@ -24,7 +31,7 @@ flowchart LR
 ## Frontières de confidentialité
 
 Le navigateur télécharge des fichiers statiques publics : HTML, CSS, JavaScript,
-WebAssembly, modèle TFLite, profils JSON et livrables. Une fois ces ressources
+WebAssembly, modèle TFLite, profils JSON et documentation publique. Une fois ces ressources
 chargées, les données de l’utilisateur restent dans les objets mémoire de la page.
 
 Il n’existe aucun composant pour :

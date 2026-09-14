@@ -293,7 +293,8 @@ textarea { width: 100%; min-height: 90px; padding: .85rem; resize: vertical; lin
 .compact-table tbody th { min-width: 170px; font-size: .8rem; }
 .portfolio-message { margin: 2rem 0 0; padding: 1.4rem 1.6rem; border-left: 2px solid var(--green); background: #dce9df; color: var(--ink); font-size: .9rem; font-weight: 600; line-height: 1.7; }
 .study-links { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.3rem 0 0; }
-.study-links a { color: var(--lime); font-size: .78rem; }
+.study-links a { color: var(--green-dark); font-size: .78rem; font-weight: 800; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22rem; }
+.study-links a:hover { color: var(--green); }
 
 .data-section { background: var(--paper); }
 .data-overview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-bottom: 1.5rem; background: var(--line); }
@@ -341,6 +342,9 @@ meter::-moz-meter-bar { background: var(--green); }
 .deliverable-grid a:hover small { color: #d4e0d6; }
 
 footer { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; padding: 2rem max(1.5rem, calc((100vw - 1320px) / 2)); background: var(--ink); color: white; }
+footer .brand { color: white; }
+footer .brand em { color: var(--lime); }
+footer .brand-mark { background: var(--lime); color: var(--ink); }
 footer p { margin: 0; color: #abb2ac; font-size: .75rem; }
 footer a { justify-self: end; color: var(--lime); font-size: .75rem; }
 .visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }

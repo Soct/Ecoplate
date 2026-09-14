@@ -1,4 +1,7 @@
-# Scénario de démonstration — 60 secondes
+# Guide de démonstration — 60 secondes
+
+Ce guide aide à présenter le prototype rapidement. Il sert de support oral
+complémentaire à la démonstration et aux documents techniques.
 
 ## Préparation
 

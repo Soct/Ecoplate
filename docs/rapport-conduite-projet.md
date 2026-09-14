@@ -1,15 +1,18 @@
-# Rapport de conduite de projet AI Engineering
+# Rapport de projet — EcoPlate Edge
 
-## EcoPlate Edge — vision locale, validation humaine et indicateur climatique
+## Conduire un projet d’AI Engineering de l’idée au prototype
 
-**Version :** 1.1 — 10 septembre 2026  
-**Statut :** MVP et benchmark Food-101 réalisés ; campagne photo, validation mentor
-et publication publique à réaliser par le porteur du portfolio.  
-**Auteur :** Candidat·e AI Engineer — identité à personnaliser avant publication.
+**Version :** 1.2 — 14 septembre 2026  
+**Nature :** projet personnel technique  
+**Statut :** MVP fonctionnel, benchmark Food-101 et documentation réalisés. La
+validation sur des photos prises en conditions réelles reste à mener.
+
+> Ce rapport présente les décisions, les preuves et les limites du projet dans un
+> format complet destiné à accompagner la démonstration interactive.
 
 ## Synthèse exécutive
 
-EcoPlate Edge répond à la question suivante : peut-on fournir une première indication
+EcoPlate Edge explore la question suivante : peut-on fournir une première indication
 climatique à partir d’une photo sans envoyer cette photo à un serveur ? Le MVP apporte
 une réponse limitée mais opérationnelle. Un modèle EfficientNet-Lite0 quantifié est
 chargé avec MediaPipe et exécuté dans le navigateur. Ses classes restent visibles avec
@@ -24,21 +27,22 @@ de validation Food-101 relabellisées, le fine-tuning atteint 54,27 % de top-1,
 ImageNet. Le modèle produit pèse 3,95 Mio. Ces mesures valident la spécialisation dans
 Food-101, pas la performance sur des photos utilisateur. Le rejet explicite, le
 top-k, le texte et la validation humaine restent donc centraux. Une grille séparée de
-30 photos réelles doit encore être exécutée sur les appareils cibles.
+30 photos réelles reste à exécuter sur les appareils cibles.
 
 # 1. Contexte et analyse des besoins
 
-## 1.1 Présentation (organisation et/ou contexte)
+## 1.1 Contexte et rôle
 
-Le projet est réalisé comme un projet personnel technique destiné à un portfolio
-d’AI Engineer. Dans le scénario de l’énoncé, FalDatacorps souhaite disposer de preuves
-concrètes de compétences et le manager demande de démontrer une conduite de projet
-complète : besoin métier, audit data, choix technique, aide à la décision et suivi.
+Ce projet personnel a été construit pour démontrer une chaîne complète d’AI
+Engineering autour d’un cas d’usage concret : classification alimentaire locale et
+repère climatique qualitatif. Il n’existe pas de système de production ni de
+client à migrer ; les besoins et critères ci-dessous constituent donc un cadrage
+explicite du prototype.
 
-Il n’existe pas d’organisation de production ni de système historique à migrer. Le
-contexte impose donc d’auditer la solution proposée avant de l’industrialiser. La
-maturité initiale est celle d’une idée documentée, sans application, modèle intégré,
-données versionnées ni mesure.
+Le rôle couvert par ce document rassemble le cadrage, l’audit des données, le choix
+technique, l’implémentation, l’évaluation, la documentation et le déploiement. Les
+résultats sont présentés avec leur périmètre réel afin de ne pas confondre une
+validation de dataset avec une preuve de performance produit.
 
 Enjeux :
 
@@ -61,16 +65,16 @@ unique, absence de backend et délai global estimé à 26–40 heures dans le pl
 |---|---|---|
 | Utilisateur de démonstration | réponse rapide, privée et compréhensible | fournit image, texte et correction |
 | Recruteur | preuve d’AI Engineering et de recul critique | consulte démo, rapport et métriques |
-| Mentor | cohérence du périmètre, carte mentale et soutenance | valide le choix et les livrables humains |
-| Porteur du portfolio | projet finissable, démontrable et maintenable | arbitre, collecte les photos, publie |
+| Lecteur technique ou recruteur | comprendre les choix et évaluer les preuves | consulte la démo, le code et la documentation |
+| Porteur du projet | projet finissable, démontrable et maintenable | arbitre, implémente, mesure et documente |
 | ADEME / Google | producteurs des données et du modèle | sources attribuées, licences respectées |
 
 ### Méthode de recueil
 
-Le besoin est extrait de l’énoncé, du template de rapport, de la carte mentale fournie
-et du plan de réalisation. Il est traduit en backlog et en critères d’acceptation. Les
-points dépendant d’une validation humaine — objectif professionnel, identité, photos
-personnelles, validation mentor — sont explicitement séparés des livrables techniques.
+Le besoin est traduit en backlog et en critères d’acceptation à partir du cas d’usage,
+des contraintes de confidentialité et de l’objectif de démonstration. Les éléments
+non encore mesurés sont séparés des résultats vérifiés ; aucune performance sur des
+photos utilisateur n’est déduite du benchmark Food-101.
 
 ### Besoins hiérarchisés
 
@@ -154,14 +158,12 @@ référence ont été extraits du même CSV et du même indicateur. L’écart p
 le passage d’un produit précis à une famille large. Les chiffres ne sont donc pas
 affichés comme empreinte du repas. Les DQR et limites restent documentées.
 
-### Écarts restant à fermer
+### Limites actuelles et prochaine étape
 
 - collecter et exécuter les 30 photographies autorisées ;
 - mesurer médiane/p95 sur ordinateur et mobile ;
 - vérifier manuellement réseau, contraste et lecteurs d’écran ;
-- personnaliser l’identité et les liens publics ;
-- obtenir la validation du mentor ;
-- publier la démonstration depuis le compte du porteur.
+- compléter l’évaluation avant toute généralisation à des photos utilisateur.
 
 # 3. Identification d’une solution technique cible
 
@@ -236,7 +238,7 @@ et `id-token: write`. Aucun secret d’application n’est nécessaire.
 
 ### Roadmap, jalons et responsabilités
 
-| Phase | Contenu | Estimation | Livrable / état |
+| Phase | Contenu | Estimation | Preuve / état |
 |---|---|---:|---|
 | 0 | cadrage, familles, réussite | 1–2 h | plan et périmètre — réalisé |
 | 1 | faisabilité modèle | 1–2 h | baseline ImageNet 5,18 Mio — réalisé |
@@ -247,11 +249,11 @@ et `id-token: write`. Aucun secret d’application n’est nécessaire.
 | 6 | validation et fusion | 3–5 h | correction, provenance, contradiction — réalisé |
 | 7 | score et interface | 4–6 h | A–E / `?`, responsive, accessible — réalisé |
 | 8 | évaluation | 4–6 h | Food-101 complet et ablation grille réalisés ; photos réelles à exécuter |
-| 9 | documentation / déploiement | 3–5 h | docs et workflow réalisés ; publication à déclencher |
-| Portfolio | rapport, carte, réflexion | 6–10 h | livrables créés ; validation mentor restante |
+| 9 | documentation / déploiement | 3–5 h | docs, workflow et pages générées — réalisé |
+| Documentation | étude de cas, rapport, carte, réflexion | inclus dans le projet | preuves organisées et accessibles |
 
-Le porteur doit ajouter son temps réellement passé à partir de son propre suivi. Une
-durée personnelle ne peut pas être reconstruite honnêtement par le code ou l’assistant.
+La durée annoncée est une estimation de cadrage, pas un temps réellement mesuré. Un
+suivi précis devra être ajouté si le projet est repris dans un contexte professionnel.
 
 ### Méthode
 
@@ -313,9 +315,9 @@ taux fictif n’est imposé dans ce rapport.
 
 | Dimension | Indicateur | Situation actuelle | Action |
 |---|---|---|---|
-| Délais | phases terminées / prévues | technique et docs construits ; tâches humaines restantes | planifier collecte et mentor |
+| Délais | phases terminées / prévues | technique et documentation construits ; campagne réelle restante | planifier la collecte et l’évaluation |
 | Coût | services payants | 0 service requis | surveiller limites Pages |
-| Livrables | critères de fin | app, tests, docs, carte et workflow présents | personnaliser et publier |
+| Preuves | critères de fin | app, tests, documentation, carte et workflow présents | maintenir les liens et les versions |
 | Données | profils traçables | 8/8 | revoir à chaque version AGRIBALYSE |
 | Qualité texte | cas documentés | 15 automatisés | enrichir seulement avec erreurs réelles |
 | Vision Food-101 | top-1 / top-3 / macro-F1 | 54,27 % / 82,95 % / 53,69 % | analyser les familles faibles |
@@ -353,11 +355,11 @@ le protocole de 30 photos. Si le seuil top-3 n'est pas atteint sur ces photos, r
 les familles visuelles ou réentraîner avec `mixed_dish` et `unknown`. Ensuite seulement : améliorer les
 quantités, essayer WebGPU, comparer deux repas ou prendre en compte saison et origine.
 
-Avant présentation : personnaliser nom et objectif, renseigner le temps réel, faire
-valider la carte mentale, exécuter desktop/mobile, publier Pages et vérifier tous les
-liens publics.
+Avant un usage élargi : exécuter la campagne photo, terminer l’audit manuel
+d’accessibilité et mesurer les appareils cibles. Le prototype est déjà publiable
+comme démonstrateur à condition de conserver ses limites visibles.
 
-# 7. Annexes
+# 7. Ressources associées
 
 - application et portfolio : `index.html` + `src/` ;
 - guide de lancement : `README.md` ;

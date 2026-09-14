@@ -1,4 +1,10 @@
-# Data card — profils environnementaux
+# Données environnementales — profils AGRIBALYSE
+
+## À retenir
+
+EcoPlate utilise huit profils AGRIBALYSE 3.2 comme repères de classement. Ces profils
+ne représentent ni l’empreinte exacte d’un repas ni une mesure réglementaire : une
+famille alimentaire est rapprochée d’un produit de référence, avec ses limites.
 
 ## Source
 

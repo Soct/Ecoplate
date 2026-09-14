@@ -1,4 +1,7 @@
-# Journal de décisions et retour d’expérience
+# Décisions techniques et retour d’expérience
+
+Ce document retrace les arbitrages qui ont structuré EcoPlate Edge. Il sert de
+complément technique à la démonstration et au rapport de projet.
 
 ## Décisions
 
@@ -10,7 +13,7 @@
 | 2026-09-04 | résultat climatique | kg CO2e ou A–E | données de masse absentes | A–E qualitatif ; pondération seulement si masses toutes déclarées | aucune pesée visuelle prétendue | séparer encore plus nettement climat et nutrition |
 | 2026-09-04 | source environnementale | plusieurs sources ou AGRIBALYSE seule | cohérence des unités et traçabilité | huit lignes AGRIBALYSE 3.2 | codes, DQR, facteur et limites conservés | envisager plusieurs profils par famille dans une V2 |
 | 2026-09-04 | confidentialité | backend, API ou local | image sensible, coût, Pages | local sans télémétrie | aucun composant d’upload ajouté | ajouter un test navigateur automatisé du réseau |
-| 2026-09-04 | métriques absentes | inventer une estimation ou préparer la mesure | intégrité du portfolio | déclarer « non mesuré » et livrer 30 cas | rapport honnête et protocole reproductible | planifier la collecte plus tôt avec le mentor |
+| 2026-09-04 | métriques absentes | inventer une estimation ou préparer la mesure | intégrité du portfolio | déclarer « non mesuré » et livrer 30 cas | rapport honnête et protocole reproductible | planifier la collecte plus tôt avec un jeu de données dédié |
 | 2026-09-10 | identité du modèle ambiguë après renommage | se fier au nom ou inspecter métadonnées/empreinte | reproductibilité | noms explicites + taille/SHA-256 testés | le produit charge bien le fine-tuning 8 classes ; ImageNet devient le baseline | versionner un manifeste dès chaque export |
 | 2026-09-10 | mapping forcé des plats composés | conserver 8 familles ou introduire `unknown` | défendabilité métier | auditer 101 classes et mesurer une variante conservatrice | 61 classes signalées comme ambiguës | réentraîner avec `mixed_dish`/`unknown` plutôt que corriger après coup |
 | 2026-09-10 | SlimSAM activé sans ablation concluante | défaut, option, désactivation | gain accuracy, latence, coût de chargement | désactiver SlimSAM après timeout/erreur réseau | aucune promesse de segmentation validée ni contrôle cassé | le réévaluer seulement avec des poids locaux |
