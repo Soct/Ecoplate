@@ -1,0 +1,17 @@
+[
+  { "id": "TXT-01", "input": "150 g de bœuf haché", "families": ["beef"], "quantityG": 150 },
+  { "id": "TXT-02", "input": "jambon et tomates", "families": ["pork", "plants"] },
+  { "id": "TXT-03", "input": "pouller rôti", "families": ["poultry"] },
+  { "id": "TXT-04", "input": "saumon, riz", "families": ["fish", "plants"] },
+  { "id": "TXT-05", "input": "mozzarella et salade", "families": ["dairy", "plants"] },
+  { "id": "TXT-06", "input": "2 œufs", "families": ["eggs"] },
+  { "id": "TXT-07", "input": "200 g de lentilles", "families": ["legumes"], "quantityG": 200 },
+  { "id": "TXT-08", "input": "pommes de terre et brocoli", "families": ["plants"] },
+  { "id": "TXT-09", "input": "0,25 kg de tofu", "families": ["legumes"], "quantityG": 250 },
+  { "id": "TXT-10", "input": "steak, fromage, frites", "families": ["beef", "dairy", "plants"] },
+  { "id": "TXT-11", "input": "thon aux pâtes", "families": ["fish", "plants"] },
+  { "id": "TXT-12", "input": "haricots rouges et riz", "families": ["legumes", "plants"] },
+  { "id": "TXT-13", "input": "seitan, tomate", "families": ["plants"], "unknown": ["seitan"] },
+  { "id": "TXT-14", "input": "crème, champignon mystère", "families": ["dairy"], "unknown": ["champignon mystere"] },
+  { "id": "TXT-15", "input": "", "families": [] }
+]

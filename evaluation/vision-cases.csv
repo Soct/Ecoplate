@@ -1,0 +1,31 @@
+case_id,filename,expected_family,scenario,status
+VIS-001,beef_01_clear.jpg,beef,aliment net cadrage central,a_collecter
+VIS-002,beef_02_low_light.jpg,beef,faible luminosite,a_collecter
+VIS-003,beef_03_partial.jpg,beef,aliment partiellement masque,a_collecter
+VIS-004,pork_01_clear.jpg,pork,aliment net cadrage central,a_collecter
+VIS-005,pork_02_plate.jpg,pork,assiette simple,a_collecter
+VIS-006,pork_03_angle.jpg,pork,angle oblique,a_collecter
+VIS-007,poultry_01_clear.jpg,poultry,aliment net cadrage central,a_collecter
+VIS-008,poultry_02_low_light.jpg,poultry,faible luminosite,a_collecter
+VIS-009,poultry_03_partial.jpg,poultry,aliment partiellement masque,a_collecter
+VIS-010,fish_01_clear.jpg,fish,aliment net cadrage central,a_collecter
+VIS-011,fish_02_plate.jpg,fish,assiette simple,a_collecter
+VIS-012,fish_03_angle.jpg,fish,angle oblique,a_collecter
+VIS-013,dairy_01_cheese.jpg,dairy,portion de fromage,a_collecter
+VIS-014,dairy_02_yogurt.jpg,dairy,produit laitier hors classes probables,a_collecter
+VIS-015,dairy_03_partial.jpg,dairy,fromage partiellement masque,a_collecter
+VIS-016,eggs_01_boiled.jpg,eggs,oeuf dur,a_collecter
+VIS-017,eggs_02_omelette.jpg,eggs,omelette simple,a_collecter
+VIS-018,eggs_03_plate.jpg,eggs,oeuf dans assiette simple,a_collecter
+VIS-019,legumes_01_lentils.jpg,legumes,lentilles cuites,a_collecter
+VIS-020,legumes_02_tofu.jpg,legumes,tofu nature,a_collecter
+VIS-021,legumes_03_chickpeas.jpg,legumes,pois chiches,a_collecter
+VIS-022,plants_01_tomato.jpg,plants,tomate isolee,a_collecter
+VIS-023,plants_02_banana.jpg,plants,banane isolee,a_collecter
+VIS-024,plants_03_potato.jpg,plants,pomme de terre cuite,a_collecter
+VIS-025,out_01_object.jpg,,objet non alimentaire,a_collecter
+VIS-026,out_02_landscape.jpg,,paysage sans aliment,a_collecter
+VIS-027,out_03_blurry.jpg,,image inexploitable,a_collecter
+VIS-028,complex_01_mixed_plate.jpg,,assiette composee hors perimetre,a_collecter
+VIS-029,complex_02_soup.jpg,,ingredients invisibles hors perimetre,a_collecter
+VIS-030,complex_03_distant.jpg,,plat photographie de loin,a_collecter

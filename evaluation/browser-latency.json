@@ -1,0 +1,82 @@
+{
+  "scope": "Latence navigateur sur une image de smoke test ; aucune mesure d'accuracy",
+  "browser": "Mozilla/5.0 (X11; Linux x86_64; rv:155.0) Gecko/20100101 Firefox/155.0",
+  "measurements": [
+    {
+      "model": "food101-finetuned",
+      "preprocessing": "full",
+      "runs": 10,
+      "medianMs": 31.0,
+      "p95Ms": 59,
+      "valuesMs": [
+        59,
+        35,
+        28,
+        23,
+        34,
+        35,
+        20,
+        26,
+        25,
+        50
+      ]
+    },
+    {
+      "model": "food101-finetuned",
+      "preprocessing": "grid",
+      "runs": 10,
+      "medianMs": 249.0,
+      "p95Ms": 287,
+      "valuesMs": [
+        276,
+        277,
+        287,
+        242,
+        267,
+        252,
+        238,
+        246,
+        244,
+        239
+      ]
+    },
+    {
+      "model": "imagenet-baseline",
+      "preprocessing": "full",
+      "runs": 10,
+      "medianMs": 27.5,
+      "p95Ms": 57,
+      "valuesMs": [
+        57,
+        31,
+        27,
+        28,
+        28,
+        20,
+        24,
+        20,
+        32,
+        27
+      ]
+    },
+    {
+      "model": "imagenet-baseline",
+      "preprocessing": "grid",
+      "runs": 10,
+      "medianMs": 302.0,
+      "p95Ms": 347,
+      "valuesMs": [
+        291,
+        274,
+        302,
+        266,
+        302,
+        315,
+        345,
+        347,
+        312,
+        266
+      ]
+    }
+  ]
+}

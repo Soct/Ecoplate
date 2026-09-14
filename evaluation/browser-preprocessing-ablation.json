@@ -1,0 +1,2465 @@
+{
+  "scope": "Une image déterministe par classe Food-101 ; comparaison exploratoire navigateur",
+  "sampleCount": 101,
+  "model": "food101-finetuned",
+  "variants": {
+    "full": {
+      "status": "measured",
+      "metrics": {
+        "sampleCount": 101,
+        "top1Accuracy": 0.5148514851485149,
+        "top3Accuracy": 0.8415841584158416,
+        "rejectionRate": 0.40594059405940597,
+        "medianMs": 20,
+        "p95Ms": 34
+      },
+      "cases": [
+        {
+          "path": "dataset/food101-relabeled/validation/beef/000250_prime_rib.jpg",
+          "food101Class": "prime_rib",
+          "expected": "beef",
+          "predictions": [
+            "pork",
+            "poultry",
+            "beef"
+          ],
+          "rejected": true,
+          "latencyMs": 78
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/000750_hamburger.jpg",
+          "food101Class": "hamburger",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "pork",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 24
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/006000_steak.jpg",
+          "food101Class": "steak",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "pork",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/007750_lasagna.jpg",
+          "food101Class": "lasagna",
+          "expected": "beef",
+          "predictions": [
+            "fish",
+            "plants",
+            "beef"
+          ],
+          "rejected": true,
+          "latencyMs": 25
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/009250_tacos.jpg",
+          "food101Class": "tacos",
+          "expected": "beef",
+          "predictions": [
+            "poultry",
+            "beef",
+            "legumes"
+          ],
+          "rejected": false,
+          "latencyMs": 24
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/011250_beef_tartare.jpg",
+          "food101Class": "beef_tartare",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "fish",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 29
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/016250_beef_carpaccio.jpg",
+          "food101Class": "beef_carpaccio",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "poultry",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 35
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/016750_pho.jpg",
+          "food101Class": "pho",
+          "expected": "beef",
+          "predictions": [
+            "plants",
+            "pork",
+            "beef"
+          ],
+          "rejected": true,
+          "latencyMs": 36
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/020000_filet_mignon.jpg",
+          "food101Class": "filet_mignon",
+          "expected": "beef",
+          "predictions": [
+            "poultry",
+            "beef",
+            "pork"
+          ],
+          "rejected": true,
+          "latencyMs": 38
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/025000_spaghetti_bolognese.jpg",
+          "food101Class": "spaghetti_bolognese",
+          "expected": "beef",
+          "predictions": [
+            "dairy",
+            "beef",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 27
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/002250_risotto.jpg",
+          "food101Class": "risotto",
+          "expected": "dairy",
+          "predictions": [
+            "fish",
+            "plants",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/002500_pizza.jpg",
+          "food101Class": "pizza",
+          "expected": "dairy",
+          "predictions": [
+            "beef",
+            "eggs",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 25
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/003250_chocolate_cake.jpg",
+          "food101Class": "chocolate_cake",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 34
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/004500_panna_cotta.jpg",
+          "food101Class": "panna_cotta",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 23
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/006250_tiramisu.jpg",
+          "food101Class": "tiramisu",
+          "expected": "dairy",
+          "predictions": [
+            "plants",
+            "poultry",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 23
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/007500_chocolate_mousse.jpg",
+          "food101Class": "chocolate_mousse",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "legumes",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 28
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/008250_cheesecake.jpg",
+          "food101Class": "cheesecake",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "poultry",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 30
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/008750_ice_cream.jpg",
+          "food101Class": "ice_cream",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "legumes",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 39
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/009000_red_velvet_cake.jpg",
+          "food101Class": "red_velvet_cake",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "plants",
+            "eggs"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/009750_grilled_cheese_sandwich.jpg",
+          "food101Class": "grilled_cheese_sandwich",
+          "expected": "dairy",
+          "predictions": [
+            "eggs",
+            "poultry",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 24
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/010000_frozen_yogurt.jpg",
+          "food101Class": "frozen_yogurt",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "plants",
+            "legumes"
+          ],
+          "rejected": false,
+          "latencyMs": 25
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/011000_strawberry_shortcake.jpg",
+          "food101Class": "strawberry_shortcake",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "plants",
+            "eggs"
+          ],
+          "rejected": false,
+          "latencyMs": 22
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/012000_creme_brulee.jpg",
+          "food101Class": "creme_brulee",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "beef",
+            "eggs"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/017000_cheese_plate.jpg",
+          "food101Class": "cheese_plate",
+          "expected": "dairy",
+          "predictions": [
+            "poultry",
+            "dairy",
+            "fish"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/018500_bread_pudding.jpg",
+          "food101Class": "bread_pudding",
+          "expected": "dairy",
+          "predictions": [
+            "eggs",
+            "plants",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 21
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/019000_nachos.jpg",
+          "food101Class": "nachos",
+          "expected": "dairy",
+          "predictions": [
+            "poultry",
+            "fish",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/020250_caprese_salad.jpg",
+          "food101Class": "caprese_salad",
+          "expected": "dairy",
+          "predictions": [
+            "beef",
+            "poultry",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 21
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/022000_ravioli.jpg",
+          "food101Class": "ravioli",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "poultry",
+            "pork"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/022250_spaghetti_carbonara.jpg",
+          "food101Class": "spaghetti_carbonara",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "beef",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/023000_cup_cakes.jpg",
+          "food101Class": "cup_cakes",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 22
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/023250_poutine.jpg",
+          "food101Class": "poutine",
+          "expected": "dairy",
+          "predictions": [
+            "plants",
+            "beef",
+            "fish"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/024000_cannoli.jpg",
+          "food101Class": "cannoli",
+          "expected": "dairy",
+          "predictions": [
+            "legumes",
+            "dairy",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 18
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/024250_macaroni_and_cheese.jpg",
+          "food101Class": "macaroni_and_cheese",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "plants",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 18
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/002750_eggs_benedict.jpg",
+          "food101Class": "eggs_benedict",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/007250_pancakes.jpg",
+          "food101Class": "pancakes",
+          "expected": "eggs",
+          "predictions": [
+            "dairy",
+            "plants",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/010500_breakfast_burrito.jpg",
+          "food101Class": "breakfast_burrito",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "poultry",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/014250_huevos_rancheros.jpg",
+          "food101Class": "huevos_rancheros",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "pork",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/014500_french_toast.jpg",
+          "food101Class": "french_toast",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 18
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/015250_waffles.jpg",
+          "food101Class": "waffles",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 18
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/018250_deviled_eggs.jpg",
+          "food101Class": "deviled_eggs",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/019750_omelette.jpg",
+          "food101Class": "omelette",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 21
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/020500_macarons.jpg",
+          "food101Class": "macarons",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/020750_croque_madame.jpg",
+          "food101Class": "croque_madame",
+          "expected": "eggs",
+          "predictions": [
+            "dairy",
+            "fish",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/002000_sashimi.jpg",
+          "food101Class": "sashimi",
+          "expected": "fish",
+          "predictions": [
+            "dairy",
+            "plants",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 21
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/004000_fried_calamari.jpg",
+          "food101Class": "fried_calamari",
+          "expected": "fish",
+          "predictions": [
+            "poultry",
+            "dairy",
+            "pork"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/006500_fish_and_chips.jpg",
+          "food101Class": "fish_and_chips",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "poultry",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 27
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/007000_tuna_tartare.jpg",
+          "food101Class": "tuna_tartare",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "plants",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/008000_pad_thai.jpg",
+          "food101Class": "pad_thai",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "plants",
+            "beef"
+          ],
+          "rejected": false,
+          "latencyMs": 26
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/010750_crab_cakes.jpg",
+          "food101Class": "crab_cakes",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "beef",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/011500_mussels.jpg",
+          "food101Class": "mussels",
+          "expected": "fish",
+          "predictions": [
+            "poultry",
+            "fish",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 22
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/012500_scallops.jpg",
+          "food101Class": "scallops",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "poultry",
+            "beef"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/012750_oysters.jpg",
+          "food101Class": "oysters",
+          "expected": "fish",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/014000_escargots.jpg",
+          "food101Class": "escargots",
+          "expected": "fish",
+          "predictions": [
+            "poultry",
+            "fish",
+            "eggs"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/014750_lobster_bisque.jpg",
+          "food101Class": "lobster_bisque",
+          "expected": "fish",
+          "predictions": [
+            "legumes",
+            "pork",
+            "fish"
+          ],
+          "rejected": true,
+          "latencyMs": 21
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/016000_clam_chowder.jpg",
+          "food101Class": "clam_chowder",
+          "expected": "fish",
+          "predictions": [
+            "dairy",
+            "plants",
+            "legumes"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/016500_shrimp_and_grits.jpg",
+          "food101Class": "shrimp_and_grits",
+          "expected": "fish",
+          "predictions": [
+            "poultry",
+            "fish",
+            "legumes"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/017250_takoyaki.jpg",
+          "food101Class": "takoyaki",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "plants",
+            "beef"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/017500_lobster_roll_sandwich.jpg",
+          "food101Class": "lobster_roll_sandwich",
+          "expected": "fish",
+          "predictions": [
+            "pork",
+            "poultry",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 29
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/022500_sushi.jpg",
+          "food101Class": "sushi",
+          "expected": "fish",
+          "predictions": [
+            "plants",
+            "eggs",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/023500_ceviche.jpg",
+          "food101Class": "ceviche",
+          "expected": "fish",
+          "predictions": [
+            "dairy",
+            "fish",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/024500_grilled_salmon.jpg",
+          "food101Class": "grilled_salmon",
+          "expected": "fish",
+          "predictions": [
+            "pork",
+            "plants",
+            "fish"
+          ],
+          "rejected": true,
+          "latencyMs": 21
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/024750_paella.jpg",
+          "food101Class": "paella",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "pork",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/003000_guacamole.jpg",
+          "food101Class": "guacamole",
+          "expected": "legumes",
+          "predictions": [
+            "legumes",
+            "poultry",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 21
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/003500_miso_soup.jpg",
+          "food101Class": "miso_soup",
+          "expected": "legumes",
+          "predictions": [
+            "fish",
+            "legumes",
+            "pork"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/004750_hummus.jpg",
+          "food101Class": "hummus",
+          "expected": "legumes",
+          "predictions": [
+            "dairy",
+            "plants",
+            "legumes"
+          ],
+          "rejected": false,
+          "latencyMs": 18
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/012250_falafel.jpg",
+          "food101Class": "falafel",
+          "expected": "legumes",
+          "predictions": [
+            "legumes",
+            "plants",
+            "beef"
+          ],
+          "rejected": false,
+          "latencyMs": 18
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/017750_edamame.jpg",
+          "food101Class": "edamame",
+          "expected": "legumes",
+          "predictions": [
+            "legumes",
+            "plants",
+            "beef"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/000000_beignets.jpg",
+          "food101Class": "beignets",
+          "expected": "plants",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/001000_bruschetta.jpg",
+          "food101Class": "bruschetta",
+          "expected": "plants",
+          "predictions": [
+            "fish",
+            "dairy",
+            "beef"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/001750_greek_salad.jpg",
+          "food101Class": "greek_salad",
+          "expected": "plants",
+          "predictions": [
+            "beef",
+            "plants",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/003750_apple_pie.jpg",
+          "food101Class": "apple_pie",
+          "expected": "plants",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "beef"
+          ],
+          "rejected": true,
+          "latencyMs": 18
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/004250_fried_rice.jpg",
+          "food101Class": "fried_rice",
+          "expected": "plants",
+          "predictions": [
+            "eggs",
+            "legumes",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/005000_carrot_cake.jpg",
+          "food101Class": "carrot_cake",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "dairy",
+            "eggs"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/005250_beet_salad.jpg",
+          "food101Class": "beet_salad",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "eggs",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/005500_garlic_bread.jpg",
+          "food101Class": "garlic_bread",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "dairy",
+            "pork"
+          ],
+          "rejected": true,
+          "latencyMs": 18
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/006750_caesar_salad.jpg",
+          "food101Class": "caesar_salad",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "dairy",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/008500_baklava.jpg",
+          "food101Class": "baklava",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "pork",
+            "eggs"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/010250_seaweed_salad.jpg",
+          "food101Class": "seaweed_salad",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "fish",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/011750_dumplings.jpg",
+          "food101Class": "dumplings",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "dairy",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/013000_samosa.jpg",
+          "food101Class": "samosa",
+          "expected": "plants",
+          "predictions": [
+            "poultry",
+            "beef",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 25
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/013500_french_fries.jpg",
+          "food101Class": "french_fries",
+          "expected": "plants",
+          "predictions": [
+            "poultry",
+            "plants",
+            "legumes"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/015000_onion_rings.jpg",
+          "food101Class": "onion_rings",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "eggs",
+            "legumes"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/015500_french_onion_soup.jpg",
+          "food101Class": "french_onion_soup",
+          "expected": "plants",
+          "predictions": [
+            "fish",
+            "plants",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/015750_spring_rolls.jpg",
+          "food101Class": "spring_rolls",
+          "expected": "plants",
+          "predictions": [
+            "poultry",
+            "plants",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/019250_donuts.jpg",
+          "food101Class": "donuts",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "poultry",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/021000_gnocchi.jpg",
+          "food101Class": "gnocchi",
+          "expected": "plants",
+          "predictions": [
+            "fish",
+            "pork",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/021500_hot_and_sour_soup.jpg",
+          "food101Class": "hot_and_sour_soup",
+          "expected": "plants",
+          "predictions": [
+            "pork",
+            "poultry",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/022750_bibimbap.jpg",
+          "food101Class": "bibimbap",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "beef",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/023750_churros.jpg",
+          "food101Class": "churros",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "eggs",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/000500_ramen.jpg",
+          "food101Class": "ramen",
+          "expected": "pork",
+          "predictions": [
+            "pork",
+            "poultry",
+            "legumes"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/001500_pork_chop.jpg",
+          "food101Class": "pork_chop",
+          "expected": "pork",
+          "predictions": [
+            "pork",
+            "fish",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/005750_hot_dog.jpg",
+          "food101Class": "hot_dog",
+          "expected": "pork",
+          "predictions": [
+            "poultry",
+            "beef",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 21
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/018000_pulled_pork_sandwich.jpg",
+          "food101Class": "pulled_pork_sandwich",
+          "expected": "pork",
+          "predictions": [
+            "poultry",
+            "beef",
+            "pork"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/021250_gyoza.jpg",
+          "food101Class": "gyoza",
+          "expected": "pork",
+          "predictions": [
+            "eggs",
+            "poultry",
+            "pork"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/021750_baby_back_ribs.jpg",
+          "food101Class": "baby_back_ribs",
+          "expected": "pork",
+          "predictions": [
+            "plants",
+            "pork",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/001250_chicken_wings.jpg",
+          "food101Class": "chicken_wings",
+          "expected": "poultry",
+          "predictions": [
+            "poultry",
+            "fish",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/009500_foie_gras.jpg",
+          "food101Class": "foie_gras",
+          "expected": "poultry",
+          "predictions": [
+            "dairy",
+            "pork",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/013250_club_sandwich.jpg",
+          "food101Class": "club_sandwich",
+          "expected": "poultry",
+          "predictions": [
+            "poultry",
+            "legumes",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 18
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/013750_chicken_quesadilla.jpg",
+          "food101Class": "chicken_quesadilla",
+          "expected": "poultry",
+          "predictions": [
+            "poultry",
+            "eggs",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 19
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/018750_peking_duck.jpg",
+          "food101Class": "peking_duck",
+          "expected": "poultry",
+          "predictions": [
+            "poultry",
+            "fish",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 20
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/019500_chicken_curry.jpg",
+          "food101Class": "chicken_curry",
+          "expected": "poultry",
+          "predictions": [
+            "fish",
+            "poultry",
+            "legumes"
+          ],
+          "rejected": false,
+          "latencyMs": 18
+        }
+      ]
+    },
+    "grid": {
+      "status": "measured",
+      "metrics": {
+        "sampleCount": 101,
+        "top1Accuracy": 0.5445544554455446,
+        "top3Accuracy": 0.801980198019802,
+        "rejectionRate": 0.3465346534653465,
+        "medianMs": 195,
+        "p95Ms": 256
+      },
+      "cases": [
+        {
+          "path": "dataset/food101-relabeled/validation/beef/000250_prime_rib.jpg",
+          "food101Class": "prime_rib",
+          "expected": "beef",
+          "predictions": [
+            "pork",
+            "beef",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 205
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/000750_hamburger.jpg",
+          "food101Class": "hamburger",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "pork",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 185
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/006000_steak.jpg",
+          "food101Class": "steak",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "pork",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 181
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/007750_lasagna.jpg",
+          "food101Class": "lasagna",
+          "expected": "beef",
+          "predictions": [
+            "dairy",
+            "plants",
+            "fish"
+          ],
+          "rejected": true,
+          "latencyMs": 183
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/009250_tacos.jpg",
+          "food101Class": "tacos",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "poultry",
+            "legumes"
+          ],
+          "rejected": true,
+          "latencyMs": 183
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/011250_beef_tartare.jpg",
+          "food101Class": "beef_tartare",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "legumes",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 191
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/016250_beef_carpaccio.jpg",
+          "food101Class": "beef_carpaccio",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "poultry",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 185
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/016750_pho.jpg",
+          "food101Class": "pho",
+          "expected": "beef",
+          "predictions": [
+            "plants",
+            "pork",
+            "beef"
+          ],
+          "rejected": true,
+          "latencyMs": 242
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/020000_filet_mignon.jpg",
+          "food101Class": "filet_mignon",
+          "expected": "beef",
+          "predictions": [
+            "beef",
+            "poultry",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 232
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/beef/025000_spaghetti_bolognese.jpg",
+          "food101Class": "spaghetti_bolognese",
+          "expected": "beef",
+          "predictions": [
+            "dairy",
+            "pork",
+            "beef"
+          ],
+          "rejected": false,
+          "latencyMs": 248
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/002250_risotto.jpg",
+          "food101Class": "risotto",
+          "expected": "dairy",
+          "predictions": [
+            "plants",
+            "fish",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 235
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/002500_pizza.jpg",
+          "food101Class": "pizza",
+          "expected": "dairy",
+          "predictions": [
+            "beef",
+            "poultry",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 189
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/003250_chocolate_cake.jpg",
+          "food101Class": "chocolate_cake",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 213
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/004500_panna_cotta.jpg",
+          "food101Class": "panna_cotta",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 191
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/006250_tiramisu.jpg",
+          "food101Class": "tiramisu",
+          "expected": "dairy",
+          "predictions": [
+            "plants",
+            "dairy",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 195
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/007500_chocolate_mousse.jpg",
+          "food101Class": "chocolate_mousse",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "legumes",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 195
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/008250_cheesecake.jpg",
+          "food101Class": "cheesecake",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "legumes",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 197
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/008750_ice_cream.jpg",
+          "food101Class": "ice_cream",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "legumes",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 200
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/009000_red_velvet_cake.jpg",
+          "food101Class": "red_velvet_cake",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "plants",
+            "legumes"
+          ],
+          "rejected": false,
+          "latencyMs": 256
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/009750_grilled_cheese_sandwich.jpg",
+          "food101Class": "grilled_cheese_sandwich",
+          "expected": "dairy",
+          "predictions": [
+            "eggs",
+            "plants",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 240
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/010000_frozen_yogurt.jpg",
+          "food101Class": "frozen_yogurt",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "plants",
+            "eggs"
+          ],
+          "rejected": false,
+          "latencyMs": 244
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/011000_strawberry_shortcake.jpg",
+          "food101Class": "strawberry_shortcake",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "plants",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 253
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/012000_creme_brulee.jpg",
+          "food101Class": "creme_brulee",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "beef",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 243
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/017000_cheese_plate.jpg",
+          "food101Class": "cheese_plate",
+          "expected": "dairy",
+          "predictions": [
+            "poultry",
+            "dairy",
+            "eggs"
+          ],
+          "rejected": false,
+          "latencyMs": 243
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/018500_bread_pudding.jpg",
+          "food101Class": "bread_pudding",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 235
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/019000_nachos.jpg",
+          "food101Class": "nachos",
+          "expected": "dairy",
+          "predictions": [
+            "fish",
+            "legumes",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 228
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/020250_caprese_salad.jpg",
+          "food101Class": "caprese_salad",
+          "expected": "dairy",
+          "predictions": [
+            "beef",
+            "poultry",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 265
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/022000_ravioli.jpg",
+          "food101Class": "ravioli",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "plants",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 202
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/022250_spaghetti_carbonara.jpg",
+          "food101Class": "spaghetti_carbonara",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "beef",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 194
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/023000_cup_cakes.jpg",
+          "food101Class": "cup_cakes",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "plants"
+          ],
+          "rejected": true,
+          "latencyMs": 196
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/023250_poutine.jpg",
+          "food101Class": "poutine",
+          "expected": "dairy",
+          "predictions": [
+            "fish",
+            "beef",
+            "pork"
+          ],
+          "rejected": true,
+          "latencyMs": 191
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/024000_cannoli.jpg",
+          "food101Class": "cannoli",
+          "expected": "dairy",
+          "predictions": [
+            "legumes",
+            "dairy",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 190
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/dairy/024250_macaroni_and_cheese.jpg",
+          "food101Class": "macaroni_and_cheese",
+          "expected": "dairy",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 190
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/002750_eggs_benedict.jpg",
+          "food101Class": "eggs_benedict",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 197
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/007250_pancakes.jpg",
+          "food101Class": "pancakes",
+          "expected": "eggs",
+          "predictions": [
+            "pork",
+            "dairy",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 238
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/010500_breakfast_burrito.jpg",
+          "food101Class": "breakfast_burrito",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "poultry",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 355
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/014250_huevos_rancheros.jpg",
+          "food101Class": "huevos_rancheros",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "pork",
+            "legumes"
+          ],
+          "rejected": false,
+          "latencyMs": 248
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/014500_french_toast.jpg",
+          "food101Class": "french_toast",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "beef"
+          ],
+          "rejected": false,
+          "latencyMs": 256
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/015250_waffles.jpg",
+          "food101Class": "waffles",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "pork",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 262
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/018250_deviled_eggs.jpg",
+          "food101Class": "deviled_eggs",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "fish",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 214
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/019750_omelette.jpg",
+          "food101Class": "omelette",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "dairy",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 193
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/020500_macarons.jpg",
+          "food101Class": "macarons",
+          "expected": "eggs",
+          "predictions": [
+            "eggs",
+            "plants",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 218
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/eggs/020750_croque_madame.jpg",
+          "food101Class": "croque_madame",
+          "expected": "eggs",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "pork"
+          ],
+          "rejected": true,
+          "latencyMs": 207
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/002000_sashimi.jpg",
+          "food101Class": "sashimi",
+          "expected": "fish",
+          "predictions": [
+            "dairy",
+            "pork",
+            "fish"
+          ],
+          "rejected": true,
+          "latencyMs": 181
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/004000_fried_calamari.jpg",
+          "food101Class": "fried_calamari",
+          "expected": "fish",
+          "predictions": [
+            "poultry",
+            "pork",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 182
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/006500_fish_and_chips.jpg",
+          "food101Class": "fish_and_chips",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "poultry",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 187
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/007000_tuna_tartare.jpg",
+          "food101Class": "tuna_tartare",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "beef",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 182
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/008000_pad_thai.jpg",
+          "food101Class": "pad_thai",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "pork",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 195
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/010750_crab_cakes.jpg",
+          "food101Class": "crab_cakes",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "plants",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 186
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/011500_mussels.jpg",
+          "food101Class": "mussels",
+          "expected": "fish",
+          "predictions": [
+            "poultry",
+            "pork",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 192
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/012500_scallops.jpg",
+          "food101Class": "scallops",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "beef",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 277
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/012750_oysters.jpg",
+          "food101Class": "oysters",
+          "expected": "fish",
+          "predictions": [
+            "dairy",
+            "eggs",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 205
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/014000_escargots.jpg",
+          "food101Class": "escargots",
+          "expected": "fish",
+          "predictions": [
+            "poultry",
+            "fish",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 197
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/014750_lobster_bisque.jpg",
+          "food101Class": "lobster_bisque",
+          "expected": "fish",
+          "predictions": [
+            "legumes",
+            "pork",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 204
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/016000_clam_chowder.jpg",
+          "food101Class": "clam_chowder",
+          "expected": "fish",
+          "predictions": [
+            "dairy",
+            "plants",
+            "fish"
+          ],
+          "rejected": true,
+          "latencyMs": 197
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/016500_shrimp_and_grits.jpg",
+          "food101Class": "shrimp_and_grits",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "poultry",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 182
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/017250_takoyaki.jpg",
+          "food101Class": "takoyaki",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "pork",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 185
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/017500_lobster_roll_sandwich.jpg",
+          "food101Class": "lobster_roll_sandwich",
+          "expected": "fish",
+          "predictions": [
+            "fish",
+            "pork",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 203
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/022500_sushi.jpg",
+          "food101Class": "sushi",
+          "expected": "fish",
+          "predictions": [
+            "dairy",
+            "plants",
+            "fish"
+          ],
+          "rejected": true,
+          "latencyMs": 198
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/023500_ceviche.jpg",
+          "food101Class": "ceviche",
+          "expected": "fish",
+          "predictions": [
+            "plants",
+            "dairy",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 184
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/024500_grilled_salmon.jpg",
+          "food101Class": "grilled_salmon",
+          "expected": "fish",
+          "predictions": [
+            "pork",
+            "plants",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 191
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/fish/024750_paella.jpg",
+          "food101Class": "paella",
+          "expected": "fish",
+          "predictions": [
+            "beef",
+            "fish",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 193
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/003000_guacamole.jpg",
+          "food101Class": "guacamole",
+          "expected": "legumes",
+          "predictions": [
+            "legumes",
+            "poultry",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 194
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/003500_miso_soup.jpg",
+          "food101Class": "miso_soup",
+          "expected": "legumes",
+          "predictions": [
+            "legumes",
+            "fish",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 185
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/004750_hummus.jpg",
+          "food101Class": "hummus",
+          "expected": "legumes",
+          "predictions": [
+            "dairy",
+            "plants",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 236
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/012250_falafel.jpg",
+          "food101Class": "falafel",
+          "expected": "legumes",
+          "predictions": [
+            "legumes",
+            "plants",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 216
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/legumes/017750_edamame.jpg",
+          "food101Class": "edamame",
+          "expected": "legumes",
+          "predictions": [
+            "legumes",
+            "plants",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 203
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/000000_beignets.jpg",
+          "food101Class": "beignets",
+          "expected": "plants",
+          "predictions": [
+            "dairy",
+            "fish",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 195
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/001000_bruschetta.jpg",
+          "food101Class": "bruschetta",
+          "expected": "plants",
+          "predictions": [
+            "fish",
+            "dairy",
+            "beef"
+          ],
+          "rejected": true,
+          "latencyMs": 201
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/001750_greek_salad.jpg",
+          "food101Class": "greek_salad",
+          "expected": "plants",
+          "predictions": [
+            "beef",
+            "plants",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 201
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/003750_apple_pie.jpg",
+          "food101Class": "apple_pie",
+          "expected": "plants",
+          "predictions": [
+            "eggs",
+            "beef",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 189
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/004250_fried_rice.jpg",
+          "food101Class": "fried_rice",
+          "expected": "plants",
+          "predictions": [
+            "legumes",
+            "eggs",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 191
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/005000_carrot_cake.jpg",
+          "food101Class": "carrot_cake",
+          "expected": "plants",
+          "predictions": [
+            "dairy",
+            "plants",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 189
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/005250_beet_salad.jpg",
+          "food101Class": "beet_salad",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "dairy",
+            "eggs"
+          ],
+          "rejected": true,
+          "latencyMs": 184
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/005500_garlic_bread.jpg",
+          "food101Class": "garlic_bread",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "dairy",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 183
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/006750_caesar_salad.jpg",
+          "food101Class": "caesar_salad",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "eggs",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 185
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/008500_baklava.jpg",
+          "food101Class": "baklava",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "eggs",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 184
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/010250_seaweed_salad.jpg",
+          "food101Class": "seaweed_salad",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "dairy",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 200
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/011750_dumplings.jpg",
+          "food101Class": "dumplings",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "legumes",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 194
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/013000_samosa.jpg",
+          "food101Class": "samosa",
+          "expected": "plants",
+          "predictions": [
+            "poultry",
+            "beef",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 192
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/013500_french_fries.jpg",
+          "food101Class": "french_fries",
+          "expected": "plants",
+          "predictions": [
+            "poultry",
+            "plants",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 184
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/015000_onion_rings.jpg",
+          "food101Class": "onion_rings",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "legumes",
+            "eggs"
+          ],
+          "rejected": false,
+          "latencyMs": 199
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/015500_french_onion_soup.jpg",
+          "food101Class": "french_onion_soup",
+          "expected": "plants",
+          "predictions": [
+            "fish",
+            "plants",
+            "legumes"
+          ],
+          "rejected": true,
+          "latencyMs": 205
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/015750_spring_rolls.jpg",
+          "food101Class": "spring_rolls",
+          "expected": "plants",
+          "predictions": [
+            "poultry",
+            "plants",
+            "fish"
+          ],
+          "rejected": true,
+          "latencyMs": 185
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/019250_donuts.jpg",
+          "food101Class": "donuts",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "poultry",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 183
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/021000_gnocchi.jpg",
+          "food101Class": "gnocchi",
+          "expected": "plants",
+          "predictions": [
+            "pork",
+            "fish",
+            "beef"
+          ],
+          "rejected": true,
+          "latencyMs": 195
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/021500_hot_and_sour_soup.jpg",
+          "food101Class": "hot_and_sour_soup",
+          "expected": "plants",
+          "predictions": [
+            "pork",
+            "poultry",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 201
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/022750_bibimbap.jpg",
+          "food101Class": "bibimbap",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "pork",
+            "beef"
+          ],
+          "rejected": false,
+          "latencyMs": 193
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/plants/023750_churros.jpg",
+          "food101Class": "churros",
+          "expected": "plants",
+          "predictions": [
+            "plants",
+            "eggs",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 187
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/000500_ramen.jpg",
+          "food101Class": "ramen",
+          "expected": "pork",
+          "predictions": [
+            "pork",
+            "legumes",
+            "poultry"
+          ],
+          "rejected": false,
+          "latencyMs": 191
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/001500_pork_chop.jpg",
+          "food101Class": "pork_chop",
+          "expected": "pork",
+          "predictions": [
+            "pork",
+            "poultry",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 188
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/005750_hot_dog.jpg",
+          "food101Class": "hot_dog",
+          "expected": "pork",
+          "predictions": [
+            "poultry",
+            "pork",
+            "fish"
+          ],
+          "rejected": false,
+          "latencyMs": 183
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/018000_pulled_pork_sandwich.jpg",
+          "food101Class": "pulled_pork_sandwich",
+          "expected": "pork",
+          "predictions": [
+            "plants",
+            "poultry",
+            "beef"
+          ],
+          "rejected": false,
+          "latencyMs": 187
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/021250_gyoza.jpg",
+          "food101Class": "gyoza",
+          "expected": "pork",
+          "predictions": [
+            "eggs",
+            "pork",
+            "dairy"
+          ],
+          "rejected": true,
+          "latencyMs": 187
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/pork/021750_baby_back_ribs.jpg",
+          "food101Class": "baby_back_ribs",
+          "expected": "pork",
+          "predictions": [
+            "plants",
+            "dairy",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 185
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/001250_chicken_wings.jpg",
+          "food101Class": "chicken_wings",
+          "expected": "poultry",
+          "predictions": [
+            "dairy",
+            "plants",
+            "poultry"
+          ],
+          "rejected": true,
+          "latencyMs": 183
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/009500_foie_gras.jpg",
+          "food101Class": "foie_gras",
+          "expected": "poultry",
+          "predictions": [
+            "dairy",
+            "plants",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 210
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/013250_club_sandwich.jpg",
+          "food101Class": "club_sandwich",
+          "expected": "poultry",
+          "predictions": [
+            "poultry",
+            "eggs",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 193
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/013750_chicken_quesadilla.jpg",
+          "food101Class": "chicken_quesadilla",
+          "expected": "poultry",
+          "predictions": [
+            "poultry",
+            "eggs",
+            "dairy"
+          ],
+          "rejected": false,
+          "latencyMs": 197
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/018750_peking_duck.jpg",
+          "food101Class": "peking_duck",
+          "expected": "poultry",
+          "predictions": [
+            "poultry",
+            "fish",
+            "pork"
+          ],
+          "rejected": false,
+          "latencyMs": 189
+        },
+        {
+          "path": "dataset/food101-relabeled/validation/poultry/019500_chicken_curry.jpg",
+          "food101Class": "chicken_curry",
+          "expected": "poultry",
+          "predictions": [
+            "fish",
+            "poultry",
+            "plants"
+          ],
+          "rejected": false,
+          "latencyMs": 191
+        }
+      ]
+    },
+    "sam-auto": {
+      "status": "timeout",
+      "timeoutSeconds": 60,
+      "completedCases": 0,
+      "statusMessage": "Analyse impossible : NetworkError when attempting to fetch resource.",
+      "interpretation": "Aucune métrique d'accuracy n'est calculable pour une variante qui ne produit pas de résultat."
+    }
+  },
+  "browser": "Mozilla/5.0 (X11; Linux x86_64; rv:155.0) Gecko/20100101 Firefox/155.0"
+}
