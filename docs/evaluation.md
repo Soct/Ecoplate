@@ -26,7 +26,7 @@ La performance réelle en conditions d'usage demeure non mesurée.
 | Identité modèle produit | vérifiée | Food-101, 8 sorties, 4 140 006 octets, SHA-256 testé |
 | Identité baseline | vérifiée | ImageNet, 1 000 sorties, 5 434 517 octets, SHA-256 testé |
 | Split de validation | évalué en entier | 25 250 images, 101 classes, 8 familles forcées |
-| Tests unitaires | exécutés | 78 tests |
+| Tests unitaires | exécutés | 83 tests |
 | Benchmark navigateur | exécuté | Firefox 155 headless, 10 passages par configuration |
 | Grille 3 × 3 | ablation exécutée | 808 images : 8 par classe Food-101 |
 | SlimSAM | échec mesuré | aucune inférence en 60 s, erreur réseau au chargement des poids ; option désactivée |
@@ -40,6 +40,27 @@ Les artefacts sources sont :
 - `evaluation/browser-latency.json` : mesures Firefox ;
 - `evaluation/browser-preprocessing-ablation.json` : comparaison produit et échec SlimSAM ;
 - `training/evaluate_models.py` : calcul reproductible.
+
+## Reproductibilité et écart entre appareils
+
+À modèle, navigateur, appareil et prétraitement constants, les relances successives
+d’une même image produisent le même classement observé. Cette reproductibilité est
+locale au contexte d’exécution : elle ne garantit pas que deux appareils produisent
+les mêmes scores numériques.
+
+Un écart a été constaté manuellement avec `public/demo-images/image1.png` sur la
+version déployée : l’ordinateur propose `dairy / plants / beef`, tandis que le
+téléphone propose `dairy / plants / fish`. Les scores de protéine sont faibles et
+proches (environ 9–11 %), ce qui suffit à changer la troisième proposition après
+le filtrage des protéines concurrentes.
+
+L’application exécute pourtant le même modèle TFLite et le même code métier en local.
+À ce stade, l’écart est attribué prudemment à une différence de pipeline d’exécution
+entre environnements — décodage couleur, redimensionnement du canvas, implémentation
+WASM/CPU ou navigateur — et non à une source de données distante. Cette hypothèse
+reste à confirmer par une campagne instrumentée sur plusieurs appareils, avec capture
+des pixels réellement transmis au modèle, de l’identité de l’artefact et des scores
+bruts avant filtrage. Les résultats doivent donc être comparés à appareil constant.
 
 ## Comparaison ImageNet / fine-tuning
 

@@ -203,6 +203,7 @@ app.innerHTML = `
         <div><p class="eyebrow">Résultats disponibles</p><h2 id="study-title">Ce que montrent<br>les évaluations.</h2></div>
         <p>Les chiffres ci-dessous portent sur le split de validation Food-101 relabellisé. Ils documentent le comportement du prototype, pas une performance garantie sur des photos utilisateur.</p>
       </div>
+      <div class="notice notice-warning evaluation-device-note"><strong>Reproductibilité :</strong> une même image relancée dans le même contexte produit le même résultat observé. Entre ordinateur et téléphone, les scores peuvent toutefois différer : sur <code>image1.png</code>, le PC propose <code>dairy / plants / beef</code> et le mobile <code>dairy / plants / fish</code>. Le pipeline local (canvas, décodage, WASM/CPU ou navigateur) n’est donc pas encore considéré comme équivalent entre appareils. <a class="inline-link" href="${import.meta.env.BASE_URL}annexes/evaluation.html">Détail de la limite →</a></div>
       <div class="benchmark-table-wrap"><table class="benchmark-table"><thead><tr><th>Modèle</th><th>Top-1</th><th>Top-3</th><th>Macro-F1</th><th>Taille</th></tr></thead><tbody>
         <tr><th>ImageNet original</th><td>15,28 %</td><td>33,90 %</td><td>17,02 %</td><td>5,18 Mio</td></tr>
         <tr class="benchmark-winner"><th>Food-101 fine-tuné</th><td>54,27 %</td><td>82,95 %</td><td>53,69 %</td><td>3,95 Mio</td></tr>

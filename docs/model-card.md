@@ -83,6 +83,19 @@ images de plats déjà cadrées et partage la même taxonomie que celle utilisé
 fine-tuning. Les performances sur des photos prises par des utilisateurs restent non
 mesurées tant que la campagne séparée de 30 photos n'est pas réalisée.
 
+### Reproductibilité locale et différences mobile/PC
+
+Une même image relancée dans le même contexte d’exécution (appareil, navigateur,
+modèle et prétraitement) a produit le même résultat lors des essais manuels. Cette
+propriété ne doit pas être étendue à une reproductibilité bit à bit entre appareils.
+Sur `image1.png`, la version déployée a proposé `dairy / plants / beef` sur ordinateur
+et `dairy / plants / fish` sur téléphone, avec des scores de protéine proches et
+faibles. Le modèle et les règles sont locaux dans les deux cas ; la cause probable
+est une variation du pipeline canvas/WASM/CPU ou du décodage et redimensionnement de
+l’image. Cet écart est documenté comme une limite de mesure, pas comme une performance
+validée sur mobile. Une campagne dédiée devra enregistrer les pixels d’entrée, le SHA
+de l’artefact, le navigateur, l’appareil et les scores bruts avant filtrage.
+
 ## Prétraitements et segmentation
 
 L'image entière est la référence et l'option par défaut. La grille 3 × 3 est une
