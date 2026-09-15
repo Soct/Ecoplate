@@ -5,20 +5,25 @@ export const MINIMUM_DISPLAY_RESULTS = 3;
 
 const COMPETING_MEAT_FAMILIES = new Set<FamilyId>(['beef', 'pork', 'poultry', 'fish']);
 
-export function filterCompetingPredictions(predictions: VisionPrediction[]): VisionPrediction[] {
-  let strongestMeat: VisionPrediction | undefined;
-  predictions.forEach((prediction) => {
-    if (!prediction.family || !COMPETING_MEAT_FAMILIES.has(prediction.family)) return;
-    if (!strongestMeat || prediction.confidence > strongestMeat.confidence) {
-      strongestMeat = prediction;
-    }
-  });
+export function strongestCompetingPrediction(
+  predictions: VisionPrediction[],
+): VisionPrediction | undefined {
+  return predictions.reduce<VisionPrediction | undefined>((strongest, prediction) => {
+    if (!prediction.family || !COMPETING_MEAT_FAMILIES.has(prediction.family)) return strongest;
+    return !strongest || prediction.confidence > strongest.confidence ? prediction : strongest;
+  }, undefined);
+}
 
-  return predictions.filter((prediction) =>
-    !prediction.family
-    || !COMPETING_MEAT_FAMILIES.has(prediction.family)
-    || prediction === strongestMeat,
-  );
+export function filterCompetingPredictions(predictions: VisionPrediction[]): VisionPrediction[] {
+  const strongestMeat = strongestCompetingPrediction(predictions);
+
+  return predictions
+    .filter((prediction) =>
+      !prediction.family
+      || !COMPETING_MEAT_FAMILIES.has(prediction.family)
+      || prediction === strongestMeat,
+    )
+    .sort((a, b) => b.confidence - a.confidence);
 }
 
 export function effectiveDisplayThreshold(

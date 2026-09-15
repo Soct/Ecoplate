@@ -18,6 +18,7 @@ import {
   DEFAULT_DISPLAY_THRESHOLD,
   effectiveDisplayThreshold,
   filterCompetingPredictions,
+  strongestCompetingPrediction,
 } from './vision/displayPolicy';
 
 const app = document.querySelector<HTMLDivElement>('#app');
@@ -556,6 +557,7 @@ function toVisionCandidates(predictions: VisionPrediction[]): IngredientCandidat
 function renderRawPredictions(predictions: VisionPrediction[]): void {
   rawPredictions.replaceChildren();
   const displayThreshold = selectedEffectiveDisplayThreshold();
+  const strongestMeat = strongestCompetingPrediction(predictions);
   const relevantPredictions = filterCompetingPredictions(predictions).filter(
     (prediction) => prediction.confidence >= displayThreshold,
   );
@@ -590,6 +592,22 @@ function renderRawPredictions(predictions: VisionPrediction[]): void {
     item.append(rank, copy, meter);
     rawPredictions.append(item);
   });
+
+  const excludedMeat = predictions
+    .filter((prediction) =>
+      prediction.family
+      && ['beef', 'pork', 'poultry', 'fish'].includes(prediction.family)
+      && prediction !== strongestMeat,
+    )
+    .sort((a, b) => b.confidence - a.confidence);
+  if (excludedMeat.length > 0) {
+    const note = document.createElement('small');
+    note.className = 'prediction-excluded-note';
+    note.textContent = `Protéines concurrentes écartées : ${excludedMeat
+      .map((prediction) => `${prediction.originalLabel} ${Math.round(prediction.confidence * 100)} %`)
+      .join(' · ')}.`;
+    rawPredictions.append(note);
+  }
 }
 
 async function analyze(): Promise<void> {

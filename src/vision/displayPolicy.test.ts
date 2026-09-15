@@ -3,6 +3,7 @@ import type { VisionPrediction } from '../types';
 import {
   effectiveDisplayThreshold,
   filterCompetingPredictions,
+  strongestCompetingPrediction,
   predictionsAboveThreshold,
 } from './displayPolicy';
 
@@ -35,6 +36,13 @@ describe('predictionsAboveThreshold', () => {
 });
 
 describe('filterCompetingPredictions', () => {
+  it('identifie explicitement la protéine concurrente la mieux notée', () => {
+    expect(strongestCompetingPrediction([
+      { originalLabel: 'fish', family: 'fish', confidence: 0.72 },
+      { originalLabel: 'beef', family: 'beef', confidence: 0.81 },
+    ])?.family).toBe('beef');
+  });
+
   it('conserve uniquement la viande la mieux détectée', () => {
     const filtered = filterCompetingPredictions([
       { originalLabel: 'pork', family: 'pork', confidence: 0.72 },
@@ -43,5 +51,15 @@ describe('filterCompetingPredictions', () => {
     ]);
 
     expect(filtered.map((prediction) => prediction.family)).toEqual(['beef', 'plants']);
+  });
+
+  it('retourne le meilleur score en premier même si l’entrée est désordonnée', () => {
+    const filtered = filterCompetingPredictions([
+      { originalLabel: 'plants', family: 'plants', confidence: 0.9 },
+      { originalLabel: 'fish', family: 'fish', confidence: 0.72 },
+      { originalLabel: 'beef', family: 'beef', confidence: 0.81 },
+    ]);
+
+    expect(filtered.map((prediction) => prediction.family)).toEqual(['plants', 'beef']);
   });
 });
