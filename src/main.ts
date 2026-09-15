@@ -45,10 +45,10 @@ app.innerHTML = `
   <main id="main-content">
     <section class="hero" id="top">
       <div class="hero-copy">
-        <p class="eyebrow">POC étudiant · classification d’images</p>
+        <p class="eyebrow">POC étudiant · repère climatique alimentaire</p>
         <h1>EcoPlate<br><span>Edge</span></h1>
-        <p class="hero-tagline">Un prototype de classification exécuté localement</p>
-        <p class="hero-lead">Une image est classée dans huit familles alimentaires, puis mise en relation avec des repères AGRIBALYSE. Le résultat reste modifiable et les performances sont présentées avec leur périmètre de mesure.</p>
+        <p class="hero-tagline">Comprendre l’impact climatique indicatif d’un aliment à partir d’une photo</p>
+        <p class="hero-lead">Déposez une photo d’aliment : EcoPlate Edge identifie une famille alimentaire, puis affiche un repère climatique de A à E. Vous pouvez corriger la proposition ; l’analyse reste locale dans votre navigateur et s’appuie sur des références <a class="inline-link" href="#data">AGRIBALYSE</a>.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#demo">Tester l’analyse</a>
           <a class="text-link" href="#project">Voir le fonctionnement <span aria-hidden="true">↘</span></a>
@@ -83,7 +83,7 @@ app.innerHTML = `
     <section class="demo-section" id="demo" aria-labelledby="demo-title">
       <div class="section-heading">
         <div><p class="eyebrow">Démonstration interactive</p><h2 id="demo-title">Analysez un aliment simple</h2></div>
-        <p>Le modèle par défaut est le fine-tuning Food-101 int8 de 3,95 Mio. Le baseline ImageNet reste disponible pour comparer les deux approches dans les mêmes conditions.</p>
+        <p>Le <a class="resource-link" href="${import.meta.env.BASE_URL}annexes/model-card.html">modèle Food-101 fine-tuné</a> (int8, 3,95 Mio) est entraîné sur le <a class="resource-link" href="https://huggingface.co/datasets/ethz/food101" target="_blank" rel="noreferrer">dataset Food-101</a>. Le <a class="resource-link" href="https://ai.google.dev/edge/mediapipe/solutions/vision/image_classifier" target="_blank" rel="noreferrer">modèle EfficientNet-Lite0 original</a> reste disponible comme baseline ; il a été entraîné sur le <a class="resource-link" href="https://www.image-net.org/" target="_blank" rel="noreferrer">dataset ImageNet</a>. La <a class="resource-link" href="${import.meta.env.BASE_URL}annexes/model-card.html">fiche des deux modèles utilisés</a> détaille les artefacts chargés par l’application.</p>
       </div>
 
       <div class="demo-grid">
@@ -244,7 +244,7 @@ app.innerHTML = `
         <li><span>01</span><strong>Photo locale</strong><small>Décodage et recadrage 224 × 224</small></li>
         <li><span>02</span><strong>EfficientNet</strong><small>Classification dans le navigateur</small></li>
         <li><span>03</span><strong>Fusion</strong><small>Vision + texte + correction humaine</small></li>
-        <li><span>04</span><strong>Règles climat</strong><small>8 profils AGRIBALYSE 3.2</small></li>
+        <li><span>04</span><strong>Règles climat</strong><small><a class="inline-link" href="#data">8 profils AGRIBALYSE 3.2</a></small></li>
         <li><span>05</span><strong>A–E ou ?</strong><small>Résultat, confiance et limites</small></li>
       </ol>
 
@@ -256,10 +256,10 @@ app.innerHTML = `
       </div>
     </section>
 
-    <section class="data-section" aria-labelledby="profiles-title">
+    <section class="data-section" id="data" aria-labelledby="profiles-title">
       <div class="section-heading">
         <div><p class="eyebrow">Données environnementales</p><h2 id="profiles-title">Les données utilisées<br>pour le calcul.</h2></div>
-        <p>Chaque famille pointe vers un produit précis d’AGRIBALYSE 3.2. Les valeurs servent uniquement à produire un niveau qualitatif à partir d’une famille retenue.</p>
+        <p>AGRIBALYSE est une base d’Analyse du Cycle de Vie publiée par l’ADEME. Ici, chaque famille pointe vers un produit précis d’AGRIBALYSE 3.2 pour produire un niveau qualitatif, pas l’empreinte exacte d’un repas. <a class="resource-link" href="${import.meta.env.BASE_URL}annexes/data-card.html">Lire la fiche données →</a></p>
       </div>
       <div class="data-overview" aria-label="Résumé des données environnementales">
         <article><strong>8</strong><span>familles internes</span></article>
@@ -367,6 +367,10 @@ const demoImages = [
 ] as const;
 
 const demoImageExtensions = ['jpg', 'jpeg', 'png', 'webp'] as const;
+
+function formatConfidence(confidence: number): string {
+  return `${(confidence * 100).toFixed(1).replace('.', ',')} %`;
+}
 
 new ImageInput(fileInput, dropZone, imagePreview, (file) => {
   selectedFile = file;
@@ -587,7 +591,7 @@ function renderRawPredictions(predictions: VisionPrediction[]): void {
     const fill = document.createElement('span');
     fill.style.width = `${Math.max(2, prediction.confidence * 100)}%`;
     const value = document.createElement('b');
-    value.textContent = `${Math.round(prediction.confidence * 100)} %`;
+    value.textContent = formatConfidence(prediction.confidence);
     meter.append(fill, value);
     item.append(rank, copy, meter);
     rawPredictions.append(item);
@@ -604,7 +608,7 @@ function renderRawPredictions(predictions: VisionPrediction[]): void {
     const note = document.createElement('small');
     note.className = 'prediction-excluded-note';
     note.textContent = `Protéines concurrentes écartées : ${excludedMeat
-      .map((prediction) => `${prediction.originalLabel} ${Math.round(prediction.confidence * 100)} %`)
+      .map((prediction) => `${prediction.originalLabel} ${formatConfidence(prediction.confidence)}`)
       .join(' · ')}.`;
     rawPredictions.append(note);
   }

@@ -31,7 +31,7 @@ export function loadModel(modelId: ModelId = DEFAULT_MODEL_ID): Promise<ImageCla
     ).then((vision) =>
       ImageClassifier.createFromOptions(vision, {
         baseOptions: {
-          modelAssetPath: assetPath(descriptor.fileName),
+          modelAssetPath: `${assetPath(descriptor.fileName)}?v=${descriptor.sha256.slice(0, 12)}`,
           delegate: 'CPU',
         },
         runningMode: 'IMAGE',

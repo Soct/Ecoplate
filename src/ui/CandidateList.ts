@@ -105,7 +105,7 @@ export class CandidateList {
     meta.append(source);
     if (candidate.confidence !== undefined) {
       const confidence = document.createElement('span');
-      confidence.textContent = `${Math.round(candidate.confidence * 100)} % de confiance vision`;
+      confidence.textContent = `${(candidate.confidence * 100).toFixed(1).replace('.', ',')} % de confiance vision`;
       meta.append(confidence);
     }
     if (candidate.originalLabel && candidate.source === 'vision') {

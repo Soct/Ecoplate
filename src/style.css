@@ -91,6 +91,8 @@ h1 span { color: var(--green); font-style: normal; }
 .button-quiet { border-color: var(--line); background: var(--card); color: var(--ink); }
 .button-small { min-height: 36px; padding: .5rem .7rem; font-size: .68rem; }
 .text-link { color: var(--green); font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-decoration: underline; text-underline-offset: .28rem; text-transform: uppercase; }
+.inline-link, .resource-link { color: var(--green-dark); font-weight: 750; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18rem; }
+.inline-link:hover, .resource-link:hover { color: var(--green); }
 
 .privacy-highlight { display: flex; max-width: 570px; gap: .85rem; align-items: flex-start; margin-top: 2rem; padding: .95rem 1rem; border: 1px solid #bfd1c2; border-left: 4px solid var(--green); background: #edf4ed; }
 .privacy-highlight-mark { display: grid; flex: 0 0 1.35rem; width: 1.35rem; height: 1.35rem; place-items: center; border-radius: 50%; background: var(--green); color: white; font-size: .75rem; font-weight: 800; }
