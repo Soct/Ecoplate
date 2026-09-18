@@ -1,3 +1,4 @@
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -12,5 +13,11 @@ export default defineConfig({
   },
   build: {
     sourcemap: true,
+    rollupOptions: {
+      input: {
+        portfolio: resolve(__dirname, 'index.html'),
+        ecoplate: resolve(__dirname, 'ecoplate.html'),
+      },
+    },
   },
 });

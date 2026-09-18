@@ -1,7 +1,7 @@
 """Smoke test navigateur optionnel, exécuté avec `uv run --with selenium`.
 
 Le serveur Vite doit être disponible sur ECOPLATE_BASE_URL (défaut :
-http://127.0.0.1:5173/). Le test utilise une image locale existante uniquement pour
+http://127.0.0.1:5174/ecoplate.html). Le test utilise une image locale existante uniquement pour
 vérifier le chargement réel du modèle ; il ne mesure pas sa précision alimentaire.
 """
 
@@ -22,7 +22,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 ROOT = Path(__file__).resolve().parent.parent
-BASE_URL = os.environ.get("ECOPLATE_BASE_URL", "http://127.0.0.1:5174/")
+BASE_URL = os.environ.get("ECOPLATE_BASE_URL", "http://127.0.0.1:5174/ecoplate.html")
 RUNS = int(os.environ.get("ECOPLATE_BENCHMARK_RUNS", "10"))
 LATENCY_PATTERN = re.compile(r"Dernière inférence\s*:\s*(\d+) ms")
 

@@ -81,8 +81,10 @@ src/
 ├── text/          normalisation locale des ingrédients
 ├── ui/            composants DOM accessibles
 ├── vision/        modèles, identité vérifiée, prétraitement et mapping ImageNet
-├── main.ts        orchestration et portfolio
+├── main.ts        orchestration des pages et démonstration EcoPlate
 └── style.css      interface responsive et styles d’impression
+index.html         page d’accueil du portfolio
+ecoplate.html      page dédiée à l’étude de cas et à la démonstration EcoPlate
 evaluation/        protocole 30 images et 15 cas textuels
 docs/              rapport, cartes, modèle, données et décisions
 public/            modèle, runtime et livrables consultables

@@ -24,23 +24,61 @@ import {
 const app = document.querySelector<HTMLDivElement>('#app');
 if (!app) throw new Error('Conteneur principal introuvable.');
 
+const isEcoPlatePage = document.body.dataset.page === 'ecoplate';
+
 app.innerHTML = `
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Portfolio AI Engineering, accueil">
-      <span class="brand-mark" aria-hidden="true">P</span>
-      <span>Portfolio <em>AI Engineering</em></span>
-    </a>
+    ${isEcoPlatePage
+      ? `<a class="brand" href="${import.meta.env.BASE_URL}" aria-label="EcoPlate Edge, accueil"><span class="brand-mark" aria-hidden="true">E</span><span>EcoPlate <em>Edge</em></span></a>`
+      : `<a class="brand" href="#top" aria-label="Portfolio AI Engineering, accueil"><span class="brand-mark" aria-hidden="true">P</span><span>Portfolio <em>AI Engineering</em></span></a>`}
     <nav aria-label="Navigation principale">
-      <a href="#selected-work">Projets</a>
-      <a href="#project">Étude de cas</a>
-      <a href="#demo">Démo</a>
-      <a href="#skills">Compétences</a>
+      ${isEcoPlatePage
+        ? '<a href="#project">Étude de cas</a><a href="#demo">Démo</a><a href="#data">Données</a>'
+        : `<a href="#selected-work">Projets</a><a href="${import.meta.env.BASE_URL}ecoplate.html">EcoPlate</a><a href="#skills">Compétences</a>`}
     </nav>
-    <a class="header-contact" href="#deliverables">Voir les livrables <span aria-hidden="true">↗</span></a>
+    <a class="header-contact" href="${isEcoPlatePage ? import.meta.env.BASE_URL : '#selected-work'}">${isEcoPlatePage ? 'Retour au portfolio' : 'Voir les projets'} <span aria-hidden="true">↗</span></a>
   </header>
 
   <main id="main-content">
-    <section class="portfolio-hero" id="top">
+    ${isEcoPlatePage ? `
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">POC étudiant · repère climatique alimentaire</p>
+        <h1>EcoPlate<br><span>Edge</span></h1>
+        <p class="hero-tagline">Comprendre l’impact climatique indicatif d’un aliment à partir d’une photo</p>
+        <p class="hero-lead">Déposez une photo d’aliment : EcoPlate Edge identifie une famille alimentaire, puis affiche un repère climatique de A à E. Vous pouvez corriger la proposition ; l’analyse reste locale dans votre navigateur et s’appuie sur des références <a class="inline-link" href="#data">AGRIBALYSE</a>.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#demo">Tester l’analyse</a>
+          <a class="text-link" href="#project">Voir le fonctionnement <span aria-hidden="true">↘</span></a>
+        </div>
+        <aside class="privacy-highlight" aria-label="Confidentialité et RGPD">
+          <span class="privacy-highlight-mark" aria-hidden="true">✓</span>
+          <div>
+            <strong>Confidentialité · RGPD</strong>
+            <p>Vos images et descriptions restent dans votre navigateur. Aucune donnée n’est envoyée à un serveur et l’application ne nécessite aucun compte.</p>
+            <a class="privacy-highlight-link" href="#privacy">En savoir plus sur la confidentialité <span aria-hidden="true">→</span></a>
+          </div>
+        </aside>
+        <dl class="hero-stats">
+          <div><dt>54,27 %</dt><dd>top-1 · fine-tuning</dd></div>
+          <div><dt>3,95 Mio</dt><dd>modèle int8</dd></div>
+          <div><dt>0</dt><dd>image transmise</dd></div>
+        </dl>
+      </div>
+      <div class="hero-visual" aria-label="Schéma du parcours de l’image vers l’indicateur">
+        <div class="process-board">
+          <div class="process-board-header"><span>Flux de traitement</span><strong>dans le navigateur</strong></div>
+          <div class="process-line" aria-hidden="true"></div>
+          <div class="process-node node-input"><strong>Image</strong><small>fichier local</small></div>
+          <div class="process-node node-model"><strong>Modèle</strong><small>Food-101 · int8</small></div>
+          <div class="process-node node-review"><strong>Correction</strong><small>vision + texte</small></div>
+          <div class="process-node node-output"><strong>Repère</strong><small>A–E ou ?</small></div>
+          <div class="process-note"><span aria-hidden="true">●</span> aucune image envoyée</div>
+        </div>
+      </div>
+    </section>` : ''}
+
+    <section class="portfolio-hero" id="${isEcoPlatePage ? 'portfolio-top' : 'top'}">
       <div class="portfolio-hero-copy">
         <p class="eyebrow">Portfolio · IA & data</p>
         <h1><strong class="hero-title-line">Je transforme</strong><br><span>des idées</span><br>en systèmes utiles.</h1>
@@ -70,7 +108,7 @@ app.innerHTML = `
         <p>Une sélection de travaux qui illustrent mon parcours : cadrage, données, modèles, fine-tuning, déploiement et évaluation de systèmes d’intelligence artificielle.</p>
       </div>
       <div class="selected-work-grid">
-        <a class="featured-work-card" href="#project">
+        <a class="featured-work-card" href="${import.meta.env.BASE_URL}ecoplate.html">
           <div class="work-visual work-visual-eco"><span class="work-index">01</span><strong>EcoPlate<br><em>Edge</em></strong><span class="work-visual-note">Vision · local-first</span></div>
           <div class="work-card-copy"><div><span class="work-type">Projet principal · étude de cas</span><h3>Un repère climatique à partir d’une image</h3></div><span class="work-arrow" aria-hidden="true">↗</span><p>J’ai conçu un POC local qui combine fine-tuning Food-101, fusion vision + texte et calcul déterministe basé sur AGRIBALYSE. L’interface laisse une place à la correction humaine et affiche ses limites.</p><div class="work-stack"><span>TypeScript</span><span>Computer Vision</span><span>IA responsable</span></div></div>
         </a>
@@ -314,9 +352,22 @@ app.innerHTML = `
     </section>
   </main>
 
-  <footer><div class="brand"><span class="brand-mark" aria-hidden="true">P</span><span>Portfolio <em>AI Engineering</em></span></div><p>Projets · Expérimentations · IA responsable</p><a href="#top">Retour en haut ↑</a></footer>
+  <footer>${isEcoPlatePage
+    ? '<div class="brand"><span class="brand-mark" aria-hidden="true">E</span><span>EcoPlate <em>Edge</em></span></div><p>Prototype local · IA responsable</p><a href="#top">Retour en haut ↑</a>'
+    : '<div class="brand"><span class="brand-mark" aria-hidden="true">P</span><span>Portfolio <em>AI Engineering</em></span></div><p>Projets · Expérimentations · IA responsable</p><a href="#top">Retour en haut ↑</a>'}</footer>
 `;
 
+const sectionsOnlyOnEcoPlate = ['#project', '#demo', '#privacy', '.capability-section', '#study', '#data'];
+const sectionsOnlyOnPortfolio = ['#portfolio-top', '#selected-work', '#skills', '#deliverables'];
+(isEcoPlatePage ? sectionsOnlyOnPortfolio : sectionsOnlyOnEcoPlate).forEach((selector) => {
+  document.querySelector(selector)?.remove();
+});
+
+if (isEcoPlatePage) {
+  document.querySelector('footer a')?.setAttribute('href', '#project');
+}
+
+if (isEcoPlatePage) {
 function required<T extends Element>(selector: string): T {
   const element = document.querySelector<T>(selector);
   if (!element) throw new Error(`Élément introuvable : ${selector}`);
@@ -689,7 +740,8 @@ profiles.forEach((profile) => {
 renderCandidatesAndScore();
 
 if (window.location.hash) {
-  requestAnimationFrame(() => {
-    document.querySelector(window.location.hash)?.scrollIntoView();
-  });
+    requestAnimationFrame(() => {
+      document.querySelector(window.location.hash)?.scrollIntoView();
+    });
+  }
 }
