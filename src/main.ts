@@ -26,57 +26,84 @@ if (!app) throw new Error('Conteneur principal introuvable.');
 
 app.innerHTML = `
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="EcoPlate Edge, accueil">
-      <span class="brand-mark" aria-hidden="true">E</span>
-      <span>EcoPlate <em>Edge</em></span>
+    <a class="brand" href="#top" aria-label="Portfolio AI Engineering, accueil">
+      <span class="brand-mark" aria-hidden="true">P</span>
+      <span>Portfolio <em>AI Engineering</em></span>
     </a>
     <nav aria-label="Navigation principale">
-      <a href="#demo">Démonstration</a>
-      <a href="#study">Étude</a>
-      <a href="#project">Projet</a>
-      <a href="#training-projects">Parcours</a>
-      <a href="#privacy">Confidentialité</a>
+      <a href="#selected-work">Projets</a>
+      <a href="#project">Étude de cas</a>
+      <a href="#demo">Démo</a>
       <a href="#skills">Compétences</a>
-      <a href="#deliverables">Livrables</a>
     </nav>
-    <span class="local-pill" aria-label="100 % local, aucune image envoyée"><span aria-hidden="true">●</span><span class="local-pill-label">100 % local · aucune image envoyée</span></span>
+    <a class="header-contact" href="#deliverables">Voir les livrables <span aria-hidden="true">↗</span></a>
   </header>
 
   <main id="main-content">
-    <section class="hero" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow">POC étudiant · repère climatique alimentaire</p>
-        <h1>EcoPlate<br><span>Edge</span></h1>
-        <p class="hero-tagline">Comprendre l’impact climatique indicatif d’un aliment à partir d’une photo</p>
-        <p class="hero-lead">Déposez une photo d’aliment : EcoPlate Edge identifie une famille alimentaire, puis affiche un repère climatique de A à E. Vous pouvez corriger la proposition ; l’analyse reste locale dans votre navigateur et s’appuie sur des références <a class="inline-link" href="#data">AGRIBALYSE</a>.</p>
+    <section class="portfolio-hero" id="top">
+      <div class="portfolio-hero-copy">
+        <p class="eyebrow">Portfolio · IA & data</p>
+        <h1><strong class="hero-title-line">Je transforme</strong><br><span>des idées</span><br>en systèmes utiles.</h1>
+        <p class="portfolio-tagline">Construire des outils à la croisée du logiciel, des données et de l’intelligence artificielle.</p>
+        <p class="portfolio-lead">Une sélection de projets réalisés au fil de ma formation, entre expérimentation et conception.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#demo">Tester l’analyse</a>
-          <a class="text-link" href="#project">Voir le fonctionnement <span aria-hidden="true">↘</span></a>
+          <a class="button button-primary" href="#selected-work">Découvrir mes projets <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#skills">Voir mes compétences <span aria-hidden="true">↘</span></a>
         </div>
-        <aside class="privacy-highlight" aria-label="Confidentialité et RGPD">
-          <span class="privacy-highlight-mark" aria-hidden="true">✓</span>
-          <div>
-            <strong>Confidentialité · RGPD</strong>
-            <p>Vos images et descriptions restent dans votre navigateur. Aucune donnée n’est envoyée à un serveur et l’application ne nécessite aucun compte.</p>
-            <a class="privacy-highlight-link" href="#privacy">En savoir plus sur la confidentialité <span aria-hidden="true">→</span></a>
-          </div>
-        </aside>
-        <dl class="hero-stats">
-          <div><dt>54,27 %</dt><dd>top-1 · fine-tuning</dd></div>
-          <div><dt>3,95 Mio</dt><dd>modèle int8</dd></div>
-          <div><dt>0</dt><dd>image transmise</dd></div>
-        </dl>
+        <div class="portfolio-availability"><span aria-hidden="true">●</span> Sélection personnelle · projets d’IA & data</div>
       </div>
-      <div class="hero-visual" aria-label="Schéma du parcours de l’image vers l’indicateur">
-        <div class="process-board">
-          <div class="process-board-header"><span>Flux de traitement</span><strong>dans le navigateur</strong></div>
-          <div class="process-line" aria-hidden="true"></div>
-          <div class="process-node node-input"><strong>Image</strong><small>fichier local</small></div>
-          <div class="process-node node-model"><strong>Modèle</strong><small>Food-101 · int8</small></div>
-          <div class="process-node node-review"><strong>Correction</strong><small>vision + texte</small></div>
-          <div class="process-node node-output"><strong>Repère</strong><small>A–E ou ?</small></div>
-          <div class="process-note"><span aria-hidden="true">●</span> aucune image envoyée</div>
+      <div class="portfolio-hero-visual" aria-label="Présentation visuelle du profil">
+        <div class="portfolio-stamp">AI<br><span>ENGINEERING</span></div>
+        <div class="hero-profile-card">
+          <div class="profile-card-top"><span>01 / 04</span><span>Profil</span></div>
+          <div class="profile-portrait" aria-hidden="true"><span>AI</span></div>
+          <p class="profile-card-kicker">Ce que je construis</p>
+          <h2>Des projets d’IA<br>de la donnée<br>à l’usage.</h2>
+          <div class="profile-card-tags"><span>ML</span><span>Data</span><span>IA responsable</span></div>
         </div>
+      </div>
+    </section>
+
+    <section class="selected-work" id="selected-work" aria-labelledby="selected-work-title">
+      <div class="section-heading selected-work-heading">
+        <div><p class="eyebrow">Sélection de projets</p><h2 id="selected-work-title">Des projets pour<br>montrer le chemin.</h2></div>
+        <p>Une sélection de travaux qui illustrent mon parcours : cadrage, données, modèles, fine-tuning, déploiement et évaluation de systèmes d’intelligence artificielle.</p>
+      </div>
+      <div class="selected-work-grid">
+        <a class="featured-work-card" href="#project">
+          <div class="work-visual work-visual-eco"><span class="work-index">01</span><strong>EcoPlate<br><em>Edge</em></strong><span class="work-visual-note">Vision · local-first</span></div>
+          <div class="work-card-copy"><div><span class="work-type">Projet principal · étude de cas</span><h3>Un repère climatique à partir d’une image</h3></div><span class="work-arrow" aria-hidden="true">↗</span><p>J’ai conçu un POC local qui combine fine-tuning Food-101, fusion vision + texte et calcul déterministe basé sur AGRIBALYSE. L’interface laisse une place à la correction humaine et affiche ses limites.</p><div class="work-stack"><span>TypeScript</span><span>Computer Vision</span><span>IA responsable</span></div></div>
+        </a>
+        <a class="work-card work-card-agent" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-coach"><span class="work-index">02</span><strong>Coach<br><em>FFE</em></strong><span class="work-visual-note">Agent · LangGraph</span></div><div class="work-card-copy"><span class="work-type">Agent IA · orchestration</span><h3>Orchestrer un coach pédagogique aux échecs</h3><p>Workflow LangGraph reliant Lichess, Stockfish, une recherche vectorielle Milvus et des ressources vidéo, avec interface Angular et API FastAPI.</p><div class="work-stack"><span>LangGraph</span><span>Milvus</span><span>Angular</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
+        <a class="work-card work-card-finetune" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-finetune"><span class="work-index">03</span><strong>Qwen3<br><em>Médical</em></strong><span class="work-visual-note">LLM · fine-tuning</span></div><div class="work-card-copy"><span class="work-type">Fine-tuning LLM · domaine sensible</span><h3>Adapter un modèle à une tâche spécialisée</h3><p>Préparation de datasets médicaux bilingues, contrôles PII, entraînement LoRA 4-bit, SFT puis DPO. Le projet compare les gains sur QCM et réponses libres sans masquer les limites de validation.</p><div class="work-stack"><span>LoRA</span><span>SFT</span><span>DPO</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
+        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-rag"><span class="work-index">04</span><strong>Open<br>Agenda</strong><span class="work-visual-note">RAG · sources</span></div><div class="work-card-copy"><span class="work-type">Recherche augmentée · NLP</span><h3>Répondre avec des preuves</h3><p>Un pipeline collecte les événements, les transforme en JSONL, les indexe avec des embeddings Mistral et FAISS, puis expose une API FastAPI. La fidélité mesurée atteint 0,70 sur 10 cas.</p><div class="work-stack"><span>RAG</span><span>FAISS</span><span>FastAPI</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
+        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-credit"><span class="work-index">05</span><strong>Home<br>Credit</strong><span class="work-visual-note">MLOps · scoring</span></div><div class="work-card-copy"><span class="work-type">Machine learning · industrialisation</span><h3>Rendre un score exploitable</h3><p>Un modèle LightGBM sélectionné avec SHAP, servi par FastAPI et accompagné d’un dashboard Streamlit, de MLflow, Docker et CI/CD. Résultat observé : ROC-AUC 0,7699 sur le holdout.</p><div class="work-stack"><span>LightGBM</span><span>SHAP</span><span>MLflow</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
+        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-brain"><span class="work-index">06</span><strong>Brain<br>ScanAI</strong><span class="work-visual-note">Vision · semi-supervisé</span></div><div class="work-card-copy"><span class="work-type">Computer vision · expérimentation</span><h3>Explorer des labels incomplets</h3><p>Audit d’IRM, déduplication, embeddings ResNet18, clustering et pseudo-labels : une comparaison entre apprentissage supervisé et semi-supervisé, avec ses résultats négatifs documentés.</p><div class="work-stack"><span>PyTorch</span><span>ResNet18</span><span>CNN</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
+        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-check"><span class="work-index">07</span><strong>Check<br>It.AI</strong><span class="work-visual-note">Data · multimodal</span></div><div class="work-card-copy"><span class="work-type">Data engineering · pipeline</span><h3>Structurer un flux de données</h3><p>Collecte RSS, normalisation JSONL, stockage SQLite, orchestration Airflow et suivi dans Streamlit. Le run de référence traite 50 publications avec 14 tests.</p><div class="work-stack"><span>RSS</span><span>SQLite</span><span>Airflow</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
+        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-eagle"><span class="work-index">08</span><strong>Eagle<br>-1</strong><span class="work-visual-note">RL · agent DQN</span></div><div class="work-card-copy"><span class="work-type">Apprentissage par renforcement</span><h3>Évaluer un agent dans un environnement simulé</h3><p>Entraînement DQN sur LunarLander-v3, évaluation sur 100 épisodes, vidéo de démonstration, API FastAPI et dashboard Streamlit. 77 % des épisodes atteignent 200 points.</p><div class="work-stack"><span>DQN</span><span>Gymnasium</span><span>FastAPI</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
+        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-fashion"><span class="work-index">09</span><strong>Fashion<br><em>Insta</em></strong><span class="work-visual-note">Cadrage · Azure</span></div><div class="work-card-copy"><span class="work-type">Cadrage IA · décision produit</span><h3>Transformer une idée en décision Go / No-Go</h3><p>Cadrage d’un POC de recommandation vestimentaire : besoins métier, architecture Azure, coûts, ROI, risques RGPD et critères de décision pour un COMEX.</p><div class="work-stack"><span>Azure</span><span>ROI</span><span>RGPD</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
+      </div>
+      <a class="all-projects-link" href="${import.meta.env.BASE_URL}annexes/projets-formation.html">Voir les projets de formation <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section class="project-section" id="project">
+      <div class="section-heading split-heading">
+        <div><p class="eyebrow">Étude de cas</p><h2>Le pipeline du prototype,<br>de l’image au repère.</h2></div>
+        <p>Une photographie ne fournit ni masse, ni origine, ni recette. Le prototype sépare donc la classification, la saisie complémentaire et le calcul déterministe du repère climatique.</p>
+      </div>
+      <ol class="flow" aria-label="Architecture fonctionnelle">
+        <li><span>01</span><strong>Photo locale</strong><small>Décodage et recadrage 224 × 224</small></li>
+        <li><span>02</span><strong>EfficientNet</strong><small>Classification dans le navigateur</small></li>
+        <li><span>03</span><strong>Fusion</strong><small>Vision + texte + correction humaine</small></li>
+        <li><span>04</span><strong>Règles climat</strong><small><a class="inline-link" href="#data">8 profils AGRIBALYSE 3.2</a></small></li>
+        <li><span>05</span><strong>A–E ou ?</strong><small>Résultat, confiance et limites</small></li>
+      </ol>
+
+      <div class="principles-grid">
+        <article><span class="principle-label">Confidentialité</span><h3>Exécution locale</h3><p>Site statique, sans backend ni API d’image. Le réseau sert uniquement à charger les fichiers publics de l’application.</p></article>
+        <article><span class="principle-label">Contrôle humain</span><h3>Correction explicite</h3><p>Une suggestion peut être validée, retirée, remplacée ou complétée avec une description textuelle.</p></article>
+        <article><span class="principle-label">En cas de doute</span><h3>Afficher « ? » plutôt qu’inventer</h3><p>C’est la carte « Indicateur climatique qualitatif » qui affiche « ? » et le statut « À confirmer ». Cela arrive si la confiance est trop faible, si deux familles sont trop proches ou si aucune famille n’est reconnue ; ce n’est pas une statistique d’entraînement.</p></article>
+        <article><span class="principle-label">Traitement séparé</span><h3>Calcul explicable</h3><p>Le modèle classe l’image. Une couche déterministe et testée transforme ensuite les familles retenues en niveau qualitatif.</p></article>
       </div>
     </section>
 
@@ -234,27 +261,13 @@ app.innerHTML = `
       </div>
       <blockquote class="portfolio-message">Lecture du résultat : le fine-tuning améliore nettement le classement, mais certaines familles restent difficiles. Le seuil de rejet, le texte et la correction utilisateur compensent partiellement cette incertitude ; ils ne la suppriment pas.</blockquote>
       <p class="study-links"><a href="${import.meta.env.BASE_URL}annexes/evaluation.html">Voir les matrices, seuils et erreurs →</a> <a href="${import.meta.env.BASE_URL}annexes/audit-mapping-food101.html">Lire l’audit du mapping →</a> <a href="${import.meta.env.BASE_URL}annexes/benchmarks/food101-benchmark.json">Télécharger les résultats JSON →</a></p>
-    </section>
-
-    <section class="project-section" id="project">
-      <div class="section-heading split-heading">
-        <div><p class="eyebrow">Fonctionnement</p><h2>Le pipeline du prototype,<br>de l’image au repère.</h2></div>
-        <p>Une photographie ne fournit ni masse, ni origine, ni recette. Le prototype sépare donc la classification, la saisie complémentaire et le calcul déterministe du repère climatique.</p>
-      </div>
-      <ol class="flow" aria-label="Architecture fonctionnelle">
-        <li><span>01</span><strong>Photo locale</strong><small>Décodage et recadrage 224 × 224</small></li>
-        <li><span>02</span><strong>EfficientNet</strong><small>Classification dans le navigateur</small></li>
-        <li><span>03</span><strong>Fusion</strong><small>Vision + texte + correction humaine</small></li>
-        <li><span>04</span><strong>Règles climat</strong><small><a class="inline-link" href="#data">8 profils AGRIBALYSE 3.2</a></small></li>
-        <li><span>05</span><strong>A–E ou ?</strong><small>Résultat, confiance et limites</small></li>
-      </ol>
-
-      <div class="principles-grid">
-        <article><span class="principle-label">Confidentialité</span><h3>Exécution locale</h3><p>Site statique, sans backend ni API d’image. Le réseau sert uniquement à charger les fichiers publics de l’application.</p></article>
-        <article><span class="principle-label">Contrôle humain</span><h3>Correction explicite</h3><p>Une suggestion peut être validée, retirée, remplacée ou complétée avec une description textuelle.</p></article>
-        <article><span class="principle-label">En cas de doute</span><h3>Afficher « ? » plutôt qu’inventer</h3><p>C’est la carte « Indicateur climatique qualitatif » qui affiche « ? » et le statut « À confirmer ». Cela arrive si la confiance est trop faible, si deux familles sont trop proches ou si aucune famille n’est reconnue ; ce n’est pas une statistique d’entraînement.</p></article>
-        <article><span class="principle-label">Traitement séparé</span><h3>Calcul explicable</h3><p>Le modèle classe l’image. Une couche déterministe et testée transforme ensuite les familles retenues en niveau qualitatif.</p></article>
-      </div>
+      <aside class="evaluation-reflection">
+        <div><p class="eyebrow">Retour critique</p><h3>Ce qui reste à faire</h3></div>
+        <div>
+          <p>La prochaine étape est de mesurer l’écart entre Food-101 et des photos réellement prises par des utilisateurs, avec une annotation préalable et une mesure de correction.</p>
+          <p><strong>Avec plus de temps.</strong> Je constituerais un jeu photographié et autorisé, puis je réentraînerais avec des classes <code>mixed_dish</code> et <code>unknown</code> au lieu de forcer les plats composés dans une famille.</p>
+        </div>
+      </aside>
     </section>
 
     <section class="data-section" id="data" aria-labelledby="profiles-title">
@@ -272,44 +285,22 @@ app.innerHTML = `
       <p class="source-note">Source : ADEME, AGRIBALYSE® 3.2, indicateur « Changement climatique », Licence Ouverte 2.0. Les facteurs sont exprimés par kg de produit consommé et ne sont pas affichés comme résultat utilisateur.</p>
     </section>
 
-    <section class="training-section" id="training-projects" aria-labelledby="training-title">
-      <div class="section-heading split-heading">
-        <div><p class="eyebrow">Parcours de formation</p><h2 id="training-title">Huit projets,<br>huit situations d’IA.</h2></div>
-        <p>Chaque projet ci-dessous correspond à un dossier et à des livrables existants. Les résultats indiqués décrivent des expérimentations étudiantes, avec leurs limites.</p>
-      </div>
-      <div class="training-project-grid">
-        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Cadrage IA</span><h3>Fashion-Insta</h3><p>Recommandation vestimentaire : besoins, architecture Azure, coûts, RGPD et décision Go/No-Go.</p><small>Preuve : présentation COMEX</small></a>
-        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>MLOps</span><h3>Home Credit</h3><p>Scoring LightGBM, suivi MLflow, API FastAPI, dashboard Streamlit, Docker et CI.</p><small>ROC-AUC holdout : 0,7699</small></a>
-        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Vision</span><h3>BrainScanAI</h3><p>Audit d’IRM, embeddings ResNet18, clustering, pseudo-labels et comparaison de CNN.</p><small>Le semi-supervisé ne dépasse pas la baseline</small></a>
-        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Data engineering</span><h3>CheckIt.AI</h3><p>Pipeline texte-image avec RSS, JSONL, SQLite, Airflow et tableau de bord.</p><small>50 publications · 14 tests</small></a>
-        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>RAG</span><h3>OpenAgenda</h3><p>Collecte, embeddings Mistral, index FAISS, génération sourcée et API FastAPI.</p><small>Fidélité mesurée : 0,70 sur 10 cas</small></a>
-        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Apprentissage par renforcement</span><h3>Eagle-1</h3><p>Agent DQN LunarLander, évaluation, vidéo, API et interfaces Streamlit.</p><small>77 % des épisodes atteignent 200 points</small></a>
-        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Fine-tuning LLM</span><h3>Qwen3 médical</h3><p>Datasets bilingues, contrôles PII, LoRA 4-bit, SFT, DPO et évaluation.</p><small>QCM : 12/233 → 102/233</small></a>
-        <a href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><span>Agent IA</span><h3>Coach FFE</h3><p>Workflow LangGraph avec Lichess, Stockfish, Milvus, Angular et FastAPI.</p><small>Étude MCP séparée du POC implémenté</small></a>
-      </div>
-      <p class="training-project-link"><a href="${import.meta.env.BASE_URL}annexes/projets-formation.html">Consulter les objectifs, réalisations, résultats et limites →</a></p>
-    </section>
-
     <section class="skills-section" id="skills">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">Retour de projet</p><h2>Compétences mobilisées<br>et prochaines étapes.</h2></div>
-        <p>Les niveaux ci-dessous portent uniquement sur EcoPlate Edge. L’inventaire du parcours complète cette auto-évaluation avec les huit autres projets de formation.</p>
+        <div><p class="eyebrow">Compétences</p><h2>Concevoir, évaluer<br>et rendre utile.</h2></div>
+        <p>Un socle de compétences pour construire des systèmes d’IA documentés, mesurables et utilisables, du traitement des données jusqu’à la mise à disposition.</p>
       </div>
       <div class="skills-layout">
         <div class="skill-list">
-          <article><div><span>AI Engineering</span><strong>Intermédiaire</strong></div><p>Intégration d’un modèle quantifié, prétraitement, seuil de rejet et mesure de latence.</p><meter min="0" max="4" value="3">3 sur 4</meter></article>
-          <article><div><span>TypeScript & Web</span><strong>Intermédiaire</strong></div><p>Modules typés, interface responsive, accessibilité clavier et déploiement statique.</p><meter min="0" max="4" value="3">3 sur 4</meter></article>
-          <article><div><span>Audit data & IA responsable</span><strong>Intermédiaire</strong></div><p>Traçabilité des données, biais, limites d’usage et séparation prédiction/décision.</p><meter min="0" max="4" value="3">3 sur 4</meter></article>
-          <article><div><span>Industrialisation MLOps</span><strong>En progression</strong></div><p>Build reproductible et CI ; monitoring réel et réentraînement restent des axes futurs.</p><meter min="0" max="4" value="2">2 sur 4</meter></article>
+          <article><div><span>Industrialisation</span><strong>Opérationnel sur POC</strong></div><p>Exposer un modèle via une API ou une interface, automatiser le build et le déploiement, et structurer un service reproductible. Le monitoring et la maintenance en production restent à approfondir.</p></article>
+          <article><div><span>IA responsable</span><strong>Solide sur les principes</strong></div><p>Prendre en compte la confidentialité, les biais, l’incertitude et les limites d’usage, tout en laissant une place au contrôle humain. La gouvernance en production reste à renforcer.</p></article>
+          <article><div><span>Données & pipelines pour l’IA</span><strong>Autonome sur des pipelines structurés</strong></div><p>Préparer, normaliser, stocker et orchestrer les données nécessaires à un système d’IA dans des flux reproductibles et contrôlables.</p></article>
+          <article><div><span>LLM, RAG & agents</span><strong>Opérationnel sur POC</strong></div><p>Assembler recherche, sources, outils et modèles dans des workflows contrôlables, avec des sorties observables. La robustesse et l’évaluation en production restent à consolider.</p></article>
+          <article><div><span>Computer vision & Edge AI</span><strong>En consolidation</strong></div><p>Prétraiter des images, intégrer des modèles quantifiés, exécuter l’inférence localement et suivre les contraintes de latence.</p></article>
+          <article><div><span>Fine-tuning & adaptation de modèles</span><strong>Pratique expérimentée</strong></div><p>Préparer un dataset, contrôler les données sensibles, adapter un modèle et comparer les gains sur une tâche spécialisée.</p></article>
+          <article><div><span>Évaluation & expérimentation</span><strong>Compréhension opérationnelle</strong></div><p>Comprendre le rôle des baselines, métriques, ablations et analyses d’erreurs, puis appliquer ces méthodes dans un cadre défini sans revendiquer une expertise méthodologique.</p></article>
+          <article><div><span>Cadrage & architecture IA</span><strong>En développement</strong></div><p>Analyser un besoin, définir le périmètre d’un système, choisir une architecture et formaliser des critères de réussite.</p></article>
         </div>
-        <aside class="reflection-card">
-          <p class="eyebrow">Retour critique</p>
-          <h3>Ce qui reste à faire</h3>
-          <p>La prochaine étape est de mesurer l’écart entre Food-101 et des photos réellement prises par des utilisateurs, avec une annotation préalable et une mesure de correction.</p>
-          <h4>Avec plus de temps</h4>
-          <p>Je constituerais un jeu photographié et autorisé, puis je réentraînerais avec des classes <code>mixed_dish</code> et <code>unknown</code> au lieu de forcer les plats composés dans une famille.</p>
-          <div class="soft-skills"><span>Analyse</span><span>Autonomie</span><span>Vulgarisation</span><span>Arbitrage</span></div>
-        </aside>
       </div>
     </section>
 
@@ -323,7 +314,7 @@ app.innerHTML = `
     </section>
   </main>
 
-  <footer><div class="brand"><span class="brand-mark" aria-hidden="true">E</span><span>EcoPlate <em>Edge</em></span></div><p>Projet démonstrateur · Données indicatives · Traitement local</p><a href="#top">Retour en haut ↑</a></footer>
+  <footer><div class="brand"><span class="brand-mark" aria-hidden="true">P</span><span>Portfolio <em>AI Engineering</em></span></div><p>Projets · Expérimentations · IA responsable</p><a href="#top">Retour en haut ↑</a></footer>
 `;
 
 function required<T extends Element>(selector: string): T {
