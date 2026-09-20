@@ -104,22 +104,39 @@ app.innerHTML = `
 
     <section class="selected-work" id="selected-work" aria-labelledby="selected-work-title">
       <div class="section-heading selected-work-heading">
-        <div><p class="eyebrow">Sélection de projets</p><h2 id="selected-work-title">Des projets pour<br>montrer le chemin.</h2></div>
+        <div><p class="eyebrow">Sélection de projets</p><h2 id="selected-work-title">Une sélection de<br>projets IA & data.</h2></div>
         <p>Une sélection de travaux qui illustrent mon parcours : cadrage, données, modèles, fine-tuning, déploiement et évaluation de systèmes d’intelligence artificielle.</p>
       </div>
-      <div class="selected-work-grid">
-        <a class="featured-work-card" href="${import.meta.env.BASE_URL}ecoplate.html">
-          <div class="work-visual work-visual-eco"><span class="work-index">01</span><strong>EcoPlate<br><em>Edge</em></strong><span class="work-visual-note">Vision · local-first</span></div>
-          <div class="work-card-copy"><div><span class="work-type">Projet principal · étude de cas</span><h3>Un repère climatique à partir d’une image</h3></div><span class="work-arrow" aria-hidden="true">↗</span><p>J’ai conçu un POC local qui combine fine-tuning Food-101, fusion vision + texte et calcul déterministe basé sur AGRIBALYSE. L’interface laisse une place à la correction humaine et affiche ses limites.</p><div class="work-stack"><span>TypeScript</span><span>Computer Vision</span><span>IA responsable</span></div></div>
-        </a>
-        <a class="work-card work-card-agent" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-coach"><span class="work-index">02</span><strong>Coach<br><em>FFE</em></strong><span class="work-visual-note">Agent · LangGraph</span></div><div class="work-card-copy"><span class="work-type">Agent IA · orchestration</span><h3>Orchestrer un coach pédagogique aux échecs</h3><p>Workflow LangGraph reliant Lichess, Stockfish, une recherche vectorielle Milvus et des ressources vidéo, avec interface Angular et API FastAPI.</p><div class="work-stack"><span>LangGraph</span><span>Milvus</span><span>Angular</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
-        <a class="work-card work-card-finetune" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-finetune"><span class="work-index">03</span><strong>Qwen3<br><em>Médical</em></strong><span class="work-visual-note">LLM · fine-tuning</span></div><div class="work-card-copy"><span class="work-type">Fine-tuning LLM · domaine sensible</span><h3>Adapter un modèle à une tâche spécialisée</h3><p>Préparation de datasets médicaux bilingues, contrôles PII, entraînement LoRA 4-bit, SFT puis DPO. Le projet compare les gains sur QCM et réponses libres sans masquer les limites de validation.</p><div class="work-stack"><span>LoRA</span><span>SFT</span><span>DPO</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
-        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-rag"><span class="work-index">04</span><strong>Open<br>Agenda</strong><span class="work-visual-note">RAG · sources</span></div><div class="work-card-copy"><span class="work-type">Recherche augmentée · NLP</span><h3>Répondre avec des preuves</h3><p>Un pipeline collecte les événements, les transforme en JSONL, les indexe avec des embeddings Mistral et FAISS, puis expose une API FastAPI. La fidélité mesurée atteint 0,70 sur 10 cas.</p><div class="work-stack"><span>RAG</span><span>FAISS</span><span>FastAPI</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
-        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-credit"><span class="work-index">05</span><strong>Home<br>Credit</strong><span class="work-visual-note">MLOps · scoring</span></div><div class="work-card-copy"><span class="work-type">Machine learning · industrialisation</span><h3>Rendre un score exploitable</h3><p>Un modèle LightGBM sélectionné avec SHAP, servi par FastAPI et accompagné d’un dashboard Streamlit, de MLflow, Docker et CI/CD. Résultat observé : ROC-AUC 0,7699 sur le holdout.</p><div class="work-stack"><span>LightGBM</span><span>SHAP</span><span>MLflow</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
-        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-brain"><span class="work-index">06</span><strong>Brain<br>ScanAI</strong><span class="work-visual-note">Vision · semi-supervisé</span></div><div class="work-card-copy"><span class="work-type">Computer vision · expérimentation</span><h3>Explorer des labels incomplets</h3><p>Audit d’IRM, déduplication, embeddings ResNet18, clustering et pseudo-labels : une comparaison entre apprentissage supervisé et semi-supervisé, avec ses résultats négatifs documentés.</p><div class="work-stack"><span>PyTorch</span><span>ResNet18</span><span>CNN</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
-        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-check"><span class="work-index">07</span><strong>Check<br>It.AI</strong><span class="work-visual-note">Data · multimodal</span></div><div class="work-card-copy"><span class="work-type">Data engineering · pipeline</span><h3>Structurer un flux de données</h3><p>Collecte RSS, normalisation JSONL, stockage SQLite, orchestration Airflow et suivi dans Streamlit. Le run de référence traite 50 publications avec 14 tests.</p><div class="work-stack"><span>RSS</span><span>SQLite</span><span>Airflow</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
-        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-eagle"><span class="work-index">08</span><strong>Eagle<br>-1</strong><span class="work-visual-note">RL · agent DQN</span></div><div class="work-card-copy"><span class="work-type">Apprentissage par renforcement</span><h3>Évaluer un agent dans un environnement simulé</h3><p>Entraînement DQN sur LunarLander-v3, évaluation sur 100 épisodes, vidéo de démonstration, API FastAPI et dashboard Streamlit. 77 % des épisodes atteignent 200 points.</p><div class="work-stack"><span>DQN</span><span>Gymnasium</span><span>FastAPI</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
-        <a class="work-card" href="${import.meta.env.BASE_URL}annexes/projets-formation.html"><div class="work-visual work-visual-fashion"><span class="work-index">09</span><strong>Fashion<br><em>Insta</em></strong><span class="work-visual-note">Cadrage · Azure</span></div><div class="work-card-copy"><span class="work-type">Cadrage IA · décision produit</span><h3>Transformer une idée en décision Go / No-Go</h3><p>Cadrage d’un POC de recommandation vestimentaire : besoins métier, architecture Azure, coûts, ROI, risques RGPD et critères de décision pour un COMEX.</p><div class="work-stack"><span>Azure</span><span>ROI</span><span>RGPD</span></div><span class="work-arrow" aria-hidden="true">↗</span></div></a>
+      <div class="project-groups">
+        <section class="project-group" aria-labelledby="project-group-applied-title">
+          <div class="project-group-heading"><span class="project-group-number">01</span><div><h3 id="project-group-applied-title">IA appliquée</h3><p>Des projets où l’IA répond à un usage concret, de l’analyse d’une image à l’accompagnement d’un utilisateur.</p></div></div>
+          <div class="selected-work-grid">
+            <button class="work-card" type="button" data-project="ecoplate" aria-expanded="false" aria-controls="project-detail-applied"><div class="work-visual work-visual-eco"><span class="work-index">01</span><strong>Impact<br>climatique.</strong><span class="work-visual-note">EcoPlate Edge · Vision</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+            <button class="work-card work-card-agent" type="button" data-project="coach" aria-expanded="false" aria-controls="project-detail-applied"><div class="work-visual work-visual-coach"><span class="work-index">02</span><strong>Coach<br>d’échecs.</strong><span class="work-visual-note">Coach FFE · Agent IA</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+            <button class="work-card work-card-finetune" type="button" data-project="medical" aria-expanded="false" aria-controls="project-detail-applied"><div class="work-visual work-visual-finetune"><span class="work-index">03</span><strong>LLM<br>médical.</strong><span class="work-visual-note">Qwen3 Médical · LLM</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+          </div>
+          <div class="project-expanded-detail" id="project-detail-applied" aria-live="polite" hidden></div>
+        </section>
+
+        <section class="project-group" aria-labelledby="project-group-data-title">
+          <div class="project-group-heading"><span class="project-group-number">02</span><div><h3 id="project-group-data-title">Données et industrialisation</h3><p>Des projets centrés sur la collecte, la structuration, l’explication et la mise à disposition des résultats.</p></div></div>
+          <div class="selected-work-grid">
+            <button class="work-card" type="button" data-project="agenda" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-rag"><span class="work-index">04</span><strong>Recherche<br>sourcée.</strong><span class="work-visual-note">Open Agenda · RAG</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+            <button class="work-card" type="button" data-project="credit" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-credit"><span class="work-index">05</span><strong>Score de<br>crédit.</strong><span class="work-visual-note">Home Credit · MLOps</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+            <button class="work-card" type="button" data-project="check" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-check"><span class="work-index">06</span><strong>Pipeline<br>RSS.</strong><span class="work-visual-note">Check It.AI · Data</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+          </div>
+          <div class="project-expanded-detail" id="project-detail-data" aria-live="polite" hidden></div>
+        </section>
+
+        <section class="project-group" aria-labelledby="project-group-experiments-title">
+          <div class="project-group-heading"><span class="project-group-number">03</span><div><h3 id="project-group-experiments-title">Expérimentations et évaluation</h3><p>Des travaux qui testent des approches, leurs résultats et leurs limites sur des données imparfaites ou simulées.</p></div></div>
+          <div class="selected-work-grid">
+            <button class="work-card" type="button" data-project="brain" aria-expanded="false" aria-controls="project-detail-experiments"><div class="work-visual work-visual-brain"><span class="work-index">07</span><strong>Labels<br>incomplets.</strong><span class="work-visual-note">Brain ScanAI · Vision</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+            <button class="work-card" type="button" data-project="eagle" aria-expanded="false" aria-controls="project-detail-experiments"><div class="work-visual work-visual-eagle"><span class="work-index">08</span><strong>Apprentissage<br>RL.</strong><span class="work-visual-note">Eagle-1 · Reinforcement learning</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+            <button class="work-card" type="button" data-project="fashion" aria-expanded="false" aria-controls="project-detail-experiments"><div class="work-visual work-visual-fashion"><span class="work-index">09</span><strong>Conseil<br>vestimentaire.</strong><span class="work-visual-note">Fashion Insta · Cadrage</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+          </div>
+          <div class="project-expanded-detail" id="project-detail-experiments" aria-live="polite" hidden></div>
+        </section>
       </div>
       <a class="all-projects-link" href="${import.meta.env.BASE_URL}annexes/projets-formation.html">Voir les projets de formation <span aria-hidden="true">↗</span></a>
     </section>
@@ -365,6 +382,111 @@ const sectionsOnlyOnPortfolio = ['#portfolio-top', '#selected-work', '#skills', 
 
 if (isEcoPlatePage) {
   document.querySelector('footer a')?.setAttribute('href', '#project');
+}
+
+if (!isEcoPlatePage) {
+  const projectDetails = {
+    ecoplate: {
+      type: 'Projet principal · étude de cas',
+      title: 'Classification alimentaire et indicateur climatique',
+      description: 'Une application qui reconnaît un aliment à partir d’une photo et donne un indicateur climatique. L’utilisateur peut corriger le résultat ; tout fonctionne dans le navigateur.',
+      more: 'Le calcul de l’indicateur est séparé de la reconnaissance de l’image, afin de pouvoir expliquer le résultat et signaler les cas incertains.',
+      stack: ['TypeScript', 'Computer Vision', 'IA responsable'],
+    },
+    coach: {
+      type: 'Agent IA · orchestration',
+      title: 'Workflow LangGraph pour un coach d’échecs',
+      description: 'Un coach d’échecs qui analyse une partie et propose des ressources pour progresser. Le projet relie les parties jouées, l’analyse du moteur et les contenus pédagogiques.',
+      more: 'Le parcours s’appuie sur une partie Lichess, une analyse Stockfish, une recherche dans une base de contenus et des vidéos associées.',
+      stack: ['LangGraph', 'Milvus', 'Angular'],
+    },
+    medical: {
+      type: 'Fine-tuning LLM · domaine sensible',
+      title: 'Fine-tuning d’un LLM sur des données médicales',
+      description: 'Un modèle de langage adapté à des questions médicales en français et en anglais. Le travail porte sur les données, leur anonymisation et la comparaison de plusieurs méthodes d’entraînement.',
+      more: 'Les réponses sont comparées sur des QCM et des questions ouvertes ; le projet documente aussi les limites de la validation.',
+      stack: ['LoRA', 'SFT', 'DPO'],
+    },
+    agenda: {
+      type: 'Recherche augmentée · NLP',
+      title: 'Pipeline RAG pour des événements sourcés',
+      description: 'Un outil qui retrouve des événements dans plusieurs sources et répond en indiquant d’où vient l’information. Les contenus sont collectés, organisés puis recherchés par l’application.',
+      more: 'La référence comporte 10 cas de test, avec une fidélité mesurée à 0,70.',
+      stack: ['RAG', 'FAISS', 'FastAPI'],
+    },
+    credit: {
+      type: 'Machine learning · industrialisation',
+      title: 'Modèle de scoring crédit avec API et dashboard',
+      description: 'Un modèle qui estime un risque de crédit et permet d’expliquer les facteurs pris en compte. Le résultat est disponible dans une API et un tableau de bord.',
+      more: 'Le modèle obtient une ROC-AUC de 0,7699 sur le jeu de test conservé pour l’évaluation.',
+      stack: ['LightGBM', 'SHAP', 'MLflow'],
+    },
+    brain: {
+      type: 'Computer vision · expérimentation',
+      title: 'Expérimentation de vision sur des IRM peu annotées',
+      description: 'Une expérimentation sur des images d’IRM dont les annotations sont incomplètes. Plusieurs méthodes sont comparées pour voir ce qu’il est possible d’apprendre avec peu de données étiquetées.',
+      more: 'Le travail comprend un audit des images, la recherche de doublons et une comparaison entre méthodes supervisées et semi-supervisées.',
+      stack: ['PyTorch', 'ResNet18', 'CNN'],
+    },
+    check: {
+      type: 'Data engineering · pipeline',
+      title: 'Pipeline de collecte et de normalisation RSS',
+      description: 'Un pipeline qui récupère des articles depuis des flux RSS, les nettoie et les stocke pour les suivre dans une interface. Le scénario de référence traite 50 publications et s’appuie sur 14 tests.',
+      more: 'Les étapes de collecte, de nettoyage et de stockage sont séparées afin de pouvoir relancer ou contrôler chaque partie du traitement.',
+      stack: ['RSS', 'SQLite', 'Airflow'],
+    },
+    eagle: {
+      type: 'Apprentissage par renforcement',
+      title: 'Entraînement DQN sur LunarLander-v3',
+      description: 'Un programme apprend par essais et erreurs à piloter un module dans LunarLander. Il est évalué sur 100 parties ; 77 % atteignent le score de 200 points.',
+      more: 'L’évaluation est réalisée sur 100 épisodes indépendants, avec une vidéo pour observer le comportement obtenu.',
+      stack: ['DQN', 'Gymnasium', 'FastAPI'],
+    },
+    fashion: {
+      type: 'Cadrage IA · décision produit',
+      title: 'Cadrage d’un POC de recommandation vestimentaire',
+      description: 'Une étude pour déterminer si un service de recommandation de tenues mérite un prototype. Elle couvre le besoin, l’architecture, le coût, le retour attendu et les risques liés aux données personnelles.',
+      more: 'Le document aboutit à des critères de décision pour déterminer si le prototype doit être poursuivi.',
+      stack: ['Azure', 'ROI', 'RGPD'],
+    },
+  } as const;
+
+  let activeProjectCard: HTMLButtonElement | null = null;
+  let activeProjectPanel: HTMLElement | null = null;
+
+  document.querySelectorAll<HTMLButtonElement>('[data-project]').forEach((card) => {
+    const projectId = card.dataset.project as keyof typeof projectDetails;
+    const project = projectDetails[projectId];
+    const detail = card.querySelector<HTMLElement>('.work-card-detail');
+    if (!project || !detail) return;
+
+    detail.innerHTML = `<span class="work-card-detail-type">${project.type}</span><span class="work-card-detail-title">${project.title}</span><span class="work-card-detail-description">${project.description}</span><span class="work-stack">${project.stack.map((item) => `<span>${item}</span>`).join('')}</span>`;
+    detail.removeAttribute('aria-hidden');
+
+    card.addEventListener('click', () => {
+      const panel = card.closest<HTMLElement>('.project-group')?.querySelector<HTMLElement>('.project-expanded-detail');
+      if (!panel) return;
+
+      if (activeProjectCard === card) {
+        card.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+        activeProjectCard = null;
+        activeProjectPanel = null;
+        return;
+      }
+
+      if (activeProjectCard && activeProjectPanel) {
+        activeProjectCard.setAttribute('aria-expanded', 'false');
+        activeProjectPanel.hidden = true;
+      }
+
+      panel.innerHTML = `<div><span class="project-expanded-detail-type">${project.type}</span><span class="project-expanded-detail-title">${project.title}</span><span class="project-expanded-detail-description">${project.description}</span><span class="project-expanded-detail-more"><strong>En complément</strong>${project.more}</span></div><div class="project-expanded-detail-side"><span class="work-stack">${project.stack.map((item) => `<span>${item}</span>`).join('')}</span></div>`;
+      panel.hidden = false;
+      card.setAttribute('aria-expanded', 'true');
+      activeProjectCard = card;
+      activeProjectPanel = panel;
+    });
+  });
 }
 
 if (isEcoPlatePage) {
