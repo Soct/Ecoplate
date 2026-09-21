@@ -362,7 +362,7 @@ app.innerHTML = `
       <div class="section-heading"><div><p class="eyebrow">Documents associés</p><h2>Livrables principaux</h2></div><p>Ces documents complètent le portfolio et la démonstration en détaillant le projet, les choix réalisés et les axes de progression.</p></div>
       <div class="deliverable-grid">
         <a href="${import.meta.env.BASE_URL}livrables/rapport-conduite-projet.pdf"><span>PDF · Rapport</span><strong>Conduite de projet AI Engineering</strong><small>Besoin, audit, solution, risques et pilotage →</small></a>
-        <a href="${import.meta.env.BASE_URL}livrables/carte-mentale.svg"><span>SVG · Carte mentale</span><strong>Projets, compétences et progression</strong><small>Vue synthétique accessible →</small></a>
+        <a href="${import.meta.env.BASE_URL}livrables/carte-mentale.svg"><span>SVG · Carte mentale</span><strong>Projets, pratiques et progression</strong><small>Vue en branches avec liens vers les livrables →</small></a>
       </div>
       <p class="deliverables-note">Les fiches modèle et données, l’évaluation et les audits sont des annexes techniques. Elles restent accessibles depuis les sections où elles servent de preuve.</p>
     </section>

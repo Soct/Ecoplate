@@ -1,0 +1,23 @@
+Carte conceptuelle du parcours d’AI Engineer.
+
+Le centre présente mon fil conducteur : partir d’un besoin, comparer les solutions
+avec des mesures vérifiables, puis déployer et expliquer les limites. Les branches
+relient cette évolution à des situations concrètes.
+
+La branche EcoPlate Edge décrit le besoin, mon travail, le choix d’une inférence
+locale, les résultats Food-101, le mécanisme de correction et la validation terrain
+encore manquante. La branche technique associe quatre compétences à des pratiques
+concrètes et aux projets dans lesquels elles ont été mises en œuvre. La branche consacrée au métier oppose ma vision
+initiale, centrée sur le modèle, aux questions que je pose désormais sur le besoin,
+les données, le refus de répondre, la correction et la surveillance.
+
+Les compétences humaines sont illustrées par des décisions observables : présenter
+un résultat négatif, conduire un POC de bout en bout, expliquer un score prudent et
+retirer une option dont le gain n’est pas mesuré. Le bilan précise ce que je ferais
+différemment : collecter les données réelles plus tôt, suivre le temps passé et tester
+la compréhension avec des utilisateurs.
+
+Enfin, huit nœuds cliquables renvoient vers la section projets du portfolio pour
+Fashion-Insta, Home Credit, BrainScanAI, CheckIt.AI, OpenAgenda RAG, Eagle-1, Qwen3
+médical et Coach FFE. Chaque nœud résume l’apprentissage principal plutôt que
+d’énumérer des outils.

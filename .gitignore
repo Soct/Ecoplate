@@ -4,7 +4,6 @@ dist/
 coverage/
 dataset/
 training/artifacts/
-livrables/
 
 # Assets générés lors de l'installation et du build
 public/mediapipe/
