@@ -144,6 +144,7 @@ main { overflow: hidden; }
 .project-expanded-detail-more strong { display: block; margin-bottom: .25rem; color: var(--green); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
 .project-expanded-detail-side { display: grid; gap: 1rem; align-content: start; }
 .project-expanded-detail-side .work-stack { padding-top: 0; }
+.project-expanded-detail-link { justify-self: start; color: var(--green); font-size: .68rem; font-weight: 850; letter-spacing: .08em; text-decoration: underline; text-underline-offset: .25rem; text-transform: uppercase; }
 .all-projects-link { display: inline-flex; gap: .6rem; align-items: center; margin-top: 1.5rem; color: var(--lime); font-size: .72rem; font-weight: 850; letter-spacing: .07em; text-decoration: underline; text-underline-offset: .3rem; text-transform: uppercase; }
 .all-projects-link span { transition: transform 160ms ease; }
 .all-projects-link:hover span { transform: translateX(4px); }

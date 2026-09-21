@@ -43,20 +43,20 @@ app.innerHTML = `
     ${isEcoPlatePage ? `
     <section class="hero" id="top">
       <div class="hero-copy">
-        <p class="eyebrow">POC étudiant · repère climatique alimentaire</p>
+        <p class="eyebrow">Projet personnel · prototype web</p>
         <h1>EcoPlate<br><span>Edge</span></h1>
-        <p class="hero-tagline">Comprendre l’impact climatique indicatif d’un aliment à partir d’une photo</p>
-        <p class="hero-lead">Déposez une photo d’aliment : EcoPlate Edge identifie une famille alimentaire, puis affiche un repère climatique de A à E. Vous pouvez corriger la proposition ; l’analyse reste locale dans votre navigateur et s’appuie sur des références <a class="inline-link" href="#data">AGRIBALYSE</a>.</p>
+        <p class="hero-tagline">Prototype d’identification alimentaire et de calcul climatique qualitatif</p>
+        <p class="hero-lead">EcoPlate Edge prend une image locale, propose une ou plusieurs familles alimentaires, puis calcule un repère de A à E à partir de profils <a class="inline-link" href="#data">AGRIBALYSE</a>. La proposition peut être corrigée ; l’inférence et le calcul sont exécutés dans le navigateur.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#demo">Tester l’analyse</a>
-          <a class="text-link" href="#project">Voir le fonctionnement <span aria-hidden="true">↘</span></a>
+          <a class="button button-primary" href="#demo">Ouvrir la démonstration</a>
+          <a class="text-link" href="#project">Lire le fonctionnement <span aria-hidden="true">↘</span></a>
         </div>
-        <aside class="privacy-highlight" aria-label="Confidentialité et RGPD">
+        <aside class="privacy-highlight" aria-label="Traitement local des données">
           <span class="privacy-highlight-mark" aria-hidden="true">✓</span>
           <div>
-            <strong>Confidentialité · RGPD</strong>
-            <p>Vos images et descriptions restent dans votre navigateur. Aucune donnée n’est envoyée à un serveur et l’application ne nécessite aucun compte.</p>
-            <a class="privacy-highlight-link" href="#privacy">En savoir plus sur la confidentialité <span aria-hidden="true">→</span></a>
+            <strong>Traitement local</strong>
+            <p>Dans le périmètre actuel, les images, descriptions et résultats restent dans le navigateur. L’application n’a ni compte ni API d’inférence.</p>
+            <a class="privacy-highlight-link" href="#privacy">Voir le détail du traitement <span aria-hidden="true">→</span></a>
           </div>
         </aside>
         <dl class="hero-stats">
@@ -67,7 +67,7 @@ app.innerHTML = `
       </div>
       <div class="hero-visual" aria-label="Schéma du parcours de l’image vers l’indicateur">
         <div class="process-board">
-          <div class="process-board-header"><span>Flux de traitement</span><strong>dans le navigateur</strong></div>
+          <div class="process-board-header"><span>Pipeline du prototype</span><strong>dans le navigateur</strong></div>
           <div class="process-line" aria-hidden="true"></div>
           <div class="process-node node-input"><strong>Image</strong><small>fichier local</small></div>
           <div class="process-node node-model"><strong>Modèle</strong><small>Food-101 · int8</small></div>
@@ -80,23 +80,23 @@ app.innerHTML = `
 
     <section class="portfolio-hero" id="${isEcoPlatePage ? 'portfolio-top' : 'top'}">
       <div class="portfolio-hero-copy">
-        <p class="eyebrow">Portfolio · IA & data</p>
+        <p class="eyebrow">Portfolio · projets personnels et de formation</p>
         <h1><strong class="hero-title-line">Je transforme</strong><br><span>des idées</span><br>en systèmes utiles.</h1>
         <p class="portfolio-tagline">Construire des outils à la croisée du logiciel, des données et de l’intelligence artificielle.</p>
-        <p class="portfolio-lead">Une sélection de projets réalisés au fil de ma formation, entre expérimentation et conception.</p>
+        <p class="portfolio-lead">Ce portfolio rassemble des projets réalisés pendant ma formation, avec leurs résultats, leurs méthodes et leurs limites.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#selected-work">Découvrir mes projets <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="#skills">Voir mes compétences <span aria-hidden="true">↘</span></a>
+          <a class="button button-primary" href="#selected-work">Parcourir les projets <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#skills">Voir les compétences mobilisées <span aria-hidden="true">↘</span></a>
         </div>
-        <div class="portfolio-availability"><span aria-hidden="true">●</span> Sélection personnelle · projets d’IA & data</div>
+        <div class="portfolio-availability"><span aria-hidden="true">●</span> 9 projets · IA, data et expérimentation</div>
       </div>
       <div class="portfolio-hero-visual" aria-label="Présentation visuelle du profil">
         <div class="portfolio-stamp">AI<br><span>ENGINEERING</span></div>
         <div class="hero-profile-card">
           <div class="profile-card-top"><span>01 / 04</span><span>Profil</span></div>
           <div class="profile-portrait" aria-hidden="true"><span>AI</span></div>
-          <p class="profile-card-kicker">Ce que je construis</p>
-          <h2>Des projets d’IA<br>de la donnée<br>à l’usage.</h2>
+          <p class="profile-card-kicker">Périmètre du portfolio</p>
+          <h2>Données, modèles<br>et systèmes<br>évalués.</h2>
           <div class="profile-card-tags"><span>ML</span><span>Data</span><span>IA responsable</span></div>
         </div>
       </div>
@@ -104,12 +104,12 @@ app.innerHTML = `
 
     <section class="selected-work" id="selected-work" aria-labelledby="selected-work-title">
       <div class="section-heading selected-work-heading">
-        <div><p class="eyebrow">Sélection de projets</p><h2 id="selected-work-title">Une sélection de<br>projets IA & data.</h2></div>
-        <p>Une sélection de travaux qui illustrent mon parcours : cadrage, données, modèles, fine-tuning, déploiement et évaluation de systèmes d’intelligence artificielle.</p>
+        <div><p class="eyebrow">Projets présentés</p><h2 id="selected-work-title">Projets d’IA<br>et de data.</h2></div>
+        <p>Les projets sont regroupés par type de travail : application d’un modèle, traitement des données, industrialisation, expérimentation et évaluation.</p>
       </div>
       <div class="project-groups">
         <section class="project-group" aria-labelledby="project-group-applied-title">
-          <div class="project-group-heading"><span class="project-group-number">01</span><div><h3 id="project-group-applied-title">IA appliquée</h3><p>Des projets où l’IA répond à un usage concret, de l’analyse d’une image à l’accompagnement d’un utilisateur.</p></div></div>
+          <div class="project-group-heading"><span class="project-group-number">01</span><div><h3 id="project-group-applied-title">IA appliquée</h3><p>Des projets qui intègrent un modèle dans une interface ou un workflow utilisable.</p></div></div>
           <div class="selected-work-grid">
             <button class="work-card" type="button" data-project="ecoplate" aria-expanded="false" aria-controls="project-detail-applied"><div class="work-visual work-visual-eco"><span class="work-index">01</span><strong>Impact<br>climatique.</strong><span class="work-visual-note">EcoPlate Edge · Vision</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
             <button class="work-card work-card-agent" type="button" data-project="coach" aria-expanded="false" aria-controls="project-detail-applied"><div class="work-visual work-visual-coach"><span class="work-index">02</span><strong>Coach<br>d’échecs.</strong><span class="work-visual-note">Coach FFE · Agent IA</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
@@ -119,7 +119,7 @@ app.innerHTML = `
         </section>
 
         <section class="project-group" aria-labelledby="project-group-data-title">
-          <div class="project-group-heading"><span class="project-group-number">02</span><div><h3 id="project-group-data-title">Données et industrialisation</h3><p>Des projets centrés sur la collecte, la structuration, l’explication et la mise à disposition des résultats.</p></div></div>
+          <div class="project-group-heading"><span class="project-group-number">02</span><div><h3 id="project-group-data-title">Données et industrialisation</h3><p>Des projets consacrés aux pipelines, aux sources, à l’explicabilité et à la mise à disposition des résultats.</p></div></div>
           <div class="selected-work-grid">
             <button class="work-card" type="button" data-project="agenda" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-rag"><span class="work-index">04</span><strong>Recherche<br>sourcée.</strong><span class="work-visual-note">Open Agenda · RAG</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
             <button class="work-card" type="button" data-project="credit" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-credit"><span class="work-index">05</span><strong>Score de<br>crédit.</strong><span class="work-visual-note">Home Credit · MLOps</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
@@ -129,7 +129,7 @@ app.innerHTML = `
         </section>
 
         <section class="project-group" aria-labelledby="project-group-experiments-title">
-          <div class="project-group-heading"><span class="project-group-number">03</span><div><h3 id="project-group-experiments-title">Expérimentations et évaluation</h3><p>Des travaux qui testent des approches, leurs résultats et leurs limites sur des données imparfaites ou simulées.</p></div></div>
+          <div class="project-group-heading"><span class="project-group-number">03</span><div><h3 id="project-group-experiments-title">Expérimentations et évaluation</h3><p>Des travaux qui comparent des approches, leurs résultats et leurs limites sur des données imparfaites ou simulées.</p></div></div>
           <div class="selected-work-grid">
             <button class="work-card" type="button" data-project="brain" aria-expanded="false" aria-controls="project-detail-experiments"><div class="work-visual work-visual-brain"><span class="work-index">07</span><strong>Labels<br>incomplets.</strong><span class="work-visual-note">Brain ScanAI · Vision</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
             <button class="work-card" type="button" data-project="eagle" aria-expanded="false" aria-controls="project-detail-experiments"><div class="work-visual work-visual-eagle"><span class="work-index">08</span><strong>Apprentissage<br>RL.</strong><span class="work-visual-note">Eagle-1 · Reinforcement learning</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
@@ -138,12 +138,12 @@ app.innerHTML = `
           <div class="project-expanded-detail" id="project-detail-experiments" aria-live="polite" hidden></div>
         </section>
       </div>
-      <a class="all-projects-link" href="${import.meta.env.BASE_URL}annexes/projets-formation.html">Voir les projets de formation <span aria-hidden="true">↗</span></a>
+      <a class="all-projects-link" href="${import.meta.env.BASE_URL}annexes/projets-formation.html">Voir l’inventaire détaillé <span aria-hidden="true">↗</span></a>
     </section>
 
     <section class="project-section" id="project">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">Étude de cas</p><h2>Le pipeline du prototype,<br>de l’image au repère.</h2></div>
+        <div><p class="eyebrow">Architecture fonctionnelle</p><h2>De l’image au repère climatique.</h2></div>
         <p>Une photographie ne fournit ni masse, ni origine, ni recette. Le prototype sépare donc la classification, la saisie complémentaire et le calcul déterministe du repère climatique.</p>
       </div>
       <ol class="flow" aria-label="Architecture fonctionnelle">
@@ -164,7 +164,7 @@ app.innerHTML = `
 
     <section class="demo-section" id="demo" aria-labelledby="demo-title">
       <div class="section-heading">
-        <div><p class="eyebrow">Démonstration interactive</p><h2 id="demo-title">Analysez un aliment simple</h2></div>
+        <div><p class="eyebrow">Démonstration du prototype</p><h2 id="demo-title">Analyser un aliment simple</h2></div>
         <p>Le <a class="resource-link" href="${import.meta.env.BASE_URL}annexes/model-card.html">modèle Food-101 fine-tuné</a> (int8, 3,95 Mio) est entraîné sur le <a class="resource-link" href="https://huggingface.co/datasets/ethz/food101" target="_blank" rel="noreferrer">dataset Food-101</a>. Le <a class="resource-link" href="https://ai.google.dev/edge/mediapipe/solutions/vision/image_classifier" target="_blank" rel="noreferrer">modèle EfficientNet-Lite0 original</a> reste disponible comme baseline ; il a été entraîné sur le <a class="resource-link" href="https://www.image-net.org/" target="_blank" rel="noreferrer">dataset ImageNet</a>. La <a class="resource-link" href="${import.meta.env.BASE_URL}annexes/model-card.html">fiche des deux modèles utilisés</a> détaille les artefacts chargés par l’application.</p>
       </div>
 
@@ -180,7 +180,7 @@ app.innerHTML = `
             </span>
           </label>
           <input class="visually-hidden" id="image-file" type="file" accept="image/jpeg,image/png,image/webp" />
-          <div class="privacy-guarantees" aria-label="Garanties de confidentialité">
+          <div class="privacy-guarantees" aria-label="Propriétés du traitement">
             <div><strong>Local</strong><small>Analyse dans le navigateur</small></div>
             <div><strong>Sans compte</strong><small>Aucune inscription requise</small></div>
             <div><strong>Non transmis</strong><small>Aucune image envoyée</small></div>
@@ -257,8 +257,8 @@ app.innerHTML = `
 
     <section class="privacy-section" id="privacy" aria-labelledby="privacy-title">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">Confidentialité et traitement local</p><h2 id="privacy-title">Vos données restent<br>sur votre appareil.</h2></div>
-        <p>EcoPlate Edge est conçu pour analyser une image sans l’envoyer à un service distant. Cette page explique concrètement ce qui se passe lorsque vous lancez une analyse.</p>
+        <div><p class="eyebrow">Données et exécution</p><h2 id="privacy-title">Ce que fait le navigateur<br>pendant l’analyse.</h2></div>
+        <p>Le prototype analyse l’image sans l’envoyer à un service d’inférence distant. Cette section distingue les données utilisateur des fichiers nécessaires au fonctionnement de la page.</p>
       </div>
       <div class="privacy-grid">
         <article><span class="privacy-card-label">Reste sur l’appareil</span><h3>Image, texte et résultat</h3><p>Votre image, votre description, les prédictions et le résultat climatique sont manipulés dans la mémoire de votre navigateur. Ils ne sont pas téléversés ni enregistrés par l’application sur un serveur.</p></article>
@@ -270,7 +270,7 @@ app.innerHTML = `
 
     <section class="capability-section" aria-labelledby="capability-title">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">Périmètre du prototype</p><h2 id="capability-title">Ce qui est évalué<br>et ce qui ne l’est pas.</h2></div>
+        <div><p class="eyebrow">Périmètre et limites</p><h2 id="capability-title">Ce que les mesures<br>permettent d’affirmer.</h2></div>
         <p>Les métriques du projet portent sur le split de validation Food-101 relabellisé. Elles ne mesurent pas la performance sur des photos prises par de vrais utilisateurs.</p>
       </div>
       <div class="capability-grid">
@@ -282,7 +282,7 @@ app.innerHTML = `
 
     <section class="benchmark-section" id="study" aria-labelledby="study-title">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">Résultats disponibles</p><h2 id="study-title">Ce que montrent<br>les évaluations.</h2></div>
+        <div><p class="eyebrow">Évaluation</p><h2 id="study-title">Résultats et limites<br>de mesure.</h2></div>
         <p>Les chiffres ci-dessous portent sur le split de validation Food-101 relabellisé. Ils documentent le comportement du prototype, pas une performance garantie sur des photos utilisateur.</p>
       </div>
       <div class="notice notice-warning evaluation-device-note"><strong>Reproductibilité :</strong> une même image relancée dans le même contexte produit le même résultat observé. Entre ordinateur et téléphone, les scores peuvent toutefois différer : sur <code>image1.png</code>, le PC propose <code>dairy / plants / beef</code> et le mobile <code>dairy / plants / fish</code>. Le pipeline local (canvas, décodage, WASM/CPU ou navigateur) n’est donc pas encore considéré comme équivalent entre appareils. <a class="inline-link" href="${import.meta.env.BASE_URL}annexes/evaluation.html">Détail de la limite →</a></div>
@@ -342,8 +342,8 @@ app.innerHTML = `
 
     <section class="skills-section" id="skills">
       <div class="section-heading split-heading">
-        <div><p class="eyebrow">Compétences</p><h2>Concevoir, évaluer<br>et rendre utile.</h2></div>
-        <p>Un socle de compétences pour construire des systèmes d’IA documentés, mesurables et utilisables, du traitement des données jusqu’à la mise à disposition.</p>
+        <div><p class="eyebrow">Compétences mobilisées</p><h2>${isEcoPlatePage ? 'Ce que le projet<br>m’a permis de mettre en œuvre.' : 'Méthodes et compétences<br>mises en pratique.'}</h2></div>
+        <p>${isEcoPlatePage ? 'Le projet couvre le cadrage, la préparation des données, l’intégration d’un modèle quantifié, l’évaluation et la documentation d’un prototype local.' : 'Les projets montrent les méthodes utilisées pour cadrer un besoin, préparer les données, intégrer un modèle, évaluer ses résultats et documenter ses limites.'}</p>
       </div>
       <div class="skills-layout">
         <div class="skill-list">
@@ -360,7 +360,7 @@ app.innerHTML = `
     </section>
 
     <section class="deliverables-section" id="deliverables">
-      <div class="section-heading"><div><p class="eyebrow">Documents demandés</p><h2>Livrables principaux</h2></div><p>Le portfolio et la démonstration correspondent à cette page. Deux documents complémentaires sont à remettre avec elle.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Documents associés</p><h2>Livrables principaux</h2></div><p>Ces documents complètent le portfolio et la démonstration en détaillant le projet, les choix réalisés et les axes de progression.</p></div>
       <div class="deliverable-grid">
         <a href="${import.meta.env.BASE_URL}livrables/rapport-conduite-projet.pdf"><span>PDF · Rapport</span><strong>Conduite de projet AI Engineering</strong><small>Besoin, audit, solution, risques et pilotage →</small></a>
         <a href="${import.meta.env.BASE_URL}livrables/carte-mentale.svg"><span>SVG · Carte mentale</span><strong>Projets, compétences et progression</strong><small>Vue synthétique accessible →</small></a>
@@ -370,8 +370,8 @@ app.innerHTML = `
   </main>
 
   <footer>${isEcoPlatePage
-    ? '<div class="brand"><span class="brand-mark" aria-hidden="true">E</span><span>EcoPlate <em>Edge</em></span></div><p>Prototype local · IA responsable</p><a href="#top">Retour en haut ↑</a>'
-    : '<div class="brand"><span class="brand-mark" aria-hidden="true">P</span><span>Portfolio <em>AI Engineering</em></span></div><p>Projets · Expérimentations · IA responsable</p><a href="#top">Retour en haut ↑</a>'}</footer>
+    ? '<div class="brand"><span class="brand-mark" aria-hidden="true">E</span><span>EcoPlate <em>Edge</em></span></div><p>Projet personnel · prototype local</p><a href="#top">Retour en haut ↑</a>'
+    : '<div class="brand"><span class="brand-mark" aria-hidden="true">P</span><span>Portfolio <em>AI Engineering</em></span></div><p>Projets · Expérimentations · Documentation</p><a href="#top">Retour en haut ↑</a>'}</footer>
 `;
 
 const sectionsOnlyOnEcoPlate = ['#project', '#demo', '#privacy', '.capability-section', '#study', '#data'];
@@ -389,65 +389,74 @@ if (!isEcoPlatePage) {
     ecoplate: {
       type: 'Projet principal · étude de cas',
       title: 'Classification alimentaire et indicateur climatique',
-      description: 'Une application qui reconnaît un aliment à partir d’une photo et donne un indicateur climatique. L’utilisateur peut corriger le résultat ; tout fonctionne dans le navigateur.',
-      more: 'Le calcul de l’indicateur est séparé de la reconnaissance de l’image, afin de pouvoir expliquer le résultat et signaler les cas incertains.',
-      stack: ['TypeScript', 'Computer Vision', 'IA responsable'],
+      description: 'Prototype web statique qui exécute dans le navigateur un EfficientNet-Lite0 int8 fine-tuné sur Food-101. Les prédictions visuelles sont combinées avec une description textuelle et les corrections de l’utilisateur avant le calcul d’un niveau A–E.',
+      more: 'Le modèle occupe 3,95 Mio. Le traitement ne comporte pas de backend d’inférence et l’image n’est pas envoyée. Le calcul est séparé du modèle et utilise huit profils AGRIBALYSE 3.2 ; une sortie « ? » est conservée lorsque les éléments sont insuffisants ou ambigus.',
+      stack: ['TypeScript', 'EfficientNet', 'AGRIBALYSE', 'Edge AI'],
+      href: `${import.meta.env.BASE_URL}ecoplate.html`,
     },
     coach: {
       type: 'Agent IA · orchestration',
       title: 'Workflow LangGraph pour un coach d’échecs',
-      description: 'Un coach d’échecs qui analyse une partie et propose des ressources pour progresser. Le projet relie les parties jouées, l’analyse du moteur et les contenus pédagogiques.',
-      more: 'Le parcours s’appuie sur une partie Lichess, une analyse Stockfish, une recherche dans une base de contenus et des vidéos associées.',
-      stack: ['LangGraph', 'Milvus', 'Angular'],
+      description: 'Interface Angular et API FastAPI pour analyser une position FEN. Le workflow LangGraph choisit les données théoriques de Lichess lorsqu’elles sont disponibles, ou une analyse Stockfish dans le cas contraire, puis ajoute un contexte d’ouverture et des ressources.',
+      more: 'Le corpus local comprend 85 fiches Wikichess indexées dans Milvus. Une recherche locale est utilisée si Milvus est indisponible et MongoDB sert de cache pour les recherches YouTube. La détection de positions dans des vidéos et le serveur MCP figurent dans l’étude, pas dans le POC livré.',
+      stack: ['LangGraph', 'FastAPI', 'Stockfish', 'Milvus'],
+      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     medical: {
       type: 'Fine-tuning LLM · domaine sensible',
       title: 'Fine-tuning d’un LLM sur des données médicales',
-      description: 'Un modèle de langage adapté à des questions médicales en français et en anglais. Le travail porte sur les données, leur anonymisation et la comparaison de plusieurs méthodes d’entraînement.',
-      more: 'Les réponses sont comparées sur des QCM et des questions ouvertes ; le projet documente aussi les limites de la validation.',
-      stack: ['LoRA', 'SFT', 'DPO'],
+      description: 'Travail d’adaptation de Qwen3 1,7B en 4-bit avec Unsloth, LoRA, SFT puis DPO sur des données médicales bilingues. L’évaluation compare le modèle de base et le modèle SFT sur 267 réponses libres et 233 QCM.',
+      more: 'Sur les QCM, le modèle SFT obtient 102 réponses exactes contre 12 pour le modèle de base (233 cas). Sur les réponses libres, METEOR passe de 0,1361 à 0,1653, avec une dispersion plus élevée. Ces résultats ne remplacent pas une validation médicale humaine et les licences des sources doivent être vérifiées.',
+      stack: ['Qwen3 1.7B', 'LoRA', 'SFT', 'DPO'],
+      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     agenda: {
       type: 'Recherche augmentée · NLP',
       title: 'Pipeline RAG pour des événements sourcés',
-      description: 'Un outil qui retrouve des événements dans plusieurs sources et répond en indiquant d’où vient l’information. Les contenus sont collectés, organisés puis recherchés par l’application.',
-      more: 'La référence comporte 10 cas de test, avec une fidélité mesurée à 0,70.',
-      stack: ['RAG', 'FAISS', 'FastAPI'],
+      description: 'Pipeline de collecte OpenAgenda pour des événements d’Île-de-France : normalisation en JSONL, embeddings Mistral, recherche FAISS, filtrage temporel et génération d’une réponse avec ses sources via FastAPI.',
+      more: 'L’index IndexFlatIP contient environ 65 000 segments et les événements terminés sont filtrés avant la réponse. Sur 10 cas annotés, les scores sont de 1,0000 en précision du contexte, 0,8536 en pertinence de réponse et 0,7000 en fidélité. Le dépôt contient 76 tests et une couverture observée de 71 %.',
+      stack: ['Mistral', 'FAISS', 'FastAPI', 'RAGAS'],
+      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     credit: {
       type: 'Machine learning · industrialisation',
       title: 'Modèle de scoring crédit avec API et dashboard',
-      description: 'Un modèle qui estime un risque de crédit et permet d’expliquer les facteurs pris en compte. Le résultat est disponible dans une API et un tableau de bord.',
-      more: 'Le modèle obtient une ROC-AUC de 0,7699 sur le jeu de test conservé pour l’évaluation.',
-      stack: ['LightGBM', 'SHAP', 'MLflow'],
+      description: 'Pipeline de scoring Home Credit basé sur LightGBM et StandardScaler. 20 variables sont conservées parmi 795 après sélection SHAP et rééquilibrage 1:1 ; une API FastAPI expose les prédictions et un dashboard Streamlit présente le modèle et son suivi.',
+      more: 'Sur le holdout, la ROC-AUC est de 0,7699 et le rappel de 0,6988 au seuil métier 0,52. Le seuil encode un coût dix fois supérieur pour un faux négatif. Le dépôt comprend le suivi MLflow, les logs JSONL, une page de dérive Evidently, des conteneurs Docker, une CI et une configuration de déploiement Fly.io.',
+      stack: ['LightGBM', 'SHAP', 'MLflow', 'FastAPI'],
+      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     brain: {
       type: 'Computer vision · expérimentation',
       title: 'Expérimentation de vision sur des IRM peu annotées',
-      description: 'Une expérimentation sur des images d’IRM dont les annotations sont incomplètes. Plusieurs méthodes sont comparées pour voir ce qu’il est possible d’apprendre avec peu de données étiquetées.',
-      more: 'Le travail comprend un audit des images, la recherche de doublons et une comparaison entre méthodes supervisées et semi-supervisées.',
-      stack: ['PyTorch', 'ResNet18', 'CNN'],
+      description: 'Expérimentation sur 1 506 images d’IRM de 512 × 512 : audit, déduplication, embeddings ResNet18, comparaison de quatre méthodes de clustering et génération de pseudo-labels. Deux CNN sont ensuite comparés sur un test stratifié de 20 images séparé de l’entraînement.',
+      more: 'Le rappel cancer est de 1,00 avec les annotations expertes, 0,90 avec les labels faibles seuls et 0,80 en semi-supervisé. Les F1 sont respectivement de 0,667, 0,643 et 0,593. Le seuil de rappel est atteint par l’approche semi-supervisée, mais pas le F1 de référence ; aucune conclusion clinique n’est possible.',
+      stack: ['PyTorch', 'ResNet18', 'Clustering', 'Pseudo-labels'],
+      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     check: {
       type: 'Data engineering · pipeline',
       title: 'Pipeline de collecte et de normalisation RSS',
-      description: 'Un pipeline qui récupère des articles depuis des flux RSS, les nettoie et les stocke pour les suivre dans une interface. Le scénario de référence traite 50 publications et s’appuie sur 14 tests.',
-      more: 'Les étapes de collecte, de nettoyage et de stockage sont séparées afin de pouvoir relancer ou contrôler chaque partie du traitement.',
+      description: 'Pipeline ETL qui collecte des publications contenant du texte et une image depuis BBC News World et France 24. Les données sont nettoyées, dédupliquées, écrites en JSONL puis chargées de manière idempotente dans SQLite ; Airflow ordonnance les trois étapes.',
+      more: 'Une exécution documentée traite 50 publications de l’extraction au chargement, avec 10 tests réussis et 88,27 % de couverture. Le tableau de bord KPI indique 100 % d’images valides sur cet échantillon. Les flux ne fournissent pas de labels vrai/faux : le projet prépare les données et n’entraîne pas de classifieur.',
       stack: ['RSS', 'SQLite', 'Airflow'],
+      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     eagle: {
       type: 'Apprentissage par renforcement',
       title: 'Entraînement DQN sur LunarLander-v3',
-      description: 'Un programme apprend par essais et erreurs à piloter un module dans LunarLander. Il est évalué sur 100 parties ; 77 % atteignent le score de 200 points.',
-      more: 'L’évaluation est réalisée sur 100 épisodes indépendants, avec une vidéo pour observer le comportement obtenu.',
-      stack: ['DQN', 'Gymnasium', 'FastAPI'],
+      description: 'Notebook d’entraînement d’un agent DQN sur l’environnement discret LunarLander-v3. Le meilleur checkpoint est servi par FastAPI pour prédire une action ou exécuter un épisode ; une interface et un tableau de bord Streamlit consomment cette API.',
+      more: 'Sur 100 épisodes, la configuration retenue obtient 225,42 ± 103,73, avec 77 % d’épisodes à 200 points ou plus. La baseline obtient 156,11 ± 61,21. La vidéo fournie dure 23,75 secondes ; l’environnement simulé et la dispersion des récompenses limitent la portée du résultat.',
+      stack: ['DQN', 'Gymnasium', 'FastAPI', 'Streamlit'],
+      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     fashion: {
       type: 'Cadrage IA · décision produit',
       title: 'Cadrage d’un POC de recommandation vestimentaire',
-      description: 'Une étude pour déterminer si un service de recommandation de tenues mérite un prototype. Elle couvre le besoin, l’architecture, le coût, le retour attendu et les risques liés aux données personnelles.',
-      more: 'Le document aboutit à des critères de décision pour déterminer si le prototype doit être poursuivi.',
-      stack: ['Azure', 'ROI', 'RGPD'],
+      description: 'Cadrage Data & IA d’un service qui rapproche une photo de tenue du catalogue Fashion-Insta. Le périmètre du PoC compare une référence fondée sur les tags et les couleurs avec une approche par embeddings et recherche vectorielle sur 275 articles, soit 61,5 % du chiffre d’affaires.',
+      more: 'L’architecture cible décrit le stockage Blob, Azure AI Search, Azure ML, le monitoring et les mesures RGPD. Les critères de décision portent sur la pertinence dans le Top-5, la précision@5, la couverture, une latence p95 inférieure à 2 secondes et un coût inférieur à 0,05 € par requête. Le moteur de recommandation n’est pas implémenté dans ce projet de cadrage.',
+      stack: ['Azure', 'Embeddings', 'Vector search', 'RGPD'],
+      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
   } as const;
 
@@ -480,7 +489,7 @@ if (!isEcoPlatePage) {
         activeProjectPanel.hidden = true;
       }
 
-      panel.innerHTML = `<div><span class="project-expanded-detail-type">${project.type}</span><span class="project-expanded-detail-title">${project.title}</span><span class="project-expanded-detail-description">${project.description}</span><span class="project-expanded-detail-more"><strong>En complément</strong>${project.more}</span></div><div class="project-expanded-detail-side"><span class="work-stack">${project.stack.map((item) => `<span>${item}</span>`).join('')}</span></div>`;
+      panel.innerHTML = `<div><span class="project-expanded-detail-type">${project.type}</span><span class="project-expanded-detail-title">${project.title}</span><span class="project-expanded-detail-description">${project.description}</span><span class="project-expanded-detail-more"><strong>En complément</strong>${project.more}</span></div><div class="project-expanded-detail-side"><span class="work-stack">${project.stack.map((item) => `<span>${item}</span>`).join('')}</span><a class="project-expanded-detail-link" href="${project.href}">Ouvrir le projet <span aria-hidden="true">↗</span></a></div>`;
       panel.hidden = false;
       card.setAttribute('aria-expanded', 'true');
       activeProjectCard = card;
