@@ -1,18 +1,22 @@
-Carte mentale d’auto-évaluation — EcoPlate Edge.
+Carte conceptuelle d’auto-évaluation — parcours d’AI Engineer.
 
-Le centre résume l’évolution de ma perception du métier : au départ, utiliser un
-modèle existant ; aujourd’hui, définir un besoin, mesurer, déployer, surveiller et
-expliquer ses limites. Six branches présentent :
+Le centre présente mon fil conducteur : partir d’un besoin, comparer les solutions
+avec des mesures vérifiables, puis déployer et expliquer les limites. Les branches
+relient cette évolution à des situations concrètes.
 
-1. le POC étudiant, ma contribution, ses résultats et sa limite actuelle ;
-2. les compétences techniques auto-évaluées de 2 à 3 sur 4 ;
-3. l’audit du rapprochement avec Food-101, les données AGRIBALYSE et les mesures de prudence ;
-4. le cadrage, les choix, la roadmap, les risques, les budgets et les indicateurs ;
-5. les compétences humaines illustrées par des actions menées dans le projet ;
-6. cinq axes de progression mesurables, dont l’évaluation du modèle sur 30 photos réelles.
+La branche EcoPlate Edge décrit le besoin, mon travail, le choix d’une inférence
+locale, les résultats Food-101, le mécanisme de correction et la validation terrain
+encore manquante. La branche technique associe quatre compétences évaluées à 3 sur 4
+à des projets qui servent de preuves. La branche consacrée au métier oppose ma vision
+initiale, centrée sur le modèle, aux questions que je pose désormais sur le besoin,
+les données, le refus de répondre, la correction et la surveillance.
 
-Une section complémentaire présente huit projets de formation : Fashion-Insta,
-Home Credit, BrainScanAI, CheckIt.AI, OpenAgenda RAG, Eagle-1, Qwen3 médical et le
-Coach d’ouvertures FFE. Chaque bloc renvoie vers un inventaire factuel des objectifs,
-réalisations, résultats et limites. Aucun projet extérieur aux dossiers consultés
-n’est ajouté.
+Les compétences humaines sont illustrées par des décisions observables : présenter
+un résultat négatif, conduire un POC de bout en bout, expliquer un score prudent et
+retirer une option dont le gain n’est pas mesuré. Le bilan précise ce que je ferais
+différemment : collecter les données réelles plus tôt, suivre le temps passé et tester
+la compréhension avec des utilisateurs.
+
+Enfin, huit nœuds cliquables donnent un accès direct aux fiches de Fashion-Insta,
+Home Credit, BrainScanAI, CheckIt.AI, OpenAgenda RAG, Eagle-1, Qwen3 médical et Coach
+FFE. Chaque nœud résume l’apprentissage principal plutôt que d’énumérer des outils.

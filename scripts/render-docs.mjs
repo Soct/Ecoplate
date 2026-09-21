@@ -28,7 +28,6 @@ const documents = [
   ['architecture', 'Architecture technique'],
   ['journal-decisions', 'Décisions techniques'],
   ['competences', 'Compétences démontrées'],
-  ['projets-formation', 'Projets de formation'],
   ['scenario-demonstration', 'Guide de démonstration'],
   ['audit-mapping-food101', 'Audit du mapping Food-101'],
 ];

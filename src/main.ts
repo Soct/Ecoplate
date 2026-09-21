@@ -138,7 +138,6 @@ app.innerHTML = `
           <div class="project-expanded-detail" id="project-detail-experiments" aria-live="polite" hidden></div>
         </section>
       </div>
-      <a class="all-projects-link" href="${import.meta.env.BASE_URL}annexes/projets-formation.html">Voir l’inventaire détaillé <span aria-hidden="true">↗</span></a>
     </section>
 
     <section class="project-section" id="project">
@@ -347,14 +346,14 @@ app.innerHTML = `
       </div>
       <div class="skills-layout">
         <div class="skill-list">
-          <article><div><span>Industrialisation</span><strong>Opérationnel sur POC</strong></div><p>Exposer un modèle via une API ou une interface, automatiser le build et le déploiement, et structurer un service reproductible. Le monitoring et la maintenance en production restent à approfondir.</p></article>
-          <article><div><span>IA responsable</span><strong>Solide sur les principes</strong></div><p>Prendre en compte la confidentialité, les biais, l’incertitude et les limites d’usage, tout en laissant une place au contrôle humain. La gouvernance en production reste à renforcer.</p></article>
-          <article><div><span>Données & pipelines pour l’IA</span><strong>Autonome sur des pipelines structurés</strong></div><p>Préparer, normaliser, stocker et orchestrer les données nécessaires à un système d’IA dans des flux reproductibles et contrôlables.</p></article>
-          <article><div><span>LLM, RAG & agents</span><strong>Opérationnel sur POC</strong></div><p>Assembler recherche, sources, outils et modèles dans des workflows contrôlables, avec des sorties observables. La robustesse et l’évaluation en production restent à consolider.</p></article>
-          <article><div><span>Computer vision & Edge AI</span><strong>En consolidation</strong></div><p>Prétraiter des images, intégrer des modèles quantifiés, exécuter l’inférence localement et suivre les contraintes de latence.</p></article>
-          <article><div><span>Fine-tuning & adaptation de modèles</span><strong>Pratique expérimentée</strong></div><p>Préparer un dataset, contrôler les données sensibles, adapter un modèle et comparer les gains sur une tâche spécialisée.</p></article>
-          <article><div><span>Évaluation & expérimentation</span><strong>Compréhension opérationnelle</strong></div><p>Comprendre le rôle des baselines, métriques, ablations et analyses d’erreurs, puis appliquer ces méthodes dans un cadre défini sans revendiquer une expertise méthodologique.</p></article>
-          <article><div><span>Cadrage & architecture IA</span><strong>En développement</strong></div><p>Analyser un besoin, définir le périmètre d’un système, choisir une architecture et formaliser des critères de réussite.</p></article>
+          <article><div><span>Industrialisation</span><strong>API · CI · déploiement</strong></div><p>Exposer un modèle via une API ou une interface, automatiser le build et le déploiement, et structurer un service reproductible. Le monitoring et la maintenance en production restent à approfondir.</p></article>
+          <article><div><span>IA responsable</span><strong>Incertitude · contrôle humain</strong></div><p>Prendre en compte la confidentialité, les biais, l’incertitude et les limites d’usage, tout en laissant une place au contrôle humain. La gouvernance en production reste à renforcer.</p></article>
+          <article><div><span>Données & pipelines pour l’IA</span><strong>ETL · stockage · orchestration</strong></div><p>Préparer, normaliser, stocker et orchestrer les données nécessaires à un système d’IA dans des flux reproductibles et contrôlables.</p></article>
+          <article><div><span>LLM, RAG & agents</span><strong>Recherche · outils · workflows</strong></div><p>Assembler recherche, sources, outils et modèles dans des workflows contrôlables, avec des sorties observables. La robustesse et l’évaluation en production restent à consolider.</p></article>
+          <article><div><span>Computer vision & Edge AI</span><strong>Prétraitement · inférence locale</strong></div><p>Prétraiter des images, intégrer des modèles quantifiés, exécuter l’inférence localement et suivre les contraintes de latence.</p></article>
+          <article><div><span>Fine-tuning & adaptation de modèles</span><strong>LoRA · SFT · quantification</strong></div><p>Préparer un dataset, contrôler les données sensibles, adapter un modèle et comparer les gains sur une tâche spécialisée.</p></article>
+          <article><div><span>Évaluation & expérimentation</span><strong>Baselines · métriques · ablations</strong></div><p>Définir des baselines et des métriques, comparer des variantes et analyser les erreurs. Les protocoles appliqués restent limités à des jeux de données de formation ou à des environnements simulés.</p></article>
+          <article><div><span>Cadrage & architecture IA</span><strong>Besoin · risques · critères</strong></div><p>Analyser un besoin, définir le périmètre d’un système, choisir une architecture et formaliser des critères de réussite.</p></article>
         </div>
       </div>
     </section>
@@ -389,74 +388,69 @@ if (!isEcoPlatePage) {
     ecoplate: {
       type: 'Projet principal · étude de cas',
       title: 'Classification alimentaire et indicateur climatique',
-      description: 'Prototype web statique qui exécute dans le navigateur un EfficientNet-Lite0 int8 fine-tuné sur Food-101. Les prédictions visuelles sont combinées avec une description textuelle et les corrections de l’utilisateur avant le calcul d’un niveau A–E.',
-      more: 'Le modèle occupe 3,95 Mio. Le traitement ne comporte pas de backend d’inférence et l’image n’est pas envoyée. Le calcul est séparé du modèle et utilise huit profils AGRIBALYSE 3.2 ; une sortie « ? » est conservée lorsque les éléments sont insuffisants ou ambigus.',
+      description: 'Prototype web statique qui classe localement la photo d’un aliment simple dans huit familles avec un EfficientNet-Lite0 int8 fine-tuné sur Food-101. L’utilisateur peut compléter et corriger les suggestions avant le calcul d’un repère climatique qualitatif A–E ou « ? ».',
+      more: 'Le modèle de 3,95 Mio atteint 54,27 % en top-1 et 82,95 % en top-3 sur la validation Food-101 relabellisée, sans mesurer la performance sur des photos utilisateur. L’image n’est pas envoyée à un backend. Le calcul, séparé du modèle, repose sur huit profils AGRIBALYSE 3.2 et rejette les cas insuffisants ou ambigus.',
       stack: ['TypeScript', 'EfficientNet', 'AGRIBALYSE', 'Edge AI'],
       href: `${import.meta.env.BASE_URL}ecoplate.html`,
+      linkLabel: 'Ouvrir le projet',
     },
     coach: {
       type: 'Agent IA · orchestration',
       title: 'Workflow LangGraph pour un coach d’échecs',
-      description: 'Interface Angular et API FastAPI pour analyser une position FEN. Le workflow LangGraph choisit les données théoriques de Lichess lorsqu’elles sont disponibles, ou une analyse Stockfish dans le cas contraire, puis ajoute un contexte d’ouverture et des ressources.',
+      description: 'POC de conseil pédagogique qui analyse une position FEN depuis une interface Angular et une API FastAPI. LangGraph orchestre une route théorique fondée sur Lichess ou une route d’analyse Stockfish, puis enrichit la réponse avec un contexte d’ouverture et des ressources.',
       more: 'Le corpus local comprend 85 fiches Wikichess indexées dans Milvus. Une recherche locale est utilisée si Milvus est indisponible et MongoDB sert de cache pour les recherches YouTube. La détection de positions dans des vidéos et le serveur MCP figurent dans l’étude, pas dans le POC livré.',
       stack: ['LangGraph', 'FastAPI', 'Stockfish', 'Milvus'],
-      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     medical: {
       type: 'Fine-tuning LLM · domaine sensible',
       title: 'Fine-tuning d’un LLM sur des données médicales',
-      description: 'Travail d’adaptation de Qwen3 1,7B en 4-bit avec Unsloth, LoRA, SFT puis DPO sur des données médicales bilingues. L’évaluation compare le modèle de base et le modèle SFT sur 267 réponses libres et 233 QCM.',
+      description: 'Adaptation de Qwen3 1,7B en 4-bit avec Unsloth et LoRA sur des données médicales bilingues, avec entraînement SFT puis alignement DPO. L’évaluation distingue 267 réponses libres et 233 QCM afin de comparer les gains selon le type de tâche.',
       more: 'Sur les QCM, le modèle SFT obtient 102 réponses exactes contre 12 pour le modèle de base (233 cas). Sur les réponses libres, METEOR passe de 0,1361 à 0,1653, avec une dispersion plus élevée. Ces résultats ne remplacent pas une validation médicale humaine et les licences des sources doivent être vérifiées.',
       stack: ['Qwen3 1.7B', 'LoRA', 'SFT', 'DPO'],
-      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     agenda: {
       type: 'Recherche augmentée · NLP',
       title: 'Pipeline RAG pour des événements sourcés',
-      description: 'Pipeline de collecte OpenAgenda pour des événements d’Île-de-France : normalisation en JSONL, embeddings Mistral, recherche FAISS, filtrage temporel et génération d’une réponse avec ses sources via FastAPI.',
-      more: 'L’index IndexFlatIP contient environ 65 000 segments et les événements terminés sont filtrés avant la réponse. Sur 10 cas annotés, les scores sont de 1,0000 en précision du contexte, 0,8536 en pertinence de réponse et 0,7000 en fidélité. Le dépôt contient 76 tests et une couverture observée de 71 %.',
+      description: 'API RAG qui répond en langage naturel à des questions sur des événements d’Île-de-France. Le pipeline collecte et normalise OpenAgenda en JSONL, produit des embeddings Mistral, recherche dans FAISS, filtre les événements terminés et génère une réponse accompagnée de ses sources.',
+      more: 'L’index IndexFlatIP contient environ 65 000 segments. Sur 10 cas annotés, les scores sont de 1,0000 en précision du contexte, 0,8536 en pertinence de réponse et 0,7000 en fidélité. Le dépôt contient 76 tests et une couverture observée de 71 %. Cet échantillon est trop petit pour généraliser et la fidélité au contexte reste l’axe prioritaire.',
       stack: ['Mistral', 'FAISS', 'FastAPI', 'RAGAS'],
-      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     credit: {
       type: 'Machine learning · industrialisation',
       title: 'Modèle de scoring crédit avec API et dashboard',
-      description: 'Pipeline de scoring Home Credit basé sur LightGBM et StandardScaler. 20 variables sont conservées parmi 795 après sélection SHAP et rééquilibrage 1:1 ; une API FastAPI expose les prédictions et un dashboard Streamlit présente le modèle et son suivi.',
-      more: 'Sur le holdout, la ROC-AUC est de 0,7699 et le rappel de 0,6988 au seuil métier 0,52. Le seuil encode un coût dix fois supérieur pour un faux négatif. Le dépôt comprend le suivi MLflow, les logs JSONL, une page de dérive Evidently, des conteneurs Docker, une CI et une configuration de déploiement Fly.io.',
+      description: 'Pipeline de prédiction du risque de défaut sur les données Home Credit, fondé sur LightGBM et un seuil adapté au coût métier des erreurs. La sélection SHAP conserve 20 variables parmi 795 ; FastAPI expose le score et Streamlit présente le modèle, ses explications et son suivi.',
+      more: 'Sur le holdout, la ROC-AUC est de 0,7699 et le rappel de 0,6988 au seuil métier 0,52. Le seuil encode un coût dix fois supérieur pour un faux négatif. Le dépôt comprend le suivi MLflow, les logs JSONL, une page de dérive Evidently, des conteneurs Docker et une CI. La validation porte sur le dataset Home Credit, pas sur un flux bancaire réel.',
       stack: ['LightGBM', 'SHAP', 'MLflow', 'FastAPI'],
-      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
+      href: 'https://github.com/Soct/oc_mlops',
+      linkLabel: 'Voir le dépôt GitHub',
     },
     brain: {
       type: 'Computer vision · expérimentation',
       title: 'Expérimentation de vision sur des IRM peu annotées',
-      description: 'Expérimentation sur 1 506 images d’IRM de 512 × 512 : audit, déduplication, embeddings ResNet18, comparaison de quatre méthodes de clustering et génération de pseudo-labels. Deux CNN sont ensuite comparés sur un test stratifié de 20 images séparé de l’entraînement.',
+      description: 'Expérimentation semi-supervisée sur 1 506 images d’IRM : audit, déduplication, embeddings ResNet18, comparaison de quatre méthodes de clustering et génération de pseudo-labels. Trois stratégies CNN sont évaluées sur un test stratifié de 20 images strictement séparé de l’entraînement.',
       more: 'Le rappel cancer est de 1,00 avec les annotations expertes, 0,90 avec les labels faibles seuls et 0,80 en semi-supervisé. Les F1 sont respectivement de 0,667, 0,643 et 0,593. Le seuil de rappel est atteint par l’approche semi-supervisée, mais pas le F1 de référence ; aucune conclusion clinique n’est possible.',
       stack: ['PyTorch', 'ResNet18', 'Clustering', 'Pseudo-labels'],
-      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     check: {
       type: 'Data engineering · pipeline',
       title: 'Pipeline de collecte et de normalisation RSS',
-      description: 'Pipeline ETL qui collecte des publications contenant du texte et une image depuis BBC News World et France 24. Les données sont nettoyées, dédupliquées, écrites en JSONL puis chargées de manière idempotente dans SQLite ; Airflow ordonnance les trois étapes.',
-      more: 'Une exécution documentée traite 50 publications de l’extraction au chargement, avec 10 tests réussis et 88,27 % de couverture. Le tableau de bord KPI indique 100 % d’images valides sur cet échantillon. Les flux ne fournissent pas de labels vrai/faux : le projet prépare les données et n’entraîne pas de classifieur.',
+      description: 'Pipeline ETL de publications texte-image issues des flux RSS de BBC News World et France 24. Airflow orchestre l’extraction, le nettoyage et la déduplication en JSONL, puis un chargement idempotent dans SQLite ; le projet prépare un corpus sans inventer de labels de véracité.',
+      more: 'Une exécution documentée traite 50 publications de l’extraction au chargement, avec 10 tests réussis et 88,27 % de couverture. Le tableau de bord indique 100 % d’images valides sur cet échantillon, mais les URL sont contrôlées syntaxiquement sans validation HTTP complète. Les flux ne fournissent pas de labels vrai/faux : aucun classifieur n’est entraîné.',
       stack: ['RSS', 'SQLite', 'Airflow'],
-      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     eagle: {
       type: 'Apprentissage par renforcement',
       title: 'Entraînement DQN sur LunarLander-v3',
-      description: 'Notebook d’entraînement d’un agent DQN sur l’environnement discret LunarLander-v3. Le meilleur checkpoint est servi par FastAPI pour prédire une action ou exécuter un épisode ; une interface et un tableau de bord Streamlit consomment cette API.',
-      more: 'Sur 100 épisodes, la configuration retenue obtient 225,42 ± 103,73, avec 77 % d’épisodes à 200 points ou plus. La baseline obtient 156,11 ± 61,21. La vidéo fournie dure 23,75 secondes ; l’environnement simulé et la dispersion des récompenses limitent la portée du résultat.',
+      description: 'Entraînement et évaluation d’un agent DQN sur l’espace d’actions discret de LunarLander-v3. Le meilleur checkpoint est exposé par FastAPI pour prédire une action ou jouer un épisode ; une interface et un tableau de bord Streamlit permettent d’observer son comportement.',
+      more: 'Sur 100 épisodes, la configuration retenue obtient 225,42 ± 103,73, avec 77 % d’épisodes à 200 points ou plus. La baseline obtient 156,11 ± 61,21. L’environnement est simulé ; la forte dispersion et la sensibilité aux graines limitent la portée du résultat.',
       stack: ['DQN', 'Gymnasium', 'FastAPI', 'Streamlit'],
-      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
     fashion: {
       type: 'Cadrage IA · décision produit',
       title: 'Cadrage d’un POC de recommandation vestimentaire',
-      description: 'Cadrage Data & IA d’un service qui rapproche une photo de tenue du catalogue Fashion-Insta. Le périmètre du PoC compare une référence fondée sur les tags et les couleurs avec une approche par embeddings et recherche vectorielle sur 275 articles, soit 61,5 % du chiffre d’affaires.',
-      more: 'L’architecture cible décrit le stockage Blob, Azure AI Search, Azure ML, le monitoring et les mesures RGPD. Les critères de décision portent sur la pertinence dans le Top-5, la précision@5, la couverture, une latence p95 inférieure à 2 secondes et un coût inférieur à 0,05 € par requête. Le moteur de recommandation n’est pas implémenté dans ce projet de cadrage.',
+      description: 'Cadrage Data & IA d’un service qui rapproche une photo de tenue du catalogue Fashion-Insta. Le POC proposé compare une référence fondée sur les tags et les couleurs à une recherche vectorielle par embeddings sur 275 articles représentant 61,5 % du chiffre d’affaires.',
+      more: 'Le cadrage couvre l’architecture Azure, le planning, les coûts, le ROI, les risques RGPD et les critères Go/No-Go. La décision repose notamment sur la précision@5, la couverture, une latence p95 inférieure à 2 secondes et un coût inférieur à 0,05 € par requête. Le moteur de recommandation n’est pas implémenté : sa pertinence reste à mesurer pendant le POC.',
       stack: ['Azure', 'Embeddings', 'Vector search', 'RGPD'],
-      href: `${import.meta.env.BASE_URL}annexes/projets-formation.html`,
     },
   } as const;
 
@@ -489,7 +483,10 @@ if (!isEcoPlatePage) {
         activeProjectPanel.hidden = true;
       }
 
-      panel.innerHTML = `<div><span class="project-expanded-detail-type">${project.type}</span><span class="project-expanded-detail-title">${project.title}</span><span class="project-expanded-detail-description">${project.description}</span><span class="project-expanded-detail-more"><strong>En complément</strong>${project.more}</span></div><div class="project-expanded-detail-side"><span class="work-stack">${project.stack.map((item) => `<span>${item}</span>`).join('')}</span><a class="project-expanded-detail-link" href="${project.href}">Ouvrir le projet <span aria-hidden="true">↗</span></a></div>`;
+      const projectLink = 'href' in project
+        ? `<a class="project-expanded-detail-link" href="${project.href}"${project.href.startsWith('http') ? ' target="_blank" rel="noreferrer"' : ''}>${project.linkLabel} <span aria-hidden="true">↗</span></a>`
+        : '';
+      panel.innerHTML = `<div><span class="project-expanded-detail-type">${project.type}</span><span class="project-expanded-detail-title">${project.title}</span><span class="project-expanded-detail-description">${project.description}</span><span class="project-expanded-detail-more"><strong>Résultats et limites</strong>${project.more}</span></div><div class="project-expanded-detail-side"><span class="work-stack">${project.stack.map((item) => `<span>${item}</span>`).join('')}</span>${projectLink}</div>`;
       panel.hidden = false;
       card.setAttribute('aria-expanded', 'true');
       activeProjectCard = card;

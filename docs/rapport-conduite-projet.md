@@ -99,7 +99,7 @@ Food-101 sont volontairement séparées des performances encore inconnues sur de
 - sécurité : types de fichier et taille validés, aucune donnée utilisateur injectée en
   HTML, aucune clé secrète et aucun service serveur.
 
-# 2. Audit de la solution data existante ou proposée
+# 2. Audit des données et de la solution envisagée
 
 ## 2.1 Solution actuelle ou proposée
 
@@ -114,13 +114,13 @@ Flux implémenté :
 ```text
 Fichier local -> validation 12 Mo -> décodage -> recadrage 224 x 224
  -> MediaPipe WASM CPU -> modèle Food-101 -> top 3 des 8 familles
-                              ou baseline ImageNet -> mapping 8 familles
+                              ou référence ImageNet -> association à 8 familles
 Texte -> normalisation accents/synonymes/grammes -> familles + inconnus
 Vision + texte + utilisateur -> fusion et contradictions -> profils AGRIBALYSE
  -> règle A-E ou ? -> explication, confiance, hypothèses et alternative
 ```
 
-Le modèle, le runtime WASM, les mappings et les profils environnementaux sont livrés
+Le modèle, le moteur WASM, les règles d’association et les profils environnementaux sont livrés
 avec le site. Une base, une API ou un orchestrateur n’apporteraient rien à ce POC ;
 leur absence réduit à la fois le coût et la surface d’attaque.
 
@@ -130,7 +130,7 @@ leur absence réduit à la fois le coût et la surface d’attaque.
 |---|---|---|
 | Confidentialité | conforme au besoin | aucun envoi de photo, traitement en mémoire |
 | Coût | conforme au besoin | hébergement statique et inférence côté navigateur |
-| Déploiement | conforme au besoin | build Vite autonome et workflow GitHub Pages |
+| Déploiement | conforme au besoin | site Vite autonome et déploiement GitHub Pages automatisé |
 | Latence | partiellement validée | médiane 31 ms et p95 59 ms dans Firefox headless ; appareils cibles non testés |
 | Couverture alimentaire | incomplète | top-3 Food-101 à 82,95 % ; photos utilisateur non mesurées |
 | Robustesse | incomplète | rejet et correction présents ; comportement réel à mesurer |
@@ -180,8 +180,8 @@ et les limites sont conservées dans la fiche des données.
 
 | Option | Taille | Couverture aliments | Provenance | Risque |
 |---|---:|---:|---:|---|
-| EfficientNet-Lite0 int8 / ImageNet | 5,18 Mio | top-3 33,90 % sur Food-101 | officielle et claire | mapping très incomplet |
-| EfficientNet-Lite0 fine-tuné / Food-101 | 3,95 Mio | top-3 82,95 % sur Food-101 | pipeline local documenté | mapping forcé, domaine réel inconnu |
+| EfficientNet-Lite0 int8 / ImageNet | 5,18 Mio | top-3 33,90 % sur Food-101 | officielle et claire | correspondances très incomplètes |
+| EfficientNet-Lite0 spécialisé / Food-101 | 3,95 Mio | top-3 82,95 % sur Food-101 | entraînement local documenté | regroupement forcé, comportement réel inconnu |
 | SlimSAM + classifieur | poids supplémentaires | gain non établi | ablation seulement | latence et téléchargement |
 
 ### Qualitatif ou chiffré
@@ -198,7 +198,7 @@ et les limites sont conservées dans la fiche des données.
 
 Notation de 1 (défavorable) à 5 (favorable).
 
-| Critère | Poids | Baseline ImageNet | Fine-tuning Food-101 | Backend spécialisé |
+| Critère | Poids | Référence ImageNet | Modèle spécialisé Food-101 | Service d’inférence spécialisé |
 |---|---:|---:|---:|---:|
 | Confidentialité | 25 % | 5 | 5 | 2 |
 | Taille / démarrage | 20 % | 4 | 5 | 4 |
@@ -249,8 +249,8 @@ la carte mentale et le support du portfolio.
 | Phase | Contenu et outils | Estimation | Preuve / état |
 |---|---|---:|---|
 | 0 | cadrage, backlog, critères | 1–2 h | plan et périmètre — réalisé |
-| 1 | faisabilité MediaPipe / TFLite | 1–2 h | baseline ImageNet 5,18 Mio — réalisé |
-| 2–3 | TypeScript, Vite, vision locale | 5–9 h | modules, top-k, mapping, erreurs — réalisé |
+| 1 | faisabilité MediaPipe / TFLite | 1–2 h | référence ImageNet de 5,18 Mio — réalisé |
+| 2–3 | TypeScript, Vite, vision locale | 5–9 h | modules, trois meilleures réponses, associations et erreurs — réalisé |
 | 4–6 | profils JSON, texte, fusion | 8–14 h | données sourcées, correction et provenance — réalisé |
 | 7 | score et interface | 4–6 h | A–E / `?`, responsive, accessible — réalisé |
 | 8 | Vitest et scripts de benchmark | 4–6 h | Food-101 et ablation réalisés ; photos réelles à exécuter |
@@ -323,14 +323,14 @@ Pour comparer les scénarios, j’ai utilisé un taux indicatif de **450 € par
 |---|---|---|---|
 | Délais | phases terminées / prévues | technique et documentation construits ; campagne réelle restante | planifier la collecte et l’évaluation |
 | Coût | services payants | 0 service requis | surveiller limites Pages |
-| Preuves | critères de fin | app, tests, documentation, carte et workflow présents | maintenir les liens et les versions |
+| Preuves | critères de fin | application, tests, documentation, carte et automatisation présents | maintenir les liens et les versions |
 | Données | profils traçables | 8/8 | revoir à chaque version AGRIBALYSE |
 | Qualité texte | cas documentés | 15 automatisés | enrichir seulement avec erreurs réelles |
 | Vision Food-101 | top-1 / top-3 / macro-F1 | 54,27 % / 82,95 % / 53,69 % | analyser les familles faibles |
-| Vision usage réel | top-1 / top-3 / rejet | non mesurés honnêtement | exécuter les 30 photos |
-| Edge | taille | 4 140 006 octets | acceptable pour le MVP |
+| Vision en usage réel | top-1 / top-3 / rejet | mesures en attente | exécuter les 30 photos |
+| Exécution locale | taille du modèle | 4 140 006 octets | acceptable pour le prototype |
 | Latence | médiane / p95 | Firefox headless : 31 / 59 ms, 10 passages | mesurer sur appareils cibles |
-| Accessibilité | blocage clavier | audit manuel non terminé | grille desktop/mobile |
+| Accessibilité | blocage clavier | audit manuel non terminé | vérifier sur ordinateur et mobile |
 
 Le rejet utile, la latence mobile, l’accessibilité et la compréhension de la démo en
 une minute ne sont pas encore validés. Ils seront mesurés avec les 30 photos et au
@@ -339,12 +339,13 @@ trop petit pour conclure à une bonne couverture du langage naturel.
 
 ## 5.2 Outils et processus de suivi
 
-Le POC n’envoie aucune télémétrie. Il affiche seulement la latence de la dernière
-inférence dans la page. Les résultats peuvent ensuite être exportés volontairement et
+Le prototype n’envoie aucune télémétrie. Il affiche uniquement la durée de la dernière
+inférence. L’utilisateur peut choisir d’exporter les résultats, qui sont ensuite
 agrégés avec `src/evaluation/metrics.ts`.
 
-Vitest couvre les règles métier et les mappings. La compilation TypeScript et le build
-Vite sont également contrôlés. Les vérifications manuelles portent sur le parcours,
+Vitest couvre les règles métier et les associations de classes. La compilation
+TypeScript et la construction du site Vite sont également contrôlées. Les
+vérifications manuelles portent sur le parcours,
 le réseau et l’affichage. Comme il n’y a pas de serveur applicatif, un test de charge
 HTTP serait peu pertinent ; il faut surtout mesurer le chargement, la mémoire et la
 latence sur plusieurs appareils.
@@ -357,7 +358,7 @@ npm ci -> npm test -> npm run build -> artefact Pages -> déploiement
 
 # 6. Conclusion et recommandations
 
-EcoPlate Edge fonctionne comme démonstrateur : l’inférence se fait dans le navigateur,
+EcoPlate Edge fonctionne comme prototype de démonstration : l’inférence se fait dans le navigateur,
 les propositions restent corrigeables et le repère climatique est calculé par une
 règle distincte. Le projet m’a surtout appris à ne pas confondre la sortie d’un modèle
 avec une décision fiable : il faut montrer l’incertitude, permettre la correction et
@@ -373,5 +374,5 @@ ou comparaison de repas — ne sont utiles qu’après cette validation.
 
 - portfolio et démonstration en ligne : <https://soct.github.io/Ecoplate/> ;
 - modèle EcoPlate utilisé par la démonstration : <https://soct.github.io/Ecoplate/models/efficientnet_lite0_food101_8_int8.tflite> ;
-- dataset utilisé pour l'entraînement et l'évaluation : <https://huggingface.co/datasets/ethz/food101> ;
+- jeu de données utilisé pour l'entraînement et l'évaluation : <https://huggingface.co/datasets/ethz/food101> ;
 - page originale de Food-101 : <https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/>.

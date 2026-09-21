@@ -2,29 +2,31 @@
 
 ## À retenir
 
-Le modèle Food-101 améliore nettement le classement sur son dataset de validation,
-mais cette mesure ne vaut pas encore pour des photos prises par des utilisateurs.
-Le rejet `?`, la correction humaine et la campagne de 30 photos sont donc aussi
-importants que l’accuracy.
+Le modèle Food-101 classe nettement mieux les images de son jeu de validation que le
+modèle ImageNet de référence. Ce résultat ne permet pas encore de conclure pour des
+photos prises par les utilisateurs. La réponse `?`, la correction humaine et la
+future campagne de 30 photos sont donc aussi importantes que le taux de bonnes
+classifications.
 
 Ressources évaluées : [modèle EcoPlate TFLite](https://soct.github.io/Ecoplate/models/efficientnet_lite0_food101_8_int8.tflite),
-[dataset Food-101 utilisé sur Hugging Face](https://huggingface.co/datasets/ethz/food101)
-et [page originale du dataset](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/).
+[jeu de données Food-101 sur Hugging Face](https://huggingface.co/datasets/ethz/food101)
+et [page originale de Food-101](https://data.vision.ee.ethz.ch/cvl/datasets_extra/food-101/).
 
 ## Synthèse au 10 septembre 2026
 
-Le fine-tuning apporte un gain net sur le split de validation Food-101 relabellisé :
-**54,27 % d'accuracy top-1 contre 15,28 %** pour ImageNet, et **82,95 % de top-3
+La spécialisation du modèle sur Food-101 apporte un gain net sur le jeu de validation
+regroupé en huit familles : **54,27 % d’exactitude top-1 contre 15,28 %** pour
+ImageNet, et **82,95 % de top-3
 contre 33,90 %**. La macro-F1 passe de **17,02 % à 53,69 %**.
 
-Ces chiffres ne sont pas une validation sur des photos utilisateur. Ils mesurent la
-reproduction d'une taxonomie construite depuis Food-101, sur des images Food-101.
-La performance réelle en conditions d'usage demeure non mesurée.
+Ces chiffres indiquent la capacité du modèle à reproduire un regroupement construit
+à partir de Food-101 sur des images issues de ce même jeu. Ils ne mesurent pas encore
+la performance sur des photos utilisateur en conditions réelles.
 
 | Élément | État | Résultat vérifié |
 |---|---|---|
 | Identité modèle produit | vérifiée | Food-101, 8 sorties, 4 140 006 octets, SHA-256 testé |
-| Identité baseline | vérifiée | ImageNet, 1 000 sorties, 5 434 517 octets, SHA-256 testé |
+| Modèle de référence | vérifié | ImageNet, 1 000 sorties, 5 434 517 octets, SHA-256 testé |
 | Split de validation | évalué en entier | 25 250 images, 101 classes, 8 familles forcées |
 | Tests unitaires | exécutés | 83 tests |
 | Benchmark navigateur | exécuté | Firefox 155 headless, 10 passages par configuration |
@@ -43,10 +45,9 @@ Les artefacts sources sont :
 
 ## Reproductibilité et écart entre appareils
 
-À modèle, navigateur, appareil et prétraitement constants, les relances successives
-d’une même image produisent le même classement observé. Cette reproductibilité est
-locale au contexte d’exécution : elle ne garantit pas que deux appareils produisent
-les mêmes scores numériques.
+Avec le même modèle, le même navigateur, le même appareil et le même prétraitement,
+une image produit le même classement lors des essais successifs. Cette stabilité ne
+garantit toutefois pas des scores identiques entre deux appareils.
 
 Un écart a été constaté manuellement avec `public/demo-images/image1.png` sur la
 version déployée : l’ordinateur propose `dairy / plants / beef`, tandis que le
@@ -55,18 +56,18 @@ proches (environ 9–11 %), ce qui suffit à changer la troisième proposition a
 le filtrage des protéines concurrentes.
 
 L’application exécute pourtant le même modèle TFLite et le même code métier en local.
-À ce stade, l’écart est attribué prudemment à une différence de pipeline d’exécution
-entre environnements — décodage couleur, redimensionnement du canvas, implémentation
-WASM/CPU ou navigateur — et non à une source de données distante. Cette hypothèse
-reste à confirmer par une campagne instrumentée sur plusieurs appareils, avec capture
-des pixels réellement transmis au modèle, de l’identité de l’artefact et des scores
-bruts avant filtrage. Les résultats doivent donc être comparés à appareil constant.
+L’écart peut venir du décodage des couleurs, du redimensionnement de l’image, de
+l’implémentation WASM/CPU ou du navigateur. Il ne dépend pas d’une source de données
+distante, puisque l’inférence est locale. Cette explication doit encore être vérifiée
+sur plusieurs appareils en enregistrant les pixels transmis au modèle, l’identité du
+fichier chargé et les scores avant filtrage. En attendant, les comparaisons doivent
+être effectuées sur un même appareil.
 
-## Comparaison ImageNet / fine-tuning
+## Comparaison entre ImageNet et le modèle spécialisé
 
 Mesures brutes, avant application du rejet :
 
-| Modèle | Taille | Accuracy / top-1 | Top-3 | Macro-F1 |
+| Modèle | Taille | Exactitude top-1 | Top-3 | Macro-F1 |
 |---|---:|---:|---:|---:|
 | ImageNet original + mapping | 5,18 Mio | 15,28 % | 33,90 % | 17,02 % |
 | Food-101 fine-tuné, int8 | 3,95 Mio | **54,27 %** | **82,95 %** | **53,69 %** |
@@ -85,9 +86,9 @@ Mesures brutes, avant application du rejet :
 | Légumineuses | 1 250 | 38,3 / 19,6 / 25,9 % | 60,1 / 70,8 / 65,0 % |
 | Végétaux/féculents | 5 500 | 32,4 / 23,9 / 27,5 % | 66,8 / 47,0 / 55,2 % |
 
-Le fine-tuning améliore chaque famille. Il ne rend toutefois aucune famille fiable
-sans réserve : la précision volaille reste à 27,5 %, tandis que les rappels poisson
-et végétaux restent sous 50 %.
+Le modèle spécialisé progresse dans chaque famille, mais les résultats restent
+insuffisants pour répondre sans réserve. La précision sur la volaille n’est que de
+27,5 %, tandis que le rappel du poisson et celui des végétaux restent sous 50 %.
 
 ### Matrice de confusion du modèle Food-101
 
@@ -105,18 +106,19 @@ les bonnes classifications.
 | légumineuses | 32 | 39 | 106 | 38 | 49 | 39 | **885** | 62 |
 | plantes | 264 | 384 | 662 | 383 | 582 | 460 | 181 | **2 584** |
 
-La matrice complète du baseline, y compris la colonne `unmapped`, est conservée dans
-l'artefact JSON. Son mapping ne prédit pratiquement jamais volaille, poisson ou œufs,
-ce qui explique l'écart avec le modèle spécialisé.
+La matrice complète du modèle ImageNet, y compris la colonne des classes sans
+correspondance, est conservée dans le fichier JSON. Ses règles d’association ne
+prédisent pratiquement jamais la volaille, le poisson ou les œufs, ce qui explique
+l’écart avec le modèle spécialisé.
 
 ## Étude du rejet
 
-La politique produit combine le seuil ci-dessous avec une marge d'ambiguïté de huit
-points entre les deux premières familles. « Accuracy opérationnelle » compte un rejet
-comme incorrect pour une image Food-101 ; « accuracy acceptée » ne porte que sur les
-images non rejetées.
+La règle de décision combine le seuil ci-dessous avec une marge d’ambiguïté de huit
+points entre les deux premières familles. L’« exactitude opérationnelle » compte un
+rejet comme une erreur sur une image Food-101. L’« exactitude des réponses acceptées »
+ne porte que sur les images pour lesquelles le modèle a proposé une famille.
 
-| Seuil | Food-101 rejet | Food-101 acc. opérationnelle | Food-101 acc. acceptée | ImageNet rejet | ImageNet acc. acceptée |
+| Seuil | Rejet Food-101 | Exactitude opérationnelle | Exactitude des réponses acceptées | Rejet ImageNet | Exactitude ImageNet acceptée |
 |---:|---:|---:|---:|---:|---:|
 | 0 % | 27,48 % | 45,71 % | 63,04 % | 49,14 % | 27,45 % |
 | 20 % | 27,48 % | 45,71 % | 63,04 % | 62,90 % | 35,10 % |
@@ -155,8 +157,9 @@ des 101 classes, confirme la décision : l'image entière atteint 51,49 % de top
 80,20 % et 34,65 % en 195 ms. SlimSAM ne produit aucune première inférence : après
 60 secondes, l'interface remonte `NetworkError when attempting to fetch resource`
 au téléchargement de ses poids. Un essai préalable avait déjà dépassé 240 secondes.
-Accuracy, top-3 et taux de rejet SlimSAM sont donc **indisponibles**, et non égaux à
-zéro. L'option est désactivée dans le produit tant que les poids ne sont pas locaux.
+L’exactitude, le top-3 et le taux de rejet de SlimSAM sont donc **indisponibles**, et
+non égaux à zéro. L’option reste désactivée tant que les poids ne sont pas disponibles
+localement.
 
 ## Latence navigateur
 
@@ -171,22 +174,22 @@ compare les variantes ; elle ne généralise pas à d'autres appareils.
 | ImageNet / image entière | **27,5 ms** | 57 ms | 1 |
 | ImageNet / grille 3 × 3 | 302,0 ms | 347 ms | 10 |
 
-La taille et la latence favorisent donc le fine-tuning face au baseline en accuracy,
-sans pénalité notable d'inférence sur une vue. La grille coûte environ huit fois plus
-dans Firefox.
+Le modèle spécialisé est plus petit et plus exact que la référence ImageNet, sans
+pénalité notable sur la durée d’une inférence. Le traitement par grille coûte environ
+huit fois plus dans Firefox.
 
-## Audit conservateur du mapping
+## Audit prudent du regroupement des classes
 
-Le mapping historique attribue toutes les classes à une famille. L'audit classe 61
+Le regroupement initial attribue toutes les classes à une famille. L’audit considère 61
 classes ambiguës — `pizza`, `lasagna`, `risotto`, desserts et plats composés — comme
 `unknown`. Cela représente 15 250 images, soit 60,40 % du split.
 
-Avec le seuil produit, le modèle Food-101 obtient 40,97 % d'accuracy et 36,23 % de
-macro-F1 sur cette taxonomie à neuf classes. Le baseline atteint 51,61 % d'accuracy
+Avec le seuil choisi, le modèle Food-101 obtient 40,97 % d’exactitude et 36,23 % de
+macro-F1 sur ce classement à neuf classes. ImageNet atteint 51,61 % d’exactitude,
 mais seulement 17,69 % de macro-F1 : son score global vient surtout de son taux de
-rejet de 77,13 %, pas d'une meilleure reconnaissance. Ce résultat confirme qu'il faut
-présenter les mesures par famille et réentraîner une vraie classe `unknown` plutôt que
-se fier à l'accuracy globale.
+rejet de 77,13 %, pas d’une meilleure reconnaissance. Il faut donc présenter les
+mesures par famille et entraîner une véritable classe `unknown`, plutôt que se fier
+au seul score global.
 
 ## Erreurs représentatives et décisions
 
@@ -197,7 +200,7 @@ se fier à l'accuracy globale.
 | `cannoli` | laitier | légumineuses, 54,3 % | erreur confiante | conserver rejet/correction et analyser la calibration |
 | `caprese_salad` | laitier | bœuf, 23,0 % | faible confiance | le seuil 35 % doit rejeter ce cas |
 | `ceviche` | poisson | laitier, 29,3 % | plat visuellement complexe | rejet et texte utilisateur utiles |
-| `breakfast_burrito` avec ImageNet | œufs | plantes (`burrito`), 45,7 % | mapping du nom trop réducteur | le fine-tuning remplace ce baseline |
+| `breakfast_burrito` avec ImageNet | œufs | plantes (`burrito`), 45,7 % | association fondée sur le nom trop réductrice | utiliser le modèle spécialisé |
 
 Les chemins exacts et les scores non arrondis sont conservés dans les artefacts JSON.
 

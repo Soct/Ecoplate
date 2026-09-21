@@ -157,7 +157,6 @@ les paramètres du dépôt.
 - [Évaluation](docs/evaluation.md)
 - [Journal de décisions](docs/journal-decisions.md)
 - [Inventaire des compétences](docs/competences.md)
-- [Projets réalisés pendant la formation](docs/projets-formation.md)
 - [Scénario de démonstration](docs/scenario-demonstration.md)
 - [Audit du mapping Food-101](docs/audit-mapping-food101.md)
 - [Carte mentale](public/livrables/carte-mentale.svg)

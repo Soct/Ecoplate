@@ -1,22 +1,23 @@
 # Décisions techniques et retour d’expérience
 
-Ce document retrace les arbitrages qui ont structuré EcoPlate Edge. Il sert de
-complément technique à la démonstration et au rapport de projet.
+Ce journal explique les principaux choix effectués pendant le développement
+d’EcoPlate Edge : le problème rencontré, les options envisagées, la décision prise
+et ce que je changerais aujourd’hui.
 
 ## Décisions
 
 | Date | Problème | Options | Critères | Décision | Résultat observé | Avec du recul |
 |---|---|---|---|---|---|---|
 | 2026-09-04 | aucune application dans le dépôt | prototype isolé ou site portfolio intégré | livrables de l’énoncé, cohérence | intégrer démonstration et portfolio dans le même site | un seul build relie démo et preuves | conserver des modules distincts pour éviter le couplage |
-| 2026-09-04 | modèle navigateur | TensorFlow.js MobileNet, MediaPipe EfficientNet, ONNX Food-101 | taille, licence, statique, adéquation | EfficientNet-Lite0 int8 / MediaPipe | modèle local 5,18 Mio et API compilable | la campagne photo doit décider, pas l’intuition |
-| 2026-09-04 | précision alimentaire limitée | mapper toutes les classes ou mapping court | risque de faux positif | mapping court et `?` | classes non mappées restent visibles | ajouter une famille uniquement après une erreur réelle documentée |
-| 2026-09-04 | résultat climatique | kg CO2e ou A–E | données de masse absentes | A–E qualitatif ; pondération seulement si masses toutes déclarées | aucune pesée visuelle prétendue | séparer encore plus nettement climat et nutrition |
+| 2026-09-04 | modèle exécuté dans le navigateur | TensorFlow.js MobileNet, MediaPipe EfficientNet, ONNX Food-101 | taille, licence, hébergement statique, adéquation | EfficientNet-Lite0 int8 / MediaPipe | modèle local de 5,18 Mio et intégration TypeScript validée | choisir définitivement après l’évaluation sur des photos réelles |
+| 2026-09-04 | précision alimentaire limitée | associer toutes les classes ou limiter les correspondances | risque de faux positif | correspondances limitées et réponse `?` | les classes sans correspondance restent visibles | ajouter une famille seulement lorsqu’une erreur réelle le justifie |
+| 2026-09-04 | résultat climatique | kg CO2e ou A–E | masse des aliments inconnue | repère qualitatif A–E ; pondération uniquement lorsque toutes les masses sont déclarées | l’application n’estime pas visuellement le poids des aliments | mieux distinguer encore information climatique et information nutritionnelle |
 | 2026-09-04 | source environnementale | plusieurs sources ou AGRIBALYSE seule | cohérence des unités et traçabilité | huit lignes AGRIBALYSE 3.2 | codes, DQR, facteur et limites conservés | envisager plusieurs profils par famille dans une V2 |
 | 2026-09-04 | confidentialité | backend, API ou local | image sensible, coût, Pages | local sans télémétrie | aucun composant d’upload ajouté | ajouter un test navigateur automatisé du réseau |
-| 2026-09-04 | métriques absentes | inventer une estimation ou préparer la mesure | intégrité du portfolio | déclarer « non mesuré » et livrer 30 cas | rapport honnête et protocole reproductible | planifier la collecte plus tôt avec un jeu de données dédié |
-| 2026-09-10 | identité du modèle ambiguë après renommage | se fier au nom ou inspecter métadonnées/empreinte | reproductibilité | noms explicites + taille/SHA-256 testés | le produit charge bien le fine-tuning 8 classes ; ImageNet devient le baseline | versionner un manifeste dès chaque export |
-| 2026-09-10 | mapping forcé des plats composés | conserver 8 familles ou introduire `unknown` | défendabilité métier | auditer 101 classes et mesurer une variante conservatrice | 61 classes signalées comme ambiguës | réentraîner avec `mixed_dish`/`unknown` plutôt que corriger après coup |
-| 2026-09-10 | SlimSAM activé sans ablation concluante | défaut, option, désactivation | gain accuracy, latence, coût de chargement | désactiver SlimSAM après timeout/erreur réseau | aucune promesse de segmentation validée ni contrôle cassé | le réévaluer seulement avec des poids locaux |
+| 2026-09-04 | absence de mesures sur des photos réelles | publier une estimation ou préparer une évaluation | fiabilité des résultats présentés | indiquer « non mesuré » et préparer 30 cas | protocole reproductible, sans performance réelle annoncée | planifier la collecte plus tôt avec un jeu de données dédié |
+| 2026-09-10 | identité du modèle ambiguë après renommage | se fier au nom du fichier ou vérifier ses métadonnées et son empreinte | reproductibilité | noms explicites, taille et SHA-256 testés | le produit charge bien le modèle Food-101 à 8 classes ; ImageNet sert de référence | versionner un manifeste à chaque export |
+| 2026-09-10 | classement forcé des plats composés | conserver 8 familles ou introduire `unknown` | cohérence avec l’usage | auditer les 101 classes et mesurer une variante plus prudente | 61 classes sont considérées comme ambiguës | réentraîner avec des classes `mixed_dish` et `unknown` plutôt que corriger après coup |
+| 2026-09-10 | SlimSAM activé sans résultat concluant | activation par défaut, option ou désactivation | gain de précision, latence, coût de chargement | désactiver SlimSAM après l’échec du chargement | aucune amélioration de la segmentation n’a pu être mesurée | le réévaluer uniquement avec des poids disponibles localement |
 
 ## Bilan réflexif
 
@@ -33,31 +34,33 @@ complément technique à la démonstration et au rapport de projet.
 
 ### Hypothèses invalidées ou fragiles
 
-L'hypothèse « un modèle ImageNet suffit à reconnaître huit familles alimentaires »
-est invalidée sur Food-101 par la comparaison au fine-tuning. L'adéquation statistique
-du modèle spécialisé aux photos utilisateur reste toutefois inconnue avant la
-campagne réelle : améliorer une métrique dans le domaine source ne prouve pas la
-généralisation au contexte produit.
+La comparaison sur Food-101 invalide l’hypothèse selon laquelle un modèle ImageNet
+suffirait à reconnaître huit familles alimentaires. En revanche, le comportement du
+modèle spécialisé sur des photos utilisateur reste inconnu. Une amélioration sur le
+jeu d’évaluation Food-101 ne garantit pas la même progression en situation réelle.
 
-L’hypothèse « une famille peut être représentée par un facteur unique » est trop forte
-pour un chiffre. Elle reste acceptable uniquement comme repère qualitatif explicite.
+Un facteur unique ne peut pas représenter précisément toute une famille alimentaire.
+Il peut seulement servir de repère qualitatif, à condition que cette limite soit
+clairement annoncée.
 
 ### Ce qui serait changé dans la méthode
 
-Avec davantage de temps et un accès anticipé à des images autorisées, le jeu d’évaluation
-serait défini et collecté avant l’interface finale. Les erreurs auraient ainsi guidé
-le mapping et le choix du modèle. Un petit test utilisateur aurait aussi validé si
-les notions de confiance, correction et score indicatif sont comprises sans oral.
+Je définirais et collecterais les images d’évaluation avant de finaliser l’interface.
+Les erreurs observées guideraient ainsi l’association des classes et le choix du
+modèle. Je mènerais également un test utilisateur court pour vérifier que la
+confiance, la correction et le caractère indicatif du score sont compris sans
+explication orale.
 
 ### Évolution de la représentation du métier
 
-Le projet montre que l’AI Engineer n’est pas seulement responsable d’un modèle. Il
-doit relier une capacité statistique à un usage, décider quand ne pas répondre,
-organiser la correction humaine, surveiller données et performances, sécuriser les
-flux et rendre les compromis lisibles pour des non-spécialistes.
+Je ne vois plus le métier d’AI Engineer comme la seule construction d’un modèle. Il
+faut relier ses capacités à un usage, définir les cas où le système ne doit pas
+répondre, permettre la correction humaine, surveiller les données et les performances,
+sécuriser les échanges et expliquer les compromis à des non-spécialistes.
 
 ### Amélioration prioritaire
 
-Exécuter les 30 cas visuels réels et mesurer l'écart de domaine. Toute nouvelle
-fonctionnalité est secondaire tant que cette preuve manque ; SlimSAM reste désactivé
-jusqu'à ce que ses poids soient locaux et son gain mesuré.
+Ma priorité est d’évaluer les 30 photos réelles afin de mesurer l’écart avec Food-101.
+J’ajouterai de nouvelles fonctionnalités seulement après cette étape. SlimSAM restera
+désactivé tant que ses poids ne seront pas disponibles localement et que son intérêt
+n’aura pas été mesuré.
