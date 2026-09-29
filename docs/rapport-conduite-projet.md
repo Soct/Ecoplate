@@ -2,7 +2,7 @@
 
 ## Du besoin au prototype
 
-**Version :** 1.3 — 14 septembre 2026  
+**Version :** 1.4 — 21 septembre 2026  
 **Nature :** projet personnel technique  
 **Statut :** MVP fonctionnel, benchmark Food-101 et documentation réalisés. La
 validation sur des photos prises en conditions réelles reste à mener.
@@ -25,7 +25,11 @@ choix du modèle pour le POC, mais ne prouve pas son efficacité sur des photos 
 par de vrais utilisateurs. C’est pourquoi la correction humaine, le texte et le rejet
 restent essentiels. Une campagne séparée de 30 photos est préparée, mais pas encore réalisée.
 
-# 1. Contexte et analyse des besoins
+Le rapport suit les cinq axes demandés dans l’énoncé : analyse du besoin et du
+contexte, audit de la solution data, choix d’une solution technique, aide à la
+décision, puis suivi des délais, des coûts, des livrables et des performances.
+
+# 1. Collecte des besoins et analyse du contexte
 
 ## 1.1 Contexte et rôle
 
@@ -41,7 +45,7 @@ développement, évaluation, documentation et déploiement.
 - protéger une image potentiellement personnelle ;
 - éviter qu’un indicateur pédagogique soit pris pour une mesure scientifique ;
 - déployer sans infrastructure payante, sur GitHub Pages ;
-- rattacher décisions, compétences et limites à des preuves consultables.
+- conserver les décisions, résultats et limites dans des documents consultables.
 
 Le périmètre impose un navigateur moderne, un hébergement statique, aucun backend et
 aucun service payant. Le modèle doit rester compact, l’interface utilisable sur mobile
@@ -57,9 +61,9 @@ Le temps de réalisation avait été estimé entre 26 et 40 heures.
 | Partie prenante | Attente | Implication |
 |---|---|---|
 | Utilisateur de démonstration | réponse rapide, privée et compréhensible | fournit image, texte et correction |
-| Recruteur ou évaluateur | preuve d’AI Engineering et de recul critique | consulte démo, rapport, code et métriques |
+| Évaluateur de la formation | traçabilité du besoin, des choix et des résultats | consulte démo, rapport, code et métriques |
 | Mentor / manager pédagogique | cohérence du sujet et des livrables | valide le cadrage, la carte mentale et le support |
-| Moi, porteur du projet | projet finissable, démontrable et maintenable | cadre, développe, mesure et documente |
+| Porteur du projet | périmètre réalisable et résultat mesurable | cadre, développe, mesure et documente |
 
 L’ADEME et Google fournissent respectivement les données environnementales et le
 modèle de départ. Ils n’ont pas été consultés dans le cadre du projet.
@@ -99,7 +103,7 @@ Food-101 sont volontairement séparées des performances encore inconnues sur de
 - sécurité : types de fichier et taille validés, aucune donnée utilisateur injectée en
   HTML, aucune clé secrète et aucun service serveur.
 
-# 2. Audit des données et de la solution envisagée
+# 2. Audit de la solution data et adéquation au besoin
 
 ## 2.1 Solution actuelle ou proposée
 
@@ -126,16 +130,16 @@ leur absence réduit à la fois le coût et la surface d’attaque.
 
 ## 2.2 Évaluation de l’adéquation aux besoins
 
-| Critère | Évaluation | Preuve / écart |
+| Critère | Évaluation | État observé / écart |
 |---|---|---|
-| Confidentialité | conforme au besoin | aucun envoi de photo, traitement en mémoire |
-| Coût | conforme au besoin | hébergement statique et inférence côté navigateur |
-| Déploiement | conforme au besoin | site Vite autonome et déploiement GitHub Pages automatisé |
+| Confidentialité | couverte dans le périmètre | aucun envoi de photo, traitement en mémoire |
+| Coût | cible atteinte | hébergement statique et inférence côté navigateur |
+| Déploiement | réalisé | site Vite autonome et déploiement GitHub Pages automatisé |
 | Latence | partiellement validée | médiane 31 ms et p95 59 ms dans Firefox headless ; appareils cibles non testés |
 | Couverture alimentaire | incomplète | top-3 Food-101 à 82,95 % ; photos utilisateur non mesurées |
 | Robustesse | incomplète | rejet et correction présents ; comportement réel à mesurer |
-| Explication du résultat | conforme au POC | propositions, provenance, contradictions et règles visibles |
-| Maintenance | correcte pour un POC | modules typés, JSON versionné et tests automatisés |
+| Explication du résultat | implémentée | propositions, provenance, contradictions et règles visibles |
+| Maintenance | mécanismes présents | modules typés, JSON versionné et tests automatisés ; maintenance en production non évaluée |
 | Accessibilité | partielle | clavier et focus prévus ; audit manuel restant |
 | Passage à l’échelle | adapté au site statique | calcul effectué sur chaque appareil, sans charge serveur |
 
@@ -164,7 +168,7 @@ et les limites sont conservées dans la fiche des données.
 - vérifier manuellement réseau, contraste et lecteurs d’écran ;
 - compléter l’évaluation avant toute généralisation à des photos utilisateur.
 
-# 3. Identification d’une solution technique cible
+# 3. Identification de la solution technique
 
 ## 3.1 Comparatif des approches
 
@@ -237,7 +241,7 @@ Aucun secret applicatif n’est utilisé.
 
 <div class="print-page-break"></div>
 
-# 4. Stratégie de mise en œuvre et d’industrialisation
+# 4. Appui à la décision et méthode de mise en œuvre
 
 ## 4.1 Proposition de démarche projet
 
@@ -246,13 +250,13 @@ Aucun secret applicatif n’est utilisé.
 J’ai réalisé seul les différentes phases. Le mentor intervient pour valider le sujet,
 la carte mentale et le support du portfolio.
 
-| Phase | Contenu et outils | Estimation | Preuve / état |
+| Phase | Contenu et outils | Estimation | Résultat / état |
 |---|---|---:|---|
 | 0 | cadrage, backlog, critères | 1–2 h | plan et périmètre — réalisé |
 | 1 | faisabilité MediaPipe / TFLite | 1–2 h | référence ImageNet de 5,18 Mio — réalisé |
 | 2–3 | TypeScript, Vite, vision locale | 5–9 h | modules, trois meilleures réponses, associations et erreurs — réalisé |
 | 4–6 | profils JSON, texte, fusion | 8–14 h | données sourcées, correction et provenance — réalisé |
-| 7 | score et interface | 4–6 h | A–E / `?`, responsive, accessible — réalisé |
+| 7 | score et interface | 4–6 h | A–E / `?`, interface responsive, clavier et focus implémentés ; audit WCAG et essais mobiles restant à mener |
 | 8 | Vitest et scripts de benchmark | 4–6 h | Food-101 et ablation réalisés ; photos réelles à exécuter |
 | 9 | Markdown, GitHub Actions / Pages | 3–5 h | rapport, carte, workflow et pages — réalisé |
 
@@ -304,18 +308,20 @@ Pour comparer les scénarios, j’ai utilisé un taux indicatif de **450 € par
 | MVP + validation terrain | 0 € hors appareils disponibles | +16–24 h | +900–1 350 € | prochaine étape |
 | Service backend supervisé | 10–50 € / mois au démarrage | 10–15 j | 4 500–6 750 € | seulement si Edge ne suffit plus |
 
-### KPI de succès
+### Critères de succès et état de mesure
 
-- zéro image transmise ;
-- top-3 ≥ 60 % sur cas en périmètre ;
-- rejet utile ≥ 70 % sur cas hors périmètre ;
-- détection textuelle ≥ 90 % sur 15 cas ;
-- latence médiane < 500 ms ordinateur et < 1 500 ms mobile, après chargement ;
-- zéro blocage clavier ;
-- 100 % des profils avec code, version, unité, DQR et limites ;
-- démonstration comprise en moins d’une minute par une personne extérieure.
+| Indicateur | Cible | État au 21 septembre 2026 |
+|---|---:|---|
+| Image transmise à un service d’inférence | 0 | architecture sans upload ; contrôle réseau manuel à maintenir |
+| Top-3 sur cas en périmètre | ≥ 60 % | 82,95 % sur Food-101 ; non mesuré sur les 30 photos prévues |
+| Rejet utile sur cas hors périmètre | ≥ 70 % | non mesuré ; cas à collecter |
+| Cas textuels documentés reconnus | ≥ 90 % | 15/15 passent ; échantillon trop petit pour estimer la couverture du langage |
+| Latence médiane après chargement | < 500 ms ordinateur ; < 1 500 ms mobile | 31 ms dans Firefox headless ; mobile non mesuré |
+| Blocage clavier | 0 | aucun blocage identifié lors des essais préliminaires ; audit complet non terminé |
+| Profils avec code, version, unité, DQR et limites | 100 % | 8/8 |
+| Démonstration comprise sans accompagnement | < 1 minute | non mesuré avec une personne extérieure |
 
-# 5. Contrôle et suivi du projet
+# 5. Contrôle des délais, coûts, livrables et performances
 
 ## 5.1 Tableau de bord de pilotage
 
@@ -323,7 +329,7 @@ Pour comparer les scénarios, j’ai utilisé un taux indicatif de **450 € par
 |---|---|---|---|
 | Délais | phases terminées / prévues | technique et documentation construits ; campagne réelle restante | planifier la collecte et l’évaluation |
 | Coût | services payants | 0 service requis | surveiller limites Pages |
-| Preuves | critères de fin | application, tests, documentation, carte et automatisation présents | maintenir les liens et les versions |
+| Livrables | critères de fin | application, tests, documentation, carte et automatisation présents | maintenir les liens et les versions |
 | Données | profils traçables | 8/8 | revoir à chaque version AGRIBALYSE |
 | Qualité texte | cas documentés | 15 automatisés | enrichir seulement avec erreurs réelles |
 | Vision Food-101 | top-1 / top-3 / macro-F1 | 54,27 % / 82,95 % / 53,69 % | analyser les familles faibles |
