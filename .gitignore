@@ -13,6 +13,7 @@ public/annexes/*.html
 # Documents de travail et contexte non nécessaires au build
 idea/
 enonce/
+livrables/
 TODO.md
 readme_note.md
 class_food101.md
