@@ -36,7 +36,7 @@ app.innerHTML = `
         ? '<a href="#project">Étude de cas</a><a href="#demo">Démo</a><a href="#data">Données</a>'
         : `<a href="#selected-work">Projets</a><a href="${import.meta.env.BASE_URL}ecoplate.html">EcoPlate</a><a href="#skills">Compétences</a>`}
     </nav>
-    <a class="header-contact" href="${isEcoPlatePage ? import.meta.env.BASE_URL : '#selected-work'}">${isEcoPlatePage ? 'Retour au portfolio' : 'Voir les projets'} <span aria-hidden="true">↗</span></a>
+    ${isEcoPlatePage ? `<a class="header-contact" href="${import.meta.env.BASE_URL}">Retour au portfolio <span aria-hidden="true">↗</span></a>` : ''}
   </header>
 
   <main id="main-content">
@@ -122,8 +122,8 @@ app.innerHTML = `
           <div class="project-group-heading"><span class="project-group-number">02</span><div><h3 id="project-group-data-title">Données et industrialisation</h3><p>Des projets consacrés aux pipelines, aux sources, à l’explicabilité et à la mise à disposition des résultats.</p></div></div>
           <div class="selected-work-grid">
             <button class="work-card" type="button" data-project="agenda" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-rag"><span class="work-index">04</span><strong>Recherche<br>sourcée.</strong><span class="work-visual-note">Open Agenda · RAG</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
-            <button class="work-card" type="button" data-project="credit" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-credit"><span class="work-index">05</span><strong>Score de<br>crédit.</strong><span class="work-visual-note">Home Credit · MLOps</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
-            <button class="work-card" type="button" data-project="check" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-check"><span class="work-index">06</span><strong>Pipeline<br>RSS.</strong><span class="work-visual-note">Check It.AI · Data</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+            <button class="work-card" type="button" data-project="credit" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-credit"><span class="work-index">05</span><strong>Credit<br>score.</strong><span class="work-visual-note">Home Credit · MLOps</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
+            <button class="work-card" type="button" data-project="check" aria-expanded="false" aria-controls="project-detail-data"><div class="work-visual work-visual-check"><span class="work-index">06</span><strong>Veille<br>médiatique.</strong><span class="work-visual-note">Check It.AI · Data</span></div><span class="work-card-detail" aria-hidden="true"></span></button>
           </div>
           <div class="project-expanded-detail" id="project-detail-data" aria-live="polite" hidden></div>
         </section>
@@ -400,6 +400,8 @@ if (!isEcoPlatePage) {
       description: 'POC de conseil pédagogique qui analyse une position FEN depuis une interface Angular et une API FastAPI. LangGraph orchestre une route théorique fondée sur Lichess ou une route d’analyse Stockfish, puis enrichit la réponse avec un contexte d’ouverture et des ressources.',
       more: 'Le corpus local comprend 85 fiches Wikichess indexées dans Milvus. Une recherche locale est utilisée si Milvus est indisponible et MongoDB sert de cache pour les recherches YouTube. La détection de positions dans des vidéos et le serveur MCP figurent dans l’étude, pas dans le POC livré.',
       stack: ['LangGraph', 'FastAPI', 'Stockfish', 'Milvus'],
+      href: 'https://github.com/Soct/agent_oc',
+      linkLabel: 'Voir le dépôt GitHub',
     },
     medical: {
       type: 'Fine-tuning LLM · domaine sensible',
@@ -407,6 +409,8 @@ if (!isEcoPlatePage) {
       description: 'Adaptation de Qwen3 1,7B en 4-bit avec Unsloth et LoRA sur des données médicales bilingues, avec entraînement SFT puis alignement DPO. L’évaluation distingue 267 réponses libres et 233 QCM afin de comparer les gains selon le type de tâche.',
       more: 'Sur les QCM, le modèle SFT obtient 102 réponses exactes contre 12 pour le modèle de base (233 cas). Sur les réponses libres, METEOR passe de 0,1361 à 0,1653, avec une dispersion plus élevée. Ces résultats ne remplacent pas une validation médicale humaine et les licences des sources doivent être vérifiées.',
       stack: ['Qwen3 1.7B', 'LoRA', 'SFT', 'DPO'],
+      href: 'https://github.com/Soct/fine_tuning_oc',
+      linkLabel: 'Voir le dépôt GitHub',
     },
     agenda: {
       type: 'Recherche augmentée · NLP',
@@ -414,6 +418,8 @@ if (!isEcoPlatePage) {
       description: 'API RAG qui répond en langage naturel à des questions sur des événements d’Île-de-France. Le pipeline collecte et normalise OpenAgenda en JSONL, produit des embeddings Mistral, recherche dans FAISS, filtre les événements terminés et génère une réponse accompagnée de ses sources.',
       more: 'L’index IndexFlatIP contient environ 65 000 segments. Sur 10 cas annotés, les scores sont de 1,0000 en précision du contexte, 0,8536 en pertinence de réponse et 0,7000 en fidélité. Le dépôt contient 76 tests et une couverture observée de 71 %. Cet échantillon est trop petit pour généraliser et la fidélité au contexte reste l’axe prioritaire.',
       stack: ['Mistral', 'FAISS', 'FastAPI', 'RAGAS'],
+      href: 'https://github.com/Soct/rag_oc',
+      linkLabel: 'Voir le dépôt GitHub',
     },
     credit: {
       type: 'Machine learning · industrialisation',
