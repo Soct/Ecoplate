@@ -34,7 +34,7 @@ app.innerHTML = `
     <nav aria-label="Navigation principale">
       ${isEcoPlatePage
         ? '<a href="#project">Étude de cas</a><a href="#demo">Démo</a><a href="#data">Données</a>'
-        : `<a href="#selected-work">Projets</a><a href="${import.meta.env.BASE_URL}ecoplate.html">EcoPlate</a><a href="#skills">Compétences</a>`}
+        : `<a href="#profile">Profil</a><a href="#skills">Compétences</a><a href="#selected-work">Projets</a><a href="${import.meta.env.BASE_URL}ecoplate.html">EcoPlate</a>`}
     </nav>
     ${isEcoPlatePage ? `<a class="header-contact" href="${import.meta.env.BASE_URL}">Retour au portfolio <span aria-hidden="true">↗</span></a>` : ''}
   </header>
@@ -83,10 +83,10 @@ app.innerHTML = `
         <p class="eyebrow">Portfolio · projets personnels et de formation</p>
         <h1><strong class="hero-title-line">Je transforme</strong><br><span>des idées</span><br>en systèmes utiles.</h1>
         <p class="portfolio-tagline">Construire des outils à la croisée du logiciel, des données et de l’intelligence artificielle.</p>
-        <p class="portfolio-lead">Ce portfolio rassemble des projets réalisés pendant ma formation, avec leurs résultats, leurs méthodes et leurs limites.</p>
+        <p class="portfolio-lead">Développeur logiciel devenu AI Engineer, je conçois des solutions qui relient modèles, données et applications. Ce portfolio présente mon parcours et les projets qui l’illustrent.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#selected-work">Parcourir les projets <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="#skills">Voir les compétences mobilisées <span aria-hidden="true">↘</span></a>
+          <a class="button button-primary" href="#profile">Découvrir mon parcours <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#skills">Voir mes compétences <span aria-hidden="true">↘</span></a>
         </div>
         <div class="portfolio-availability"><span aria-hidden="true">●</span> 9 projets · IA, data et expérimentation</div>
       </div>
@@ -98,6 +98,56 @@ app.innerHTML = `
           <p class="profile-card-kicker">Périmètre du portfolio</p>
           <h2>Données, modèles<br>et systèmes<br>évalués.</h2>
           <div class="profile-card-tags"><span>ML</span><span>Data</span><span>IA responsable</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-section" id="profile" aria-labelledby="profile-title">
+      <div class="section-heading split-heading">
+        <div><p class="eyebrow">Mon parcours</p><h2 id="profile-title">Du développement logiciel<br>à l’AI Engineering.</h2></div>
+        <p>Après plusieurs années consacrées à la conception d’outils et à l’automatisation de processus métier, je me suis spécialisé en intelligence artificielle. Chez Orange Innovation, j’ai participé à des projets de traitement de données et d’anonymisation, en lien avec les équipes data science.</p>
+      </div>
+      <div class="profile-timeline">
+        <article class="profile-step">
+          <span class="profile-step-period">2019 — 2024</span>
+          <h3>Développement logiciel</h3>
+          <p>Chez AZSoft Services, j’ai analysé les besoins des clients, conçu des applications, puis participé à leurs tests et à leur déploiement. J’ai également automatisé des tâches métier, notamment la génération et le traitement de listes de préparation de commandes.</p>
+          <span class="profile-step-proof">Besoins · applications · automatisation</span>
+        </article>
+        <article class="profile-step">
+          <span class="profile-step-period">2025 — 2026</span>
+          <h3>Formation AI Engineer</h3>
+          <p>Cette formation m’a permis de travailler sur le cycle de vie de solutions d’IA : préparation des données, adaptation et intégration de modèles, évaluation des résultats et documentation de leurs limites.</p>
+          <span class="profile-step-proof">NLP · LLM · vision · évaluation</span>
+        </article>
+        <article class="profile-step">
+          <span class="profile-step-period">2025 — 2026</span>
+          <h3>Projets chez Orange Innovation</h3>
+          <p>Au sein de l’équipe DESKIN, j’ai contribué à une plateforme d’expérimentation destinée aux data scientists, à la sécurisation et au traitement de données, ainsi qu’à l’automatisation de l’entraînement de modèles BERT pour l’anonymisation.</p>
+          <span class="profile-step-proof">Python · PyTorch · BERT · Docker · Kubernetes</span>
+        </article>
+      </div>
+      <aside class="profile-reflection">
+        <span class="eyebrow">Ce que cette évolution m’a appris</span>
+        <p>Un système d’IA ne se résume pas au modèle : la qualité des données, son intégration, l’évaluation des erreurs et les conditions d’usage comptent aussi. Mes projets m’ont appris à rendre ces choix et leurs limites visibles.</p>
+      </aside>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <div class="section-heading split-heading">
+        <div><p class="eyebrow">Compétences mobilisées</p><h2>Méthodes et compétences<br>mises en pratique.</h2></div>
+        <p>Les projets montrent les méthodes utilisées pour cadrer un besoin, préparer les données, intégrer un modèle, évaluer ses résultats et documenter ses limites.</p>
+      </div>
+      <div class="skills-layout">
+        <div class="skill-list">
+          <article><div><span>Industrialisation</span><strong>API · CI · déploiement</strong></div><p>Exposer un modèle via une API ou une interface, automatiser le build et le déploiement, et structurer un service reproductible. Le monitoring et la maintenance en production restent à approfondir.</p></article>
+          <article><div><span>IA responsable</span><strong>Incertitude · contrôle humain</strong></div><p>Prendre en compte la confidentialité, les biais, l’incertitude et les limites d’usage, tout en laissant une place au contrôle humain. La gouvernance en production reste à renforcer.</p></article>
+          <article><div><span>Données & pipelines pour l’IA</span><strong>ETL · stockage · orchestration</strong></div><p>Préparer, normaliser, stocker et orchestrer les données nécessaires à un système d’IA dans des flux reproductibles et contrôlables.</p></article>
+          <article><div><span>LLM, RAG & agents</span><strong>Recherche · outils · workflows</strong></div><p>Assembler recherche, sources, outils et modèles dans des workflows contrôlables, avec des sorties observables. La robustesse et l’évaluation en production restent à consolider.</p></article>
+          <article><div><span>Computer vision & Edge AI</span><strong>Prétraitement · inférence locale</strong></div><p>Prétraiter des images, intégrer des modèles quantifiés, exécuter l’inférence localement et suivre les contraintes de latence.</p></article>
+          <article><div><span>Fine-tuning & adaptation de modèles</span><strong>LoRA · SFT · quantification</strong></div><p>Préparer un dataset, contrôler les données sensibles, adapter un modèle et comparer les gains sur une tâche spécialisée.</p></article>
+          <article><div><span>Évaluation & expérimentation</span><strong>Baselines · métriques · ablations</strong></div><p>Définir des baselines et des métriques, comparer des variantes et analyser les erreurs. Les protocoles appliqués restent limités à des jeux de données de formation ou à des environnements simulés.</p></article>
+          <article><div><span>Cadrage & architecture IA</span><strong>Besoin · risques · critères</strong></div><p>Analyser un besoin, définir le périmètre d’un système, choisir une architecture et formaliser des critères de réussite.</p></article>
         </div>
       </div>
     </section>
@@ -339,25 +389,6 @@ app.innerHTML = `
       <p class="source-note">Source : ADEME, AGRIBALYSE® 3.2, indicateur « Changement climatique », Licence Ouverte 2.0. Les facteurs sont exprimés par kg de produit consommé et ne sont pas affichés comme résultat utilisateur.</p>
     </section>
 
-    <section class="skills-section" id="skills">
-      <div class="section-heading split-heading">
-        <div><p class="eyebrow">Compétences mobilisées</p><h2>${isEcoPlatePage ? 'Ce que le projet<br>m’a permis de mettre en œuvre.' : 'Méthodes et compétences<br>mises en pratique.'}</h2></div>
-        <p>${isEcoPlatePage ? 'Le projet couvre le cadrage, la préparation des données, l’intégration d’un modèle quantifié, l’évaluation et la documentation d’un prototype local.' : 'Les projets montrent les méthodes utilisées pour cadrer un besoin, préparer les données, intégrer un modèle, évaluer ses résultats et documenter ses limites.'}</p>
-      </div>
-      <div class="skills-layout">
-        <div class="skill-list">
-          <article><div><span>Industrialisation</span><strong>API · CI · déploiement</strong></div><p>Exposer un modèle via une API ou une interface, automatiser le build et le déploiement, et structurer un service reproductible. Le monitoring et la maintenance en production restent à approfondir.</p></article>
-          <article><div><span>IA responsable</span><strong>Incertitude · contrôle humain</strong></div><p>Prendre en compte la confidentialité, les biais, l’incertitude et les limites d’usage, tout en laissant une place au contrôle humain. La gouvernance en production reste à renforcer.</p></article>
-          <article><div><span>Données & pipelines pour l’IA</span><strong>ETL · stockage · orchestration</strong></div><p>Préparer, normaliser, stocker et orchestrer les données nécessaires à un système d’IA dans des flux reproductibles et contrôlables.</p></article>
-          <article><div><span>LLM, RAG & agents</span><strong>Recherche · outils · workflows</strong></div><p>Assembler recherche, sources, outils et modèles dans des workflows contrôlables, avec des sorties observables. La robustesse et l’évaluation en production restent à consolider.</p></article>
-          <article><div><span>Computer vision & Edge AI</span><strong>Prétraitement · inférence locale</strong></div><p>Prétraiter des images, intégrer des modèles quantifiés, exécuter l’inférence localement et suivre les contraintes de latence.</p></article>
-          <article><div><span>Fine-tuning & adaptation de modèles</span><strong>LoRA · SFT · quantification</strong></div><p>Préparer un dataset, contrôler les données sensibles, adapter un modèle et comparer les gains sur une tâche spécialisée.</p></article>
-          <article><div><span>Évaluation & expérimentation</span><strong>Baselines · métriques · ablations</strong></div><p>Définir des baselines et des métriques, comparer des variantes et analyser les erreurs. Les protocoles appliqués restent limités à des jeux de données de formation ou à des environnements simulés.</p></article>
-          <article><div><span>Cadrage & architecture IA</span><strong>Besoin · risques · critères</strong></div><p>Analyser un besoin, définir le périmètre d’un système, choisir une architecture et formaliser des critères de réussite.</p></article>
-        </div>
-      </div>
-    </section>
-
     <section class="deliverables-section" id="deliverables">
       <div class="section-heading"><div><p class="eyebrow">Documents associés</p><h2>Livrables principaux</h2></div><p>Ces documents complètent le portfolio et la démonstration en détaillant le projet, les choix réalisés et les axes de progression.</p></div>
       <div class="deliverable-grid">
@@ -374,7 +405,7 @@ app.innerHTML = `
 `;
 
 const sectionsOnlyOnEcoPlate = ['#project', '#demo', '#privacy', '.capability-section', '#study', '#data'];
-const sectionsOnlyOnPortfolio = ['#portfolio-top', '#selected-work', '#skills', '#deliverables'];
+const sectionsOnlyOnPortfolio = ['#portfolio-top', '#profile', '#selected-work', '#skills', '#deliverables'];
 (isEcoPlatePage ? sectionsOnlyOnPortfolio : sectionsOnlyOnEcoPlate).forEach((selector) => {
   document.querySelector(selector)?.remove();
 });
