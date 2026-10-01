@@ -80,7 +80,7 @@ app.innerHTML = `
 
     <section class="portfolio-hero" id="${isEcoPlatePage ? 'portfolio-top' : 'top'}">
       <div class="portfolio-hero-copy">
-        <p class="eyebrow">Portfolio · projets personnels et de formation</p>
+        <p class="eyebrow">Portfolio de Marceau · projets personnels et de formation</p>
         <h1><strong class="hero-title-line">Je transforme</strong><br><span>des idées</span><br>en systèmes utiles.</h1>
         <p class="portfolio-tagline">Construire des outils à la croisée du logiciel, des données et de l’intelligence artificielle.</p>
         <p class="portfolio-lead">Développeur logiciel devenu AI Engineer, je conçois des solutions qui relient modèles, données et applications. Ce portfolio présente mon parcours et les projets qui l’illustrent.</p>
@@ -111,7 +111,7 @@ app.innerHTML = `
         <article class="profile-step">
           <span class="profile-step-period">2019 — 2024</span>
           <h3>Développement logiciel</h3>
-          <p>Chez AZSoft Services, j’ai analysé les besoins des clients, conçu des applications, puis participé à leurs tests et à leur déploiement. J’ai également automatisé des tâches métier, notamment la génération et le traitement de listes de préparation de commandes.</p>
+          <p>Chez AZSoft Services, j’ai analysé les besoins de PME et conçu des applications pour améliorer leurs processus métier. J’ai développé des prototypes, préparé les tests avec les clients et déployé des solutions sur le Web, Android et Windows. J’ai également créé une interface pour faciliter la saisie de documents commerciaux.</p>
           <span class="profile-step-proof">Besoins · applications · automatisation</span>
         </article>
         <article class="profile-step">
