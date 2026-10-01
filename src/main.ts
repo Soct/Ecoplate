@@ -123,7 +123,7 @@ app.innerHTML = `
         <article class="profile-step">
           <span class="profile-step-period">2025 — 2026</span>
           <h3>Projets chez Orange Innovation</h3>
-          <p>Au sein de l’équipe DESKIN, j’ai contribué à une plateforme d’expérimentation destinée aux data scientists, à la sécurisation et au traitement de données, ainsi qu’à l’automatisation de l’entraînement de modèles BERT pour l’anonymisation.</p>
+          <p>Au sein de l’équipe DESKIN, j’ai contribué à la conception et au deploiement d’une plateforme d’expérimentation destinée aux data scientists, à la sécurisation et au traitement de données, ainsi qu’à l’automatisation de l’entraînement de modèles BERT pour l’anonymisation.</p>
           <span class="profile-step-proof">Python · PyTorch · BERT · Docker · Kubernetes</span>
         </article>
       </div>
